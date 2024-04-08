@@ -52,7 +52,7 @@ public class PlaneVector {
         return new PlaneVector(x, y);
     }
 
-    private double dotProduct(PlaneVector otherVector) {
+    public double dotProduct(PlaneVector otherVector) {
         return (this.getX() * otherVector.getX()) + 
             (this.getY() * otherVector.getY());
     }
@@ -65,11 +65,11 @@ public class PlaneVector {
      * @return a vector that is perpendicular to this vector. 
      * The returned vector is the same as this vector but it has been rotates 90 degrees
      */
-    public PlaneVector normal(boolean clockwise) {
+    public PlaneVector rotate(boolean clockwise) {
         if (clockwise) {
-            return new PlaneVector(this.getY(), -this.getX());
-        } else {
             return new PlaneVector(-this.getY(), this.getX());
+        } else {
+            return new PlaneVector(this.getY(), -this.getX());
         }
     }
 
@@ -105,6 +105,12 @@ public class PlaneVector {
             this.x *= scalar;
             this.y *= scalar;
         }
+    }
+
+    public void normalize() {
+        double magnitude = this.getLength();
+        this.x /= magnitude;
+        this.y /= magnitude;
     }
 
     @Override

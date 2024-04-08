@@ -19,23 +19,15 @@ public class PlaneVectorTest {
 
     @Test
     void testNormal() {
-        //null-vector
-        PlaneVector vector = new PlaneVector(new Coordinate(0, 0), new Coordinate(0, 0));
-        vector = vector.normal(true);
-        assertEquals(new PlaneVector(0.0, -0.0), vector);
-
         //tests clockwise normal
-        vector = new PlaneVector(new Coordinate(1, 1), new Coordinate(4, 5));
-        vector = vector.normal(true);
-        PlaneVector expected = new PlaneVector(4, -3);
+        PlaneVector vector = new PlaneVector(1, 1);
+        vector = vector.rotate(true);
+        PlaneVector expected = new PlaneVector(-1, 1);
         assertEquals(expected, vector);
         //tests if its the same as it was when i rotate it back (counterClockWise)
-        vector = vector.normal(false);
-        expected = new PlaneVector(new Coordinate(1, 1), new Coordinate(4, 5));
+        vector = vector.rotate(false);
+        expected = new PlaneVector(1, 1);
         assertEquals(expected, vector);
-        
-
-
     }
 
     @Test
@@ -64,6 +56,14 @@ public class PlaneVectorTest {
         vector = new PlaneVector(new Coordinate(0, 0), new Coordinate(0, 0));
         vector.setLength(20);
         assertEquals(0, vector.getLength());
+        
+    }
+
+    @Test
+    void testNormalize() {
+        PlaneVector vector = new PlaneVector(3, 3);
+        vector.normalize();
+        assertEquals(1, vector.getLength());
         
     }
 }

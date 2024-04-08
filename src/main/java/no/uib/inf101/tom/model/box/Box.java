@@ -18,25 +18,26 @@ public abstract class Box  {
     public boolean overlapsWith(Box otherBox){
         //pseudo code by pikuma - Collision Detection with SAT (Math for Game Developers) 
         //url: https://www.youtube.com/watch?v=-EsWKT7Doww&ab_channel=pikuma
-        ArrayList<Double> seperationLengths = new ArrayList<>();
+        ArrayList<Double> seperations = new ArrayList<>();
         Coordinate[] myVertices = this.getCornerCoords();
         Coordinate[] otherVertices = otherBox.getCornerCoords();
         for (int i = 1; i < myVertices.length; i++) {
             PlaneVector edgeVector = new PlaneVector(myVertices[i - 1], myVertices[i]);
             //The edgeVector will follow in the clockwise direction. 
             //Because that is how the getCornerCoords() method works. 
-            PlaneVector normal = edgeVector.normal(false);
+            PlaneVector normal = edgeVector.rotate(false);
+            normal.normalize();
             //Since i rotate the edgevector counterclockwise,
             //it will be facing away from the center of the box.
-            ArrayList<Double> seperationLengthsFromVertex = new ArrayList<>();
+            ArrayList<Double> seperationsForOneNormal = new ArrayList<>();
             for (Coordinate vertex : otherVertices) {
-                PlaneVector projection = 
-                    new PlaneVector(myVertices[i], vertex).projectedOnto(normal);
-                seperationLengthsFromVertex.add(projection.getLength());
+                PlaneVector myVertexToOtherVertex = new PlaneVector(myVertices[i], vertex);
+                double projectionLength = myVertexToOtherVertex.dotProduct(normal);
+                seperationsForOneNormal.add(projectionLength);
             }
-            seperationLengths.add(smallestDouble(seperationLengthsFromVertex));
+            seperations.add(smallestDouble(seperationsForOneNormal));
         }
-        return (biggestDouble(seperationLengths) >= 0); //TODO: lag test for dette
+        return (biggestDouble(seperations) <= 0);
     }
 
     private double smallestDouble(ArrayList<Double> list) {

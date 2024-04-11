@@ -2,13 +2,16 @@ package no.uib.inf101.tom.model.box;
 
 import java.util.ArrayList;
 
+import java.awt.Shape;
+import java.awt.geom.Path2D;
+
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.PlaneVector;
 
 /**
  * A box. A two dimensional convex polygon.
  */
-public abstract class Box  {
+public abstract class Box implements ViewableBox{
 
     /**
      * Checks if the box overlaps with another box using the seperating axis theorem.
@@ -60,6 +63,26 @@ public abstract class Box  {
         return biggest;
     }
 
+    @Override
+    public Shape getShape() {
+        //TODO: This implementation is wrong. We need to figure out the size of everything and
+        //  how to have a proper way to convert from coordinates to point2Ds.
+        Coordinate[] coords = this.getCornerCoords();
+        double[] x_values = new double[coords.length];
+        double[] y_values = new double[coords.length];
+        for (int i = 0; i < coords.length; i++) {
+            x_values[i] = coords[i].x();
+            y_values[i] = coords[i].y();
+        }
+        Path2D polygon = new Path2D.Double();
+        polygon.moveTo(x_values[0], y_values[0]);
+        for (int i = 1; i < x_values.length; i++) {
+            polygon.lineTo(x_values[i], y_values[i]);
+        }
+        polygon.closePath();
+        return polygon;
+    }
+
 
     /**
      * Gets the coordinates at the four corners of the box. 
@@ -73,11 +96,6 @@ public abstract class Box  {
      */
     public abstract Coordinate[] getCornerCoords();
 
-    /**
-     * gets the center Coordinate of the box. 
-     * @return the coordinate at the center of the box. 
-     */
-    public abstract Coordinate getCenter();
 
 }
 

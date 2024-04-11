@@ -1,5 +1,6 @@
 package no.uib.inf101.tom.model.box;
 
+
 import no.uib.inf101.tom.model.Coordinate;
 
 public class RectangularBox extends Box{
@@ -36,5 +37,16 @@ public class RectangularBox extends Box{
         return cornerCoords;
     }
 
+    @Override
+    public Coordinate getCoordinate() {
+        return this.pos;
+    }
+
+    @Override
+    public String getName() {
+        return "unnamed rectangular box";
+    }
+
+    
     
 }

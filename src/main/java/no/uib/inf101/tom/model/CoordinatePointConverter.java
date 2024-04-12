@@ -8,6 +8,8 @@ public class CoordinatePointConverter {
     private Coordinate coordAtCenter;
     private final Point2D screenCenter;
     private ViewableBox player;
+    private ViewableBox currentlyFollowedCharacter;
+    private boolean isFollowingCharacter;
 
     public CoordinatePointConverter(
         Point2D screenCenter, Coordinate coordAtCenter, 
@@ -16,20 +18,34 @@ public class CoordinatePointConverter {
         this.screenCenter = screenCenter;
         this.coordAtCenter = coordAtCenter;
         this.player = player;
+        this.currentlyFollowedCharacter = player;
+        this.isFollowingCharacter = true;
     }
 
     public void reactToGameState(GameState newGameState) {
         if (newGameState.equals(GameState.ACTIVE_GAME)) {
-            this.coordAtCenter = player.getCenter();
+            setPlayerInCenter();
         }
     }
 
-    public Point2D pointFromCoordinate(Coordinate coord) {
-        //TODO: implement this when i have figured out the dimensions of the app. 
-        return null;
+    public void setPlayerInCenter() {
+        this.currentlyFollowedCharacter = this.player;
+        this.isFollowingCharacter = true;
     }
 
+    public Point2D pointFromCoordinate(Coordinate coord) {
+        double xDiff = coord.x() - this.coordAtCenter.x();
+        double yDiff = coord.y() - this.coordAtCenter.y();
+        double newX = this.screenCenter.getX() + xDiff;
+        double newY = this.screenCenter.getY() + yDiff;
+        return new Point2D.Double(newX, newY);
+    }
 
-
-    
+    public Coordinate coordinateFromPoint(Point2D point) {
+        double xDiff = point.getX() - this.screenCenter.getX();
+        double yDiff = point.getY() - this.screenCenter.getY();
+        double newX = this.coordAtCenter.x() + xDiff;
+        double newY = this.coordAtCenter.y() + yDiff;
+        return new Coordinate(newX, newY);
+    }    
 }

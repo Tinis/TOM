@@ -11,9 +11,13 @@ public class Config {
     public static final int TILE_SCALING = 3;
     public static final int ACTUAL_TILE_SIZE = PICTURE_TILE_SIZE * TILE_SCALING; //48
 
+    //SWING CONSTANTS (THESE ARE UNCHANGEABLE BECAUSE THEY ARE SWING-RELATED)
+    public static final int SWING_COMPONENT_MAX_WIDTH = 1280;
+    public static final int SWING_COMPONENT_MAX_HEIGHT = 720;
+
     //WINDOW CONFIGURATIONS
     public static final String WINDOW_TITLE = "Tom";
-    public static final Dimension WINDOW_DIMENSION = new Dimension(1000, 1000);
+    public static final Dimension WINDOW_DIMENSION = new Dimension(1280, 720);
     public static final boolean WINDOW_RESIZABLE = false; //should be false (has option for debugpurposes)
     public static final boolean WINDOW_FULLSCREEN = true; //should be true
     public static final boolean DOUBLE_BUFFERED = true;

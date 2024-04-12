@@ -5,15 +5,31 @@ import java.awt.geom.Point2D;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
 public class CoordinatePointConverter {
-    private Point2D zerozero;
+    private Coordinate coordAtCenter;
+    private final Point2D screenCenter;
     private ViewableBox player;
-    private GameState gameState;
 
-    public CoordinatePointConverter(Point2D zerozero, ViewableBox player, GameState gameState) {
-        this.zerozero = zerozero;
+    public CoordinatePointConverter(
+        Point2D screenCenter, Coordinate coordAtCenter, 
+        ViewableBox player) {
+
+        this.screenCenter = screenCenter;
+        this.coordAtCenter = coordAtCenter;
         this.player = player;
-        this.gameState = gameState;
     }
+
+    public void reactToGameState(GameState newGameState) {
+        if (newGameState.equals(GameState.ACTIVE_GAME)) {
+            this.coordAtCenter = player.getCenter();
+        }
+    }
+
+    public Point2D pointFromCoordinate(Coordinate coord) {
+        //TODO: implement this when i have figured out the dimensions of the app. 
+        return null;
+    }
+
+
 
     
 }

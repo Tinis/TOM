@@ -6,6 +6,7 @@ import java.awt.Shape;
 import java.awt.geom.Path2D;
 
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.PlaneVector;
 
 /**
@@ -64,9 +65,8 @@ public abstract class Box implements ViewableBox{
     }
 
     @Override
-    public Shape getShape() {
-        //TODO: This implementation is wrong. We need to figure out the size of everything and
-        //  how to have a proper way to convert from coordinates to point2Ds.
+    public Shape getShape(CoordinatePointConverter converter) {
+        //TODO: implementer denne skikkelig!!!! nå returnerer den bare shapen som korresponderer til coordinates heller enn ekte points
         Coordinate[] coords = this.getCornerCoords();
         double[] x_values = new double[coords.length];
         double[] y_values = new double[coords.length];

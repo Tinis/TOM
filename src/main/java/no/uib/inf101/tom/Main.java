@@ -21,7 +21,7 @@ public class Main {
     //Frame Initialization
     JFrame frame = new JFrame(Config.WINDOW_TITLE);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setContentPane(view);
+    frame.add(view);
     
     frame.setResizable(Config.WINDOW_RESIZABLE);
     if (Config.WINDOW_FULLSCREEN) {

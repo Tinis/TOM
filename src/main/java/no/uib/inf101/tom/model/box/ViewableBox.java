@@ -3,14 +3,17 @@ package no.uib.inf101.tom.model.box;
 import java.awt.Shape;
 
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.CoordinatePointConverter;
 
 public interface ViewableBox {
 
     /**
-     * Returns the shape of the box. Meaning a java.awt.Shape object
+     * Returns the shape of the box. Meaning a java.awt.Shape object 
+     * based on points on the screen rather than coordinates in the world. 
+     * @param converter the CoordinatePointConverter used to convert the coordinates to a shape.
      * @return the shape corresponsing to the given box. 
      */
-    public Shape getShape();
+    public Shape getShape(CoordinatePointConverter converter);
 
     /**
      * 

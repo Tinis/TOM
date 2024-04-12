@@ -36,15 +36,21 @@ public class TomView extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        drawDemoWorld(g2);
+        drawDemoTile(g2);
+        drawPlayer(g2);
     }
 
-    private void drawDemoWorld(Graphics2D g2) {
+    private void drawPlayer(Graphics2D g2) {
+        //TODO: implement this.
+    }
+
+    private void drawDemoTile(Graphics2D g2) {
         BufferedImage tileDemo = this.imageFinder.findImage("example_floor_tile");
+        drawImageAtCoords(g2, tileDemo, new Coordinate(0, 0));
     }
 
     private void drawImageAtCoords(Graphics2D g2, BufferedImage image, Coordinate coords) {
-        Point2D point = model.getCoordinateConverter().
+        Point2D point = model.getCoordinateConverter().pointFromCoordinate(coords);
         Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.TILE_SCALING);
     }
 

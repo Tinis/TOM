@@ -20,7 +20,7 @@ public class TomModel implements ViewableModel, ControllableModel{
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
 
         Point2D screenCenter = new Point2D.Double(
-            Config.SWING_COMPONENT_MAX_HEIGHT/2, Config.SWING_COMPONENT_MAX_WIDTH/2);
+            Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
         this.coordinateConverter = new CoordinatePointConverter(
             screenCenter, new Coordinate(0, 0), player);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);

@@ -53,6 +53,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         if (!this.currentAction.isOverrideable()) {
             if (!this.currentAction.isSameActionAs(action)) {
                 this.currentAction = action;
+                this.currentAction.setActingCharacter(this);
             }
         }
     }
@@ -60,6 +61,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     @Override
     public void overrideAction(Action action) {
         this.currentAction = action;
+        this.currentAction.setActingCharacter(this);
     }
 
     public void updateCharacter() {
@@ -87,7 +89,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.pos = endCoord;
         if (this.pos.isAlmostEqualTo(this.destination)){
             this.movement = new PlaneVector(0, 0);
-
+            this.currentAction.stop();
         } 
     }    
 }

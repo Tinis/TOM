@@ -56,7 +56,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     @Override
     public void startAction(Action action) {
-        if (!this.currentAction.isOverrideable()) {
+        if (this.currentAction.isOverrideable()) {
             if (!this.currentAction.isSameActionAs(action)) {
                 this.currentAction = action;
                 this.currentAction.setActingCharacter(this);

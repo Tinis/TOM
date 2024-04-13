@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
-import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -59,14 +58,16 @@ public class TomView extends JPanel {
 
     private void drawCharacter(Graphics2D g2, ViewableCharacter character) {
         if (this.model.isDebugging()) {
-            //drawing the box
+            //drawing the box (which includes the name)
             drawDebugBox(g2, character.getBox());
             //drawing the character data in the box
             g2.setPaint(Config.DEBUG_TEXT_COLOR);
             String movement = character.getViewableMovementVector();
             String pos = getPosString(character.getBox().getCenter());
-            String characterData = String.format("move: %s, pos: %s", 
-                movement, pos);
+            String action = character.getViewableAction().getActionName();
+            int actionState = character.getViewableAction().getActionState();
+            String characterData = String.format("move: %s, pos: %s, action: %s, %s", 
+                movement, pos, action, actionState);
             Inf101Graphics.drawCenteredString(
                 g2, characterData, 
                 character.getBox().getShape(this.model.getCoordinateConverter()));

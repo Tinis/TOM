@@ -6,7 +6,7 @@ import java.awt.Shape;
 import no.uib.inf101.tom.model.Coordinate;
 
 public class RectangularBox extends Box{
-    private Coordinate pos;
+    protected Coordinate pos;
     private double width;
     private double height;
 

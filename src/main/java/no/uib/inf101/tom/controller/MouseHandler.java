@@ -3,6 +3,7 @@ package no.uib.inf101.tom.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.Point2D;
 
 import no.uib.inf101.tom.view.TomView;
 
@@ -30,19 +31,22 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
     public void mouseReleased(MouseEvent e) {}
     
     @Override
-    public void mouseDragged(MouseEvent e) {}
-
+    public void mouseDragged(MouseEvent e) {
+        System.out.println("mouse drag is called");
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        System.out.println("mousepressed is called");
+        Point2D point = e.getPoint();
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            this.model.walk(point);
+        }
     }
 
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
         
     }
      

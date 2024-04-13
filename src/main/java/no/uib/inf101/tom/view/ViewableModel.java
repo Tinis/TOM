@@ -14,5 +14,9 @@ public interface ViewableModel {
     public ViewableCharacter getPlayer();
     //might replace with ArrayList<ViewableCharacter> getCharacters() later;
 
+    /**
+     * 
+     * @return true if debug_mode is activated, false if not. 
+     */
     public boolean isDebugging();
 }

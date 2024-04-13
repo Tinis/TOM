@@ -7,7 +7,7 @@ import no.uib.inf101.tom.model.TomModel;
 import no.uib.inf101.tom.view.TomView;
 
 /**
- * Hello world!
+ * TOM
  */
 public class Main {
 

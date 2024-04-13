@@ -15,4 +15,11 @@ public interface ControllableModel {
      * Toggles the debugMode field in the model from true to false or false to true.
      */
     public void toggleDebug();
+
+
+    /**
+     * updates the mousePos field with the coordinate corresponding to the argument point. 
+     * @param point the point where the mouse is at. 
+     */
+    public void mouseIsAt(Point2D point);
 }

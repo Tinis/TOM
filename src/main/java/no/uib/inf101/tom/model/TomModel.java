@@ -16,6 +16,8 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;
 
+    private Coordinate mousePos;
+
 
     public TomModel() {
         //disse initializersne blir erstatta av en slags levelloader
@@ -27,7 +29,9 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         this.coordinateConverter = new CoordinatePointConverter(
             screenCenter, new Coordinate(0, 0), player);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
+
         this.debugMode = true;
+        this.mousePos = new Coordinate(0, 0);
     }
 
     @Override
@@ -63,8 +67,18 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         this.debugMode = !this.debugMode;
     }
 
-    
+    @Override
+    public void mouseIsAt(Point2D point) {
+        this.mousePos = this.coordinateConverter.coordinateFromPoint(point);
+    }
 
+    @Override
+    public Coordinate getMousePos() {
+        return this.mousePos;
+    }
+
+
+    
     
 
 

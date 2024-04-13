@@ -58,7 +58,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        
+        Point2D point = e.getPoint();
+        this.model.mouseIsAt(point);
     }
      
 }

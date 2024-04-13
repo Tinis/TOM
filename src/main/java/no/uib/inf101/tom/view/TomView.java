@@ -40,6 +40,16 @@ public class TomView extends JPanel {
 
         drawDemoTile(g2);
         drawPlayer(g2);
+        if (this.model.isDebugging()) {
+            drawMouseCoordinates(g2);
+        }
+    }
+
+    private void drawMouseCoordinates(Graphics2D g2) {
+        Coordinate mouseCoord = this.model.getMousePos();
+        Point2D mousePoint = this.model.getCoordinateConverter().pointFromCoordinate(mouseCoord);
+        String pos = getPosString(mouseCoord);
+        Inf101Graphics.drawCenteredString(g2, pos, mousePoint);
     }
 
     private void drawPlayer(Graphics2D g2) {

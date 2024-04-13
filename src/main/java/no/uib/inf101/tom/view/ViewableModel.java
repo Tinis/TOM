@@ -1,5 +1,6 @@
 package no.uib.inf101.tom.view;
 
+import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 
@@ -19,4 +20,10 @@ public interface ViewableModel {
      * @return true if debug_mode is activated, false if not. 
      */
     public boolean isDebugging();
+
+    /**
+     * 
+     * @return the position of the mouse currently as a coordinate object. 
+     */
+    public Coordinate getMousePos();
 }

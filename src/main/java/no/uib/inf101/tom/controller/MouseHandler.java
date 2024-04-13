@@ -42,6 +42,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
     public void mouseDragged(MouseEvent e) {
         //mousedragging should only work with walking.
         Point2D point = e.getPoint();
+        this.model.mouseIsAt(point);
         if (this.rightClicking) {
             this.model.walk(point);
         }

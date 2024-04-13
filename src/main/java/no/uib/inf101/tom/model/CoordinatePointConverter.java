@@ -34,7 +34,14 @@ public class CoordinatePointConverter {
         this.isFollowingCharacter = true;
     }
 
+    private void updateCenter() {
+        if (this.isFollowingCharacter) {
+            this.coordAtCenter = this.currentlyFollowedCharacter.getCenter();
+        }
+    }
+
     public Point2D pointFromCoordinate(Coordinate coord) {
+        updateCenter();
         double xCoordDiff = coord.x() - this.coordAtCenter.x();
         double yCoordDiff = coord.y() - this.coordAtCenter.y();
         double xPointDiff = xCoordDiff * Config.SCALING;
@@ -45,6 +52,7 @@ public class CoordinatePointConverter {
     }
 
     public Coordinate coordinateFromPoint(Point2D point) {
+        updateCenter();
         double xPointDiff = point.getX() - this.screenCenter.getX();
         double yPointDiff = point.getY() - this.screenCenter.getY();
         double xCoordDiff = xPointDiff / Config.SCALING;

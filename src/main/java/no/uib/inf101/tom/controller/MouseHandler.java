@@ -40,7 +40,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
     
     @Override
     public void mousePressed(MouseEvent e) {
-        Point2D point = e.getPoint();
         if (e.getButton() == MouseEvent.BUTTON3) {
             this.rightClicking = true;
             this.model.walk(this.mousePos);
@@ -49,7 +48,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        //mousedragging should only work with walking.
         this.mousePos = e.getPoint();
     }
 

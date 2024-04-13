@@ -21,6 +21,6 @@ public interface ViewableCharacter {
      * 
      * @return the current action that the character is doing.
      */
-    public ViewableAction getAction();
+    public ViewableAction getViewableAction();
 
 }

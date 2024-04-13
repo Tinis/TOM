@@ -5,6 +5,7 @@ import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.Idle;
+import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
@@ -40,6 +41,11 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     @Override
     public ViewableBox getBox() {
         return this;
+    }
+
+    @Override
+    public ViewableAction getViewableAction() {
+        return this.currentAction;
     }
 
     public void setDestination(Coordinate coord) {

@@ -8,8 +8,8 @@ public class Config {
 
     //SCREEN CONFIGURATIONS
     public static final int PICTURE_TILE_SIZE = 16;
-    public static final int TILE_SCALING = 3;
-    public static final int ACTUAL_TILE_SIZE = PICTURE_TILE_SIZE * TILE_SCALING; //48
+    public static final int SCALING = 3;
+    public static final int ACTUAL_TILE_SIZE = PICTURE_TILE_SIZE * SCALING; //48
 
     //SWING CONSTANTS (THESE ARE UNCHANGEABLE BECAUSE THEY ARE SWING-RELATED)
     public static final int SWING_COMPONENT_MAX_WIDTH = 1280;

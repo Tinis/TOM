@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
-import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -70,7 +69,7 @@ public class TomView extends JPanel {
 
     private void drawImageAtCoords(Graphics2D g2, BufferedImage image, Coordinate coords) {
         Point2D point = model.getCoordinateConverter().pointFromCoordinate(coords);
-        Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.TILE_SCALING);
+        Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
     }
 
 

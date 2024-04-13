@@ -2,6 +2,7 @@ package no.uib.inf101.tom.model;
 
 import java.awt.geom.Point2D;
 
+import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
 public class CoordinatePointConverter {
@@ -34,18 +35,22 @@ public class CoordinatePointConverter {
     }
 
     public Point2D pointFromCoordinate(Coordinate coord) {
-        double xDiff = coord.x() - this.coordAtCenter.x();
-        double yDiff = coord.y() - this.coordAtCenter.y();
-        double newX = this.screenCenter.getX() + xDiff;
-        double newY = this.screenCenter.getY() + yDiff;
+        double xCoordDiff = coord.x() - this.coordAtCenter.x();
+        double yCoordDiff = coord.y() - this.coordAtCenter.y();
+        double xPointDiff = xCoordDiff * Config.SCALING;
+        double yPointDiff = yCoordDiff * Config.SCALING;
+        double newX = this.screenCenter.getX() + xPointDiff;
+        double newY = this.screenCenter.getY() + yPointDiff;
         return new Point2D.Double(newX, newY);
     }
 
     public Coordinate coordinateFromPoint(Point2D point) {
-        double xDiff = point.getX() - this.screenCenter.getX();
-        double yDiff = point.getY() - this.screenCenter.getY();
-        double newX = this.coordAtCenter.x() + xDiff;
-        double newY = this.coordAtCenter.y() + yDiff;
+        double xPointDiff = point.getX() - this.screenCenter.getX();
+        double yPointDiff = point.getY() - this.screenCenter.getY();
+        double xCoordDiff = xPointDiff / Config.SCALING;
+        double yCoordDiff = yPointDiff / Config.SCALING;
+        double newX = this.coordAtCenter.x() + xCoordDiff;
+        double newY = this.coordAtCenter.y() + yCoordDiff;
         return new Coordinate(newX, newY);
     }    
 }

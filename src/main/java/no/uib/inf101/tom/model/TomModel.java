@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.model.character.Player;
+import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.view.ViewableModel;
 
 public class TomModel implements ViewableModel, ControllableModel{
@@ -16,7 +17,7 @@ public class TomModel implements ViewableModel, ControllableModel{
 
     public TomModel() {
         //disse initializersne blir erstatta av en slags levelloader
-        this.player = new Player(new Coordinate(0, 0), 0, 0);
+        this.player = new Player(new Coordinate(0, 0), 16, 16);
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
 
         Point2D screenCenter = new Point2D.Double(
@@ -32,6 +33,18 @@ public class TomModel implements ViewableModel, ControllableModel{
     public CoordinatePointConverter getCoordinateConverter() {
         return this.coordinateConverter;
     }
+
+    @Override
+    public ViewableCharacter getPlayer() {
+        return this.player;
+    }
+
+    @Override
+    public boolean isDebugging() {
+        return this.debug_mode;
+    }
+
+    
 
 
 }

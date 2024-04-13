@@ -27,4 +27,5 @@ public class Config {
 
     //COLORS
     public static final Color BACKGROUND_COLOR = Color.BLACK;
+    public static final Color PLAYER_DEBUG_COLOR = new Color(0, 128, 0, 255);
 }

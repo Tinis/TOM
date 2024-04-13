@@ -5,7 +5,11 @@ import javax.swing.JPanel;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
+import no.uib.inf101.tom.model.box.ViewableBox;
+import no.uib.inf101.tom.model.character.Player;
+import no.uib.inf101.tom.model.character.ViewableCharacter;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -14,7 +18,6 @@ import java.awt.image.BufferedImage;
 public class TomView extends JPanel {
 
     private ViewableModel model;
-    private CoordinatePointConverter converter;
     private ImageFinder imageFinder;
 
 
@@ -25,7 +28,6 @@ public class TomView extends JPanel {
         this.setDoubleBuffered(Config.DOUBLE_BUFFERED);
 
         this.model = model;
-        this.converter = this.model.getCoordinateConverter();
 
         this.imageFinder = new ImageFinder();
 
@@ -41,12 +43,29 @@ public class TomView extends JPanel {
     }
 
     private void drawPlayer(Graphics2D g2) {
-        //TODO: implement this.
+        drawCharacter(g2, this.model.getPlayer());
+    }
+
+    private void drawCharacter(Graphics2D g2, ViewableCharacter character) {
+        if (this.model.isDebugging()) {
+            drawDebugBox(g2, character.getBox());
+        }
+    }
+
+    private void drawDebugBox(Graphics2D g2, ViewableBox box) {
+        if (box instanceof Player) {
+            FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
+        }
     }
 
     private void drawDemoTile(Graphics2D g2) {
         BufferedImage tileDemo = this.imageFinder.findImage("example_floor_tile");
         drawImageAtCoords(g2, tileDemo, new Coordinate(0, 0));
+    }
+
+    private void FillBoxWithColor(Graphics2D g2, ViewableBox box, Color color) {
+        g2.setPaint(color);
+        g2.fill(box.getShape(this.model.getCoordinateConverter()));
     }
 
     private void drawImageAtCoords(Graphics2D g2, BufferedImage image, Coordinate coords) {

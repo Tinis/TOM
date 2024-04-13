@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.awt.Shape;
 import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
 
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
@@ -66,18 +67,20 @@ public abstract class Box implements ViewableBox{
 
     @Override
     public Shape getShape(CoordinatePointConverter converter) {
-        //TODO: implementer denne skikkelig!!!! nå returnerer den bare shapen som korresponderer til coordinates heller enn ekte points
         Coordinate[] coords = this.getCornerCoords();
-        double[] x_values = new double[coords.length];
-        double[] y_values = new double[coords.length];
+        double[] xValues = new double[coords.length];
+        double[] yValues = new double[coords.length];
         for (int i = 0; i < coords.length; i++) {
-            x_values[i] = coords[i].x();
-            y_values[i] = coords[i].y();
+            Point2D point = converter.pointFromCoordinate(coords[i]);
+            double x = point.getX();
+            double y = point.getY();
+            xValues[i] = x;
+            yValues[i] = y;
         }
         Path2D polygon = new Path2D.Double();
-        polygon.moveTo(x_values[0], y_values[0]);
-        for (int i = 1; i < x_values.length; i++) {
-            polygon.lineTo(x_values[i], y_values[i]);
+        polygon.moveTo(xValues[0], yValues[0]);
+        for (int i = 1; i < xValues.length; i++) {
+            polygon.lineTo(xValues[i], yValues[i]);
         }
         polygon.closePath();
         return polygon;

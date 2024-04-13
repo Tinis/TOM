@@ -63,6 +63,12 @@ public class TomView extends JPanel {
     }
 
     private void drawDebugBox(Graphics2D g2, ViewableBox box) {
+        g2.setPaint(Config.DEBUG_TEXT_COLOR);
+        Point2D center = this.model.getCoordinateConverter().pointFromCoordinate(box.getCenter());
+        double x = center.getX();
+        double y = center.getY() - Config.MEDIUM_MARGIN;
+        Inf101Graphics.drawCenteredString(g2, box.getName(), x, y);
+
         if (box instanceof Player) {
             FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
         }

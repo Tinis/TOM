@@ -52,6 +52,10 @@ public class PlaneVector {
         return new Coordinate(newX, newY);
     }
 
+    public static double distanceBetweenTwoCoords(Coordinate coord1, Coordinate coord2) {
+        return new PlaneVector(coord1, coord2).getLength();
+    }
+
     private PlaneVector scaledBy(double scalar) {
         double x = this.getX() * scalar;
         double y = this.getY() * scalar;

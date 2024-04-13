@@ -64,7 +64,8 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     private void move() {
         //if the distance between the character and the destination is less than the speed
         //set the length to the distance.
-        double disctanceToDestination = new PlaneVector(this.pos, this.destination).getLength();
+        double disctanceToDestination = PlaneVector.distanceBetweenTwoCoords(
+            this.pos, this.destination);
         if (disctanceToDestination < this.speed) {
             this.movement.setLength(disctanceToDestination);
         } else {

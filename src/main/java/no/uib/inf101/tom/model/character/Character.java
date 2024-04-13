@@ -1,5 +1,6 @@
 package no.uib.inf101.tom.model.character;
 
+import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
@@ -20,6 +21,13 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     public Character(Coordinate pos, double width, double height) {
         super(pos, width, height);
+        this.speed = Config.STANDARD_SPEED;
+        this.movement = new PlaneVector(0,0);
+    }
+
+    @Override
+    public PlaneVector getMovementVector() {
+        return this.movement;
     }
 
     @Override
@@ -33,12 +41,16 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     }
 
     public void startAction(Action action) {
+        //TODO: action can not override action that is not overridable (in its field).
+        //and it can not override itself.
         this.currentAction = action;
     }
 
     public void updateCharacter() {
-        //TODO: this must take a map as an argument to check for collission. 
-        this.currentAction.updateActionState();
+        //TODO: this must take a map as an argument to check for collission or something.
+        if (this.currentAction != null) {
+            this.currentAction.updateActionState();
+        }
         if (this.currentAction instanceof Walk) {
             this.move();
         }

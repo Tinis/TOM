@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.UpdatableModel;
+import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.view.ViewableModel;
@@ -55,6 +56,7 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
         player.setDestination(clickedCoordinate);
+        player.startAction(new Walk());
     }
 
     

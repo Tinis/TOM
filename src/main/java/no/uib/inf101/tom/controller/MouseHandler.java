@@ -11,11 +11,15 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
     private ControllableModel model;
     private TomView view;
 
+    private boolean rightClicking;
+
     public MouseHandler(ControllableModel model, TomView view) {
         this.model = model;
         this.view = view;
         this.view.addMouseListener(this);
         this.view.addMouseMotionListener(this);
+
+        this.rightClicking = false;
     }
 
     @Override
@@ -28,22 +32,29 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
     public void mouseExited(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            this.rightClicking = false;
+        }
+    }
     
     @Override
     public void mouseDragged(MouseEvent e) {
-        System.out.println("mouse drag is called");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        System.out.println("mousepressed is called");
+        //mousedragging should only work with walking.
         Point2D point = e.getPoint();
-        if (e.getButton() == MouseEvent.BUTTON3) {
+        if (this.rightClicking) {
             this.model.walk(point);
         }
     }
 
+    @Override
+    public void mousePressed(MouseEvent e) {
+        Point2D point = e.getPoint();
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            this.rightClicking = true;
+            this.model.walk(point);
+        }
+    }
 
     @Override
     public void mouseMoved(MouseEvent e) {

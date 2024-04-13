@@ -26,8 +26,10 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     }
 
     @Override
-    public PlaneVector getMovementVector() {
-        return this.movement;
+    public String getViewableMovementVector() {
+        String movementData = String.format(
+                "[%.3f, %.3f]", this.movement.getX(), this.movement.getY());
+        return movementData;
     }
 
     @Override

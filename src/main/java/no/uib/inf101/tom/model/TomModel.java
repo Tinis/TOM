@@ -51,7 +51,6 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         return this.debug_mode;
     }
 
-
     @Override
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);

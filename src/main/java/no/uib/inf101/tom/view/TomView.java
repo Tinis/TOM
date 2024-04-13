@@ -52,10 +52,10 @@ public class TomView extends JPanel {
             drawDebugBox(g2, character.getBox());
             //drawing the character data in the box
             g2.setPaint(Config.DEBUG_TEXT_COLOR);
-            PlaneVector characterMovement = character.getMovementVector();
-            String movement = String.format(
-                "[%.3f, %.3f]", characterMovement.getX(), characterMovement.getY());
-            String characterData = String.format("move: %s", movement);
+            String movement = character.getViewableMovementVector();
+            String pos = getPosString(character.getBox().getCenter());
+            String characterData = String.format("move: %s, pos: %s", 
+                movement, pos);
             Inf101Graphics.drawCenteredString(
                 g2, characterData, 
                 character.getBox().getShape(this.model.getCoordinateConverter()));
@@ -66,6 +66,10 @@ public class TomView extends JPanel {
         if (box instanceof Player) {
             FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
         }
+    }
+
+    private String getPosString(Coordinate pos) {
+        return String.format("(%.3f, %.3f)", pos.x(), pos.y());
     }
 
     private void drawDemoTile(Graphics2D g2) {

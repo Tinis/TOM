@@ -1,0 +1,6 @@
+Todo:
+ - implement a lot of debug_text. 
+ - make the world
+ - - make buildings (remember the debug_stuff)
+ - - make interactions (remember the debug_stuff)
+ - 

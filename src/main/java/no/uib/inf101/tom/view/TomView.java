@@ -46,6 +46,7 @@ public class TomView extends JPanel {
     }
 
     private void drawMouseCoordinates(Graphics2D g2) {
+        g2.setPaint(Config.DEBUG_TEXT_COLOR);
         Coordinate mouseCoord = this.model.getMousePos();
         Point2D mousePoint = this.model.getCoordinateConverter().pointFromCoordinate(mouseCoord);
         String pos = getPosString(mouseCoord);

@@ -17,6 +17,8 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     protected double speed;
     protected PlaneVector movement;
+    protected Coordinate destination;
+
     protected Action currentAction;
 
     public Character(Coordinate pos, double width, double height) {
@@ -38,6 +40,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     }
 
     public void setDestination(Coordinate coord) {
+        this.destination = coord;
         PlaneVector newMovement = new PlaneVector(this.pos, coord);
         this.movement = newMovement;
     }
@@ -49,7 +52,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     }
 
     public void updateCharacter() {
-        //TODO: this must take a map as an argument to check for collission or something.
+        //TODO: this must take a map as an argument to check for collission or something. this is called from the model. 
         if (this.currentAction != null) {
             this.currentAction.updateActionState();
         }
@@ -59,10 +62,20 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     }
 
     private void move() {
-        this.movement.setLength(this.speed);
+        //if the distance between the character and the destination is less than the speed
+        //set the length to the distance.
+        double disctanceToDestination = new PlaneVector(this.pos, this.destination).getLength();
+        if (disctanceToDestination < this.speed) {
+            this.movement.setLength(disctanceToDestination);
+        } else {
+            this.movement.setLength(this.speed);
+        }
         Coordinate endCoord = PlaneVector.coordMoved(this.pos, this.movement);
         //TODO: check for collission. do something smart if there is a collission. 
-        this.pos = endCoord;        
+        this.pos = endCoord;
+        if (this.pos.isAlmostEqualTo(this.destination)){
+            this.movement = new PlaneVector(0, 0);
+        } 
     }
 
 

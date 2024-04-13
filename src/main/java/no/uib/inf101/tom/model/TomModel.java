@@ -29,6 +29,7 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         this.coordinateConverter = new CoordinatePointConverter(
             screenCenter, new Coordinate(0, 0), player);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
+        this.gameState.setGameState(GameState.ACTIVE_GAME);
 
         this.debugMode = true;
         this.mousePos = new Coordinate(0, 0);

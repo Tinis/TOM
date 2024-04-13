@@ -45,4 +45,6 @@ public class Config {
 
     //-----MODEL RELATED
     public static final double STANDARD_SPEED = 1.5;
+
+    public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.5;
 }

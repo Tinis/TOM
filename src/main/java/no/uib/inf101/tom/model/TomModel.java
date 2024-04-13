@@ -4,11 +4,12 @@ import java.awt.geom.Point2D;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
+import no.uib.inf101.tom.gameloop.UpdatableModel;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.view.ViewableModel;
 
-public class TomModel implements ViewableModel, ControllableModel{
+public class TomModel implements ViewableModel, ControllableModel, UpdatableModel{
     private Player player;
     private boolean debug_mode;
     private CoordinatePointConverter coordinateConverter;
@@ -26,6 +27,11 @@ public class TomModel implements ViewableModel, ControllableModel{
             screenCenter, new Coordinate(0, 0), player);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
         this.debug_mode = true;
+    }
+
+    @Override
+    public void update() {
+        this.player.updateCharacter();
     }
 
 

@@ -46,6 +46,12 @@ public class PlaneVector {
         return y;
     }
 
+    public static Coordinate coordMoved(Coordinate coord, PlaneVector movement) {
+        double newX = coord.x() + movement.getX();
+        double newY = coord.y() + movement.getY();
+        return new Coordinate(newX, newY);
+    }
+
     private PlaneVector scaledBy(double scalar) {
         double x = this.getX() * scalar;
         double y = this.getY() * scalar;

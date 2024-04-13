@@ -1,8 +1,6 @@
 package no.uib.inf101.tom.model.box;
 
 
-import java.awt.Shape;
-
 import no.uib.inf101.tom.model.Coordinate;
 
 public class RectangularBox extends Box{

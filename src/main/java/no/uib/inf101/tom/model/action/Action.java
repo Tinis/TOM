@@ -1,13 +1,13 @@
 package no.uib.inf101.tom.model.action;
 
 public abstract class Action {
-    private String actionName;
+    protected String actionName;
 
-    private int actionLength;
-    private int actionState;
+    protected int actionLength;
+    protected int actionState;
 
-    private boolean looping;
-    private boolean overridable;
+    protected boolean looping;
+    protected boolean overridable;
 
     public abstract void updateActionState();
 }

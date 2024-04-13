@@ -3,6 +3,7 @@ package no.uib.inf101.tom;
 import javax.swing.JFrame;
 
 import no.uib.inf101.tom.controller.TomController;
+import no.uib.inf101.tom.gameloop.GameLoop;
 import no.uib.inf101.tom.model.TomModel;
 import no.uib.inf101.tom.view.TomView;
 
@@ -16,6 +17,7 @@ public class Main {
     //Initializing model, view, controller and gameloop
     TomModel model = new TomModel();
     TomView view = new TomView(model);
+    GameLoop gameLoop = new GameLoop(model, view);
     TomController controller = new TomController(model, view);
 
     //Frame Initialization

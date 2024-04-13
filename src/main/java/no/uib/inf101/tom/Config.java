@@ -39,6 +39,7 @@ public class Config {
     //-----CONTROLLER RELATED
     //KEYS
     public static final int KILL_KEY = KeyEvent.VK_F9;
+    public static final int DEBUG_KEY = KeyEvent.VK_F3;
 
 
 

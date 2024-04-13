@@ -12,7 +12,7 @@ import no.uib.inf101.tom.view.ViewableModel;
 
 public class TomModel implements ViewableModel, ControllableModel, UpdatableModel{
     private Player player;
-    private boolean debug_mode;
+    private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;
 
@@ -27,7 +27,7 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         this.coordinateConverter = new CoordinatePointConverter(
             screenCenter, new Coordinate(0, 0), player);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
-        this.debug_mode = true;
+        this.debugMode = true;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
 
     @Override
     public boolean isDebugging() {
-        return this.debug_mode;
+        return this.debugMode;
     }
 
     @Override
@@ -56,6 +56,11 @@ public class TomModel implements ViewableModel, ControllableModel, UpdatableMode
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
         player.setDestination(clickedCoordinate);
         player.startAction(new Walk());
+    }
+
+    @Override
+    public void toggleDebug() {
+        this.debugMode = !this.debugMode;
     }
 
     

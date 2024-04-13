@@ -23,6 +23,8 @@ public class KeyHandler implements KeyListener{
             System.out.println(
                 "Closing program using kill key: " + KeyEvent.getKeyText(Config.KILL_KEY));
             System.exit(0);
+        } else if (code == Config.DEBUG_KEY) {
+            this.model.toggleDebug();
         }
     }
 

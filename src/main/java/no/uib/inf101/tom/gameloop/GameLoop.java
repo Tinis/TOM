@@ -5,14 +5,16 @@ import no.uib.inf101.tom.model.TomModel;
 import no.uib.inf101.tom.view.TomView;
 
 public class GameLoop implements PausableGameLoop, Runnable{
-    private UpdatableModel model;
+    private Updatable model;
+    private Updatable controller;
     private TomView view;
     private Thread gameThread;
     private boolean isRunning;
 
-    public GameLoop(TomModel model, TomView view) {
+    public GameLoop(Updatable model, TomView view, Updatable controller) {
         this.model = model;
         this.view = view;
+        this.controller = controller;
         this.isRunning = true;
 
         this.gameThread = new Thread(this);
@@ -40,6 +42,7 @@ public class GameLoop implements PausableGameLoop, Runnable{
                 lastTime = currentTime;
 
                 if (delta >= 1) {
+                    controller.update();
                     model.update();
                     view.repaint();
                     delta--;
@@ -49,9 +52,9 @@ public class GameLoop implements PausableGameLoop, Runnable{
                 if (timer >= 1000000000) {
                     if (Config.PRINT_ACTUAL_FPS) {
                         System.out.println("FPS: " + drawCount);
-                        drawCount = 0;
-                        timer = 0;
                     }
+                    drawCount = 0;
+                    timer = 0;
                 }
             }
         }

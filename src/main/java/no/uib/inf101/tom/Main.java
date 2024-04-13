@@ -17,8 +17,8 @@ public class Main {
     //Initializing model, view, controller and gameloop
     TomModel model = new TomModel();
     TomView view = new TomView(model);
-    GameLoop gameLoop = new GameLoop(model, view);
     TomController controller = new TomController(model, view);
+    GameLoop gameLoop = new GameLoop(model, view, controller);
 
     //Frame Initialization
     JFrame frame = new JFrame(Config.WINDOW_TITLE);

@@ -1,5 +1,9 @@
 Todo:
- - implement a lot of debug_text. 
+ - The actions should be able to start new actions when they're done. 
+
+
+
+
  - make the world
  - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)

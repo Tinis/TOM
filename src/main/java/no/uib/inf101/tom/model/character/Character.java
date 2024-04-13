@@ -4,11 +4,12 @@ import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
+import no.uib.inf101.tom.model.action.Idle;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
-public abstract class Character extends CharacterBox implements ViewableCharacter{
+public abstract class Character extends CharacterBox implements ViewableCharacter, ActionableCharacter{
     protected String name;
 
     protected int health;
@@ -25,6 +26,8 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         super(pos, width, height);
         this.speed = Config.STANDARD_SPEED;
         this.movement = new PlaneVector(0,0);
+
+        this.currentAction = new Idle();
     }
 
     @Override
@@ -45,9 +48,17 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.movement = newMovement;
     }
 
+    @Override
     public void startAction(Action action) {
-        //TODO: action can not override action that is not overridable (in its field).
-        //and it can not override itself.
+        if (!this.currentAction.isOverrideable()) {
+            if (!this.currentAction.isSameActionAs(action)) {
+                this.currentAction = action;
+            }
+        }
+    }
+
+    @Override
+    public void overrideAction(Action action) {
         this.currentAction = action;
     }
 
@@ -76,9 +87,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.pos = endCoord;
         if (this.pos.isAlmostEqualTo(this.destination)){
             this.movement = new PlaneVector(0, 0);
+
         } 
-    }
-
-
-    
+    }    
 }

@@ -47,6 +47,7 @@ public class Config {
 
     //-----MODEL RELATED
     //CHARACTER STATS
+    public static final double CHILD_CHARACTER_HEIGHT = 16;
     public static final double STANDARD_CHARACTER_HEIGHT = 32;
     public static final double STANDARD_CHARACTER_WIDTH = 16;
     public static final double STANDARD_SPEED = 1.5;

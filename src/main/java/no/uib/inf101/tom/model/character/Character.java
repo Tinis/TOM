@@ -27,16 +27,19 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     protected Action currentAction;
 
-    public Character(Coordinate pos) {
-        super(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
+    public Character(Coordinate pos, double width, double height) {
+        super(pos, width, height);
 
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
         this.movement = new PlaneVector(0,0);
         this.destination = pos;
 
-        // this.currentAction = new Idle();
         this.currentAction = new Idle();
+    }
+
+    public Character(Coordinate pos) {
+        this(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
     }
 
     @Override

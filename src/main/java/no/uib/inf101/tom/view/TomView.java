@@ -37,7 +37,7 @@ public class TomView extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        drawDemoTile(g2);
+        drawLevel(g2);
         drawPlayer(g2);
         if (this.model.isDebugging()) {
             drawMouseCoordinates(g2);
@@ -92,9 +92,10 @@ public class TomView extends JPanel {
         return String.format("(%.3f, %.3f)", pos.x(), pos.y());
     }
 
-    private void drawDemoTile(Graphics2D g2) {
-        BufferedImage tileDemo = this.imageFinder.findImage("example_floor_tile");
-        drawImageAtCoords(g2, tileDemo, new Coordinate(0, 0));
+    private void drawLevel(Graphics2D g2) {
+        String levelName = this.model.getLevelName();
+        BufferedImage levelImage = this.imageFinder.findImage(levelName);
+        drawImageAtCoords(g2, levelImage, new Coordinate(0, 0));
     }
 
     private void FillBoxWithColor(Graphics2D g2, ViewableBox box, Color color) {

@@ -44,6 +44,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     }
 
     private void loadLevel(String levelName) {
+        this.levelName = levelName;
         Level level = this.levelLoader.loadLevel(levelName);
         if (this.player == null) {
             this.player = new Player(level.getPlayer().getBox().getCenter());
@@ -67,6 +68,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public CoordinatePointConverter getCoordinateConverter() {
         return this.coordinateConverter;
+    }
+
+    @Override
+    public String getLevelName() {
+        return this.levelName;
     }
 
     @Override

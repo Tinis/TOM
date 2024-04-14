@@ -12,6 +12,12 @@ public interface ViewableModel {
      */
     public CoordinatePointConverter getCoordinateConverter();
 
+    /**
+     * 
+     * @return the name of the level as a string.
+     */
+    public String getLevelName();
+
     public ViewableCharacter getPlayer();
     //might replace with ArrayList<ViewableCharacter> getCharacters() later;
 

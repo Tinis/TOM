@@ -4,6 +4,7 @@ import no.uib.inf101.tom.Config;
 
 /**
  * a record that represents a position in a 2dimensional plane (such as a level). 
+ * The coordinate (0, 0) is always at the middle of the LevelImage. 
  */
 public record Coordinate(double x, double y) {
 

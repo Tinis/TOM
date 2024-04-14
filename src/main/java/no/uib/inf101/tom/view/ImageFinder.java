@@ -10,9 +10,9 @@ public class ImageFinder {
     public ImageFinder() {
         this.images = new HashMap<>();
 
-        File directory = new File("src/main/resources/images");
+        File directory = new File("src/main/resources/levels");
         for (String fileName : directory.list()) {
-            BufferedImage image = Inf101Graphics.loadImageFromResources("/images/" + fileName);
+            BufferedImage image = Inf101Graphics.loadImageFromResources("/levels/" + fileName);
             int dotIndex = fileName.indexOf(".");
             String fileNameWithoutType = fileName.substring(0, dotIndex);
             images.put(fileNameWithoutType, image);

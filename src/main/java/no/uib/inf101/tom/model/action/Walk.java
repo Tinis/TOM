@@ -13,7 +13,7 @@ public class Walk extends Action{
     }
 
     @Override
-    public void updateActionState() {
+    public void updateActionFrame() {
         //TODO: something spritesomething.
     }
 

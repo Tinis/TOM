@@ -8,13 +8,14 @@ public abstract class Action implements ViewableAction{
     protected ActionableCharacter actingCharacter; 
 
     protected int actionLength;
+    protected int actionFrame;
     protected int actionState;
 
     protected boolean looping;
     protected boolean overridable;
 
 
-    public abstract void updateActionState();
+    public abstract void updateActionFrame();
 
     public boolean isOverrideable() {
         return this.overridable;

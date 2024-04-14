@@ -1,5 +1,5 @@
 Todo:
- - The actions should be able to start new actions when they're done. 
+ - The characters should have a direction. That is updated in a smart way. 
 
 
 

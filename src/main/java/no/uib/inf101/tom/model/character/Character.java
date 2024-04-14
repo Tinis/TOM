@@ -73,7 +73,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     public void updateCharacter() {
         //TODO: this must take a map as an argument to check for collission or something. this is called from the model. 
         if (this.currentAction != null) {
-            this.currentAction.updateActionState();
+            this.currentAction.updateActionFrame();
         }
         if (this.currentAction instanceof Walk) {
             this.move();

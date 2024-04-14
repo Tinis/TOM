@@ -25,13 +25,12 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
 
 
     public TomModel() {
+        //loads the demo level
         this.levelLoader = new LevelLoader();
         this.loadLevel("demo");
 
-        this.player = new Player(new Coordinate(0, 0));
-        
+        //makes the active game
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
-
         Point2D screenCenter = new Point2D.Double(
             Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
         this.coordinateConverter = new CoordinatePointConverter(
@@ -39,8 +38,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
         this.gameState.setGameState(GameState.ACTIVE_GAME);
 
+        //extra stuff
         this.debugMode = true;
-        this.mousePos = new Coordinate(0, 0);
+        this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
     }
 
     private void loadLevel(String levelName) {
@@ -68,6 +68,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public CoordinatePointConverter getCoordinateConverter() {
         return this.coordinateConverter;
+    }
+
+    @Override
+    public GameState getGameState() {
+        return this.gameState.getGameState();
     }
 
     @Override

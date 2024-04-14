@@ -40,8 +40,23 @@ public class TomView extends JPanel {
         drawLevel(g2);
         drawPlayer(g2);
         if (this.model.isDebugging()) {
+            setDebugFont(g2);
             drawMouseCoordinates(g2);
+            drawDebugText(g2);
         }
+    }
+
+    private void setDebugFont(Graphics2D g2) {
+        g2.setPaint(Config.DEBUG_TEXT_COLOR);
+        g2.setFont(Config.DEBUG_TEXT_FONT);
+    }
+
+    private void drawDebugText(Graphics2D g2) {
+        String gameState = this.model.getGameState().toString();
+        String levelName = this.model.getLevelName();
+        String debugString = String.format("state: %s, level: %s", 
+            gameState, levelName);
+        Inf101Graphics.drawCenteredString(g2, debugString, this.getWidth()/2, 20);
     }
 
     private void drawMouseCoordinates(Graphics2D g2) {
@@ -58,6 +73,7 @@ public class TomView extends JPanel {
 
     private void drawCharacter(Graphics2D g2, ViewableCharacter character) {
         if (this.model.isDebugging()) {
+            setDebugFont(g2);
             //drawing the box (which includes the name)
             drawDebugBox(g2, character.getBox());
             //drawing the character data in the box

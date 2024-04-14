@@ -2,6 +2,7 @@ package no.uib.inf101.tom;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 
 import no.uib.inf101.tom.model.Direction;
@@ -35,6 +36,9 @@ public class Config {
     public static final Color BACKGROUND_COLOR = Color.BLACK;
     public static final Color PLAYER_DEBUG_COLOR = new Color(0, 128, 0, 128);
     public static final Color DEBUG_TEXT_COLOR = Color.WHITE;
+
+    //FONTS
+    public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
 
     
 

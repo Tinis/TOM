@@ -2,6 +2,7 @@ package no.uib.inf101.tom.view;
 
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
+import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 
 public interface ViewableModel {
@@ -17,6 +18,12 @@ public interface ViewableModel {
      * @return the name of the level as a string.
      */
     public String getLevelName();
+
+    /**
+     * 
+     * @return the current state of the game as a gamestate object.
+     */
+    public GameState getGameState();
 
     public ViewableCharacter getPlayer();
     //might replace with ArrayList<ViewableCharacter> getCharacters() later;

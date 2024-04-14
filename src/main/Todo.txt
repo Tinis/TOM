@@ -1,8 +1,6 @@
 Todo:
 Priority HIgh:
- - design a level class.
  - make an npc list draw all characters in a smart way.
- - make a level loader and a demo level is a smart way. 
  - make AI's (several) for the npcs in a smart way.
 
  - make the world

@@ -5,8 +5,8 @@ import no.uib.inf101.tom.model.Coordinate;
 
 public class RectangularBox extends Box{
     protected Coordinate pos;
-    private double width;
-    private double height;
+    protected double width;
+    protected double height;
 
     /**
      * 

@@ -4,8 +4,8 @@ import no.uib.inf101.tom.model.Coordinate;
 
 public class Player extends Character{
 
-    public Player(Coordinate pos, double width, double height) {
-        super(pos, width, height);
+    public Player(Coordinate pos) {
+        super(pos);
         this.name = "tom";
     }
 

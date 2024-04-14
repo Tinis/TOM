@@ -2,9 +2,11 @@ package no.uib.inf101.tom.model.character;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.Direction;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.Idle;
+import no.uib.inf101.tom.model.action.StandingStill;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
@@ -21,13 +23,18 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected PlaneVector movement;
     protected Coordinate destination;
 
+    protected Direction facing;
+
     protected Action currentAction;
 
-    public Character(Coordinate pos, double width, double height) {
-        super(pos, width, height);
+    public Character(Coordinate pos) {
+        super(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
+
         this.speed = Config.STANDARD_SPEED;
+        this.facing = Config.STANDARD_DIRECTION;
         this.movement = new PlaneVector(0,0);
 
+        // this.currentAction = new Idle();
         this.currentAction = new Idle();
     }
 
@@ -41,6 +48,11 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     @Override
     public ViewableBox getBox() {
         return this;
+    }
+
+    @Override 
+    public Direction getFacing() {
+        return this.facing;
     }
 
     @Override

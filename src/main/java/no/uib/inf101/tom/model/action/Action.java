@@ -7,20 +7,63 @@ public abstract class Action implements ViewableAction{
 
     protected ActionableCharacter actingCharacter; 
 
-    protected int actionLength;
     protected int actionFrame;
+    protected int actionStateDuration; //the duration of a state measured in frames.
     protected int actionState;
+    protected int actionStateAmount;
+    protected int abilityState; //the actionstate at which an ability is performed.
 
     protected boolean looping;
     protected boolean overridable;
 
+    public Action() {
+        this.actionName = "undefined action";
 
-    public abstract void updateActionFrame();
+        this.actionFrame = 0;
+        this.actionState = 0;
 
+    }
+
+    public void updateActionFrame() {
+        actionFrame ++;
+        if (actionFrame >= actionStateDuration) {
+            updateActionState();
+            actionFrame = 0;
+        }
+    }
+
+    /**
+     * updates the action to the current actionstate. 
+     * Loops it around if it's loopable. Makes an ability happen if that's ideal. 
+     */
+    protected void updateActionState() {
+        this.actionState++;
+        if (this.actionState == this.abilityState) {
+            doAbility();
+        }
+        if (this.actionState == this.actionStateAmount) {
+            if (this.looping) {
+                this.actionState = 0;
+            } else {
+                stop();
+            }
+        }
+    }
+
+    protected abstract void doAbility();
+
+    /**
+     * 
+     * @return true if the action is overridable. false if not. 
+     */
     public boolean isOverrideable() {
         return this.overridable;
     }
 
+    /**
+     * 
+     * @param character the character that is performing this action. 
+     */
     public void setActingCharacter(ActionableCharacter character) {
         this.actingCharacter = character;
     }

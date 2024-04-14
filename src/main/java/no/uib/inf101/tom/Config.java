@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 
+import no.uib.inf101.tom.model.Direction;
+
 public class Config {
 
     //-----VIEW RELATED
@@ -44,7 +46,13 @@ public class Config {
 
 
     //-----MODEL RELATED
+    //CHARACTER STATS
+    public static final double STANDARD_CHARACTER_HEIGHT = 32;
+    public static final double STANDARD_CHARACTER_WIDTH = 16;
     public static final double STANDARD_SPEED = 1.5;
+    public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
+
+    public static final int STANDARD_ACTION_STATE_DURATION = 10;
 
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.5;
 }

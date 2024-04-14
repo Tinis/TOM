@@ -1,6 +1,6 @@
 Todo:
- - The characters should have a direction. That is updated in a smart way. 
-
+ - make an npc list draw all characters in a smart way.
+ - make AI's (several) for the npcs in a smart way.
 
 
 

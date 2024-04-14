@@ -22,6 +22,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     public TomModel() {
         //disse initializersne blir erstatta av en slags levelloader
         this.player = new Player(new Coordinate(0, 0));
+        
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
 
         Point2D screenCenter = new Point2D.Double(

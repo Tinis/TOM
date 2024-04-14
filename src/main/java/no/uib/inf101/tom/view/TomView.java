@@ -66,8 +66,10 @@ public class TomView extends JPanel {
             String pos = getPosString(character.getBox().getCenter());
             String action = character.getViewableAction().getActionName();
             int actionState = character.getViewableAction().getActionState();
-            String characterData = String.format("move: %s, pos: %s, action: %s, %s", 
-                movement, pos, action, actionState);
+            String facing = character.getFacing().toString();
+            String characterData = String.format(
+                "move: %s, pos: %s, action: %s;%s, face: %s", 
+                movement, pos, action, actionState, facing);
             Inf101Graphics.drawCenteredString(
                 g2, characterData, 
                 character.getBox().getShape(this.model.getCoordinateConverter()));

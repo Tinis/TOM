@@ -33,6 +33,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
         this.movement = new PlaneVector(0,0);
+        this.destination = pos;
 
         // this.currentAction = new Idle();
         this.currentAction = new Idle();
@@ -66,6 +67,35 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.movement = newMovement;
     }
 
+    private void faceToward(Coordinate coord) {
+        PlaneVector facingVector = new PlaneVector(this.pos, coord);
+        double xFacing = facingVector.getX();
+        double yFacing = facingVector.getY();
+        if (Math.abs(xFacing) > Math.abs(yFacing)) {
+            if (xFacing > 0) {
+                this.facing = Direction.EAST;
+            } else {
+                this.facing = Direction.WEST;
+            }
+        } else {
+            if (yFacing > 0) {
+                this.facing = Direction.SOUTH;
+            } else {
+                this.facing = Direction.NORTH;
+            }
+        }
+    }
+
+    public void sendActionCommand(Action action, Coordinate pointer) {
+        if (this.currentAction.isOverrideable()) {
+            faceToward(pointer);
+        }
+        startAction(action);
+        if (action instanceof Walk) {
+            setDestination(pointer);
+        }
+    }
+
     @Override
     public void startAction(Action action) {
         if (this.currentAction.isOverrideable()) {
@@ -88,7 +118,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
             this.currentAction.updateActionFrame();
         }
         if (this.currentAction instanceof Walk) {
-            this.move();
+            move();
         }
     }
 

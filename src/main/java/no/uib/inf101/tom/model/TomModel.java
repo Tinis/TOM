@@ -59,8 +59,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
-        player.setDestination(clickedCoordinate);
-        player.startAction(new Walk());
+        player.sendActionCommand(new Walk(), clickedCoordinate);
     }
 
     @Override

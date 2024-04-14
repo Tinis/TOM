@@ -8,9 +8,14 @@ import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.level.Level;
+import no.uib.inf101.tom.model.level.LevelLoader;
 import no.uib.inf101.tom.view.ViewableModel;
 
 public class TomModel implements ViewableModel, ControllableModel, Updatable{
+    private LevelLoader levelLoader;
+    private String levelName;
+
     private Player player;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
@@ -20,7 +25,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
 
 
     public TomModel() {
-        //disse initializersne blir erstatta av en slags levelloader
+        this.levelLoader = new LevelLoader();
+        this.loadLevel("demo");
+
         this.player = new Player(new Coordinate(0, 0));
         
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
@@ -34,6 +41,21 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
 
         this.debugMode = true;
         this.mousePos = new Coordinate(0, 0);
+    }
+
+    private void loadLevel(String levelName) {
+        Level level = this.levelLoader.loadLevel(levelName);
+        if (this.player == null) {
+            this.player = new Player(level.getPlayer().getBox().getCenter());
+        } else {
+            this.player.setPos(level.getPlayer().getBox().getCenter());
+            this.player.setFacing(level.getPlayer().getFacing());
+        }
+    }
+
+    private void writeLevel(String levelName) {
+        Level level = this.levelLoader.loadLevel(levelName);
+        level.setPlayer(this.player);
     }
 
     @Override

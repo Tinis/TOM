@@ -55,5 +55,5 @@ public class Config {
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
 
-    public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.5;
+    public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
 }

@@ -6,7 +6,6 @@ import no.uib.inf101.tom.model.Direction;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.Idle;
-import no.uib.inf101.tom.model.action.StandingStill;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
@@ -40,6 +39,14 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     public Character(Coordinate pos) {
         this(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
+    }
+
+    public void setPos(Coordinate pos) {
+        this.pos = pos;
+    }
+
+    public void setFacing(Direction direction) {
+        this.facing = direction;
     }
 
     @Override

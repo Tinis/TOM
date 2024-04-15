@@ -33,13 +33,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         this.levelLoader = new LevelLoader();
         this.loadLevel("demo");
 
-        //makes the active game - this info should also probably be relative to the levelloader 
-        //so that we know wether or not to play a cutscene. But thats later.
-        this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         Point2D screenCenter = new Point2D.Double(
-            Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
+        Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
         this.coordinateConverter = new CoordinatePointConverter(
             screenCenter, new Coordinate(0, 0), player);
+        //makes the active game - this info should also probably be relative to the levelloader
+        //so that we know wether or not to play a cutscene. But thats later.
+        this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
         this.gameState.setGameState(GameState.ACTIVE_GAME);
 

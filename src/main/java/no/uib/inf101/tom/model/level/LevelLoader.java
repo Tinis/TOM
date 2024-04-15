@@ -25,7 +25,7 @@ public class LevelLoader {
 
     private Level demo() {
         Level demo = new Level("demo", new Player(new Coordinate(0, 0)));
-        demo.putNPC(new NPC(new Coordinate(2, 2)));
+        demo.putNPC(new NPC(new Coordinate(50, -50)));
         return demo;
     }
 

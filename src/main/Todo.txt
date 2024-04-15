@@ -1,7 +1,10 @@
 Todo:
 Priority HIgh:
- - make an npc list draw all characters in a smart way.
- - make AI's (several) for the npcs in a smart way.
+
+ - fix the coordinatePointConverter so that its accurate whenever you load in a level. 
+ - this is fine whenever i make a level i can load it in and drop the player in the center. 
+ - then i can go find the entrance and note it down. 
+ - REMEMBER the middle of a map image is the coordinate 0,0.
 
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. 

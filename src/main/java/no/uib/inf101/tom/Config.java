@@ -34,8 +34,8 @@ public class Config {
 
     //COLORS
     public static final Color BACKGROUND_COLOR = Color.BLACK;
-    public static final Color PLAYER_DEBUG_COLOR = new Color(0, 128, 0, 128);
-    public static final Color NPC_DEBUG_COLOR = new Color(0, 128, 128, 128);
+    public static final Color PLAYER_DEBUG_COLOR = new Color(0, 255, 0, 128);
+    public static final Color NPC_DEBUG_COLOR = new Color(255, 255, 0, 128);
     public static final Color DEBUG_TEXT_COLOR = Color.WHITE;
 
     //FONTS

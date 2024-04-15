@@ -17,6 +17,7 @@ public class HitBox extends Box {
         PlaneVector widthVector2 = reachVector.rotate(false);
         widthVector2.setLength(width/2);
 
+        this.corners = new Coordinate[4];
         this.corners[0] = PlaneVector.coordMoved(from, widthVector1);
         this.corners[1] = PlaneVector.coordMoved(from, widthVector2);
         this.corners[2] = PlaneVector.coordMoved(endOfReachVector, widthVector2);

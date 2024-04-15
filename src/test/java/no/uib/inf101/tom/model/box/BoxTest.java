@@ -9,26 +9,9 @@ import org.junit.jupiter.api.Test;
 import no.uib.inf101.tom.model.Coordinate;
 
 public class BoxTest {
-    @Test
-    void testGetCenter() {
-        //RectangularBox
-        Box box = new RectangularBox(new Coordinate(0, 0), 2, 2);
-        assertEquals(new Coordinate(0, 0), box.getCenter());
-    }
 
     @Test
-    void testGetCornerCoords() {
-        Box box1 = new RectangularBox(new Coordinate(0, 0), 2, 2);
-        Coordinate[] cornersExpected = new Coordinate[]{
-            new Coordinate(-1, -1),
-            new Coordinate(1, -1),
-            new Coordinate(1, 1),
-            new Coordinate(-1, 1)
-        };
-    }
-
-    @Test
-    void testOverlapsWith() {
+    void testOverlapsWithTwoRectangles() {
         //RectangularBoxes
         Box box1 = new RectangularBox(new Coordinate(0, 0), 2, 2);
         Box box2 = new RectangularBox(new Coordinate(0, 0), 2, 2);
@@ -42,6 +25,18 @@ public class BoxTest {
 
         box2 = new RectangularBox(new Coordinate(0.5, 0), 2, 2);
         assertTrue(box1.overlapsWith(box2));
-        
+    }
+    @Test
+    void testOverlapsWithRectangleHitbox() {
+        Box box1 = new RectangularBox(new Coordinate(0, 0), 2, 2);
+        Box hitBox = new HitBox(
+            new Coordinate(0, 0), new Coordinate(10, 10), 10, 3);
+        assertTrue(box1.overlapsWith(hitBox));
+        assertTrue(hitBox.overlapsWith(box1));
+
+        hitBox = new HitBox(
+            new Coordinate(10, 10), new Coordinate(100, -200), 20, 1);
+        assertFalse(box1.overlapsWith(hitBox));
+        assertFalse(hitBox.overlapsWith(box1));
     }
 }

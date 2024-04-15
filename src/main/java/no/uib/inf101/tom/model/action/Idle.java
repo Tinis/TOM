@@ -24,11 +24,5 @@ public class Idle extends Action{
     public void stop() {
         this.actingCharacter.overrideAction(new StandingStill());
     }
-
-    @Override
-    protected void customizeActionToActingCharacter() {
-        //do nothing
-    }
-
     
 }

@@ -12,9 +12,4 @@ public class StandingStill extends Action {
         //do nothing
     }
 
-    @Override
-    protected void customizeActionToActingCharacter() {
-        // do nothing
-    }
-
 }

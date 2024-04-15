@@ -1,7 +1,10 @@
 Todo:
 Priority HIgh:
  - make fighting abilities
+ - - make hitbox.
+ - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
  - make basic fighting AI that the nightclub guards can use for example. 
+ - make characters blink when they get hit. 
 
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. 

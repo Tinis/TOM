@@ -2,11 +2,9 @@ package no.uib.inf101.tom.model.action;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.box.HitBox;
 
 public class Punch extends Action{
-
-    private double reach;
-    private double width;
 
     public Punch() {
         super();
@@ -23,14 +21,9 @@ public class Punch extends Action{
 
     @Override
     protected void doAbility() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    protected void customizeActionToActingCharacter() {
-        // TODO Auto-generated method stub
-        
+        HitBox hit = new HitBox(
+            this.actingCharacter.getPos(), this.pointer, 
+            this.actingCharacter.getReach(), this.width);
     }
 
     @Override

@@ -18,6 +18,8 @@ public abstract class Action implements ViewableAction{
     protected boolean overridable;
 
     protected Coordinate pointer;
+    protected double reach;
+    protected double width;
 
     public Action() {
         this.actionName = "undefined action";
@@ -58,11 +60,6 @@ public abstract class Action implements ViewableAction{
      */
     protected abstract void doAbility();
 
-    /**
-     * update the fields based on the acting character. 
-     * Is only to be called after the acting character has been defined. 
-     */
-    protected abstract void customizeActionToActingCharacter();
 
     /**
      * 
@@ -78,7 +75,6 @@ public abstract class Action implements ViewableAction{
      */
     public void setActingCharacter(ActionableCharacter character) {
         this.actingCharacter = character;
-        customizeActionToActingCharacter();
     }
 
     public void setPointer(Coordinate pointer) {

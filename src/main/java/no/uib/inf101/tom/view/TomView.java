@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.box.ViewableBox;
+import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 
@@ -38,7 +39,7 @@ public class TomView extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         drawLevel(g2);
-        drawPlayer(g2);
+        drawCharacters(g2);
         if (this.model.isDebugging()) {
             setDebugFont(g2);
             drawMouseCoordinates(g2);
@@ -67,17 +68,20 @@ public class TomView extends JPanel {
         Inf101Graphics.drawCenteredString(g2, pos, mousePoint);
     }
 
-    private void drawPlayer(Graphics2D g2) {
-        drawCharacter(g2, this.model.getPlayer());
+    private void drawCharacters(Graphics2D g2) {
+        for (ViewableCharacter character : this.model.getCharacters()) {
+            drawCharacter(g2, character);
+        }
     }
 
     private void drawCharacter(Graphics2D g2, ViewableCharacter character) {
+        //draw the actual sprite
+        //draw the debuginfo
         if (this.model.isDebugging()) {
-            setDebugFont(g2);
             //drawing the box (which includes the name)
             drawDebugBox(g2, character.getBox());
             //drawing the character data in the box
-            g2.setPaint(Config.DEBUG_TEXT_COLOR);
+            setDebugFont(g2);
             String movement = character.getViewableMovementVector();
             String pos = getPosString(character.getBox().getCenter());
             String action = character.getViewableAction().getActionName();
@@ -93,7 +97,7 @@ public class TomView extends JPanel {
     }
 
     private void drawDebugBox(Graphics2D g2, ViewableBox box) {
-        g2.setPaint(Config.DEBUG_TEXT_COLOR);
+        setDebugFont(g2);
         Point2D center = this.model.getCoordinateConverter().pointFromCoordinate(box.getCenter());
         double x = center.getX();
         double y = center.getY() - Config.MEDIUM_MARGIN;
@@ -101,6 +105,8 @@ public class TomView extends JPanel {
 
         if (box instanceof Player) {
             FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
+        } else if (box instanceof NPC) {
+            FillBoxWithColor(g2, box, Config.NPC_DEBUG_COLOR);
         }
     }
 

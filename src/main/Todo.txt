@@ -3,6 +3,11 @@ Priority HIgh:
  - make an npc list draw all characters in a smart way.
  - make AI's (several) for the npcs in a smart way.
 
+ - make it so that i can write to the level in a smart way. 
+ MEANING improve the writeLevel method in the model. 
+
+ - make gameover screen. ye.
+
  - make the world
  - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)
@@ -16,3 +21,4 @@ Priority Medium:
 
 Priority Low:
  - make the stop of the walk more accurate. 
+ - light engine.

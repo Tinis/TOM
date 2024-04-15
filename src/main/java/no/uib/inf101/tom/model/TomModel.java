@@ -1,11 +1,13 @@
 package no.uib.inf101.tom.model;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Walk;
+import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.level.Level;
@@ -17,6 +19,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     private String levelName;
 
     private Player player;
+    private ArrayList<NPC> npcList;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;
@@ -50,8 +53,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
             this.player = new Player(level.getPlayer().getBox().getCenter());
         } else {
             this.player.setPos(level.getPlayer().getBox().getCenter());
-            this.player.setFacing(level.getPlayer().getFacing());
         }
+        this.npcList = level.getNpcs();
+
     }
 
     private void writeLevel(String levelName) {
@@ -62,6 +66,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public void update() {
         this.player.updateCharacter();
+        for (NPC npc : npcList) {
+            npc.updateCharacter();
+        }
     }
 
 
@@ -81,8 +88,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     }
 
     @Override
-    public ViewableCharacter getPlayer() {
-        return this.player;
+    public ArrayList<ViewableCharacter> getCharacters() {
+        ArrayList<ViewableCharacter> characters = new ArrayList<>();
+        characters.add(this.player);
+        for (ViewableCharacter npc : this.npcList) {
+            characters.add(npc);
+        }
+        return characters;
     }
 
     @Override

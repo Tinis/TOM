@@ -3,6 +3,7 @@ package no.uib.inf101.tom.model.level;
 import java.util.HashMap;
 
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 
 public class LevelLoader {
@@ -23,7 +24,9 @@ public class LevelLoader {
     }
 
     private Level demo() {
-        return new Level("demo", new Player(new Coordinate(0, 0)));
+        Level demo = new Level("demo", new Player(new Coordinate(0, 0)));
+        demo.putNPC(new NPC(new Coordinate(2, 2)));
+        return demo;
     }
 
     

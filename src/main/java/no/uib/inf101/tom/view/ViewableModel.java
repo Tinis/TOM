@@ -1,5 +1,7 @@
 package no.uib.inf101.tom.view;
 
+import java.util.ArrayList;
+
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.GameState;
@@ -25,8 +27,11 @@ public interface ViewableModel {
      */
     public GameState getGameState();
 
-    public ViewableCharacter getPlayer();
-    //might replace with ArrayList<ViewableCharacter> getCharacters() later;
+    /**
+     * 
+     * @return a list of all current characters (including the player). 
+     */
+    public ArrayList<ViewableCharacter> getCharacters();
 
     /**
      * 

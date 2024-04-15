@@ -1,10 +1,11 @@
 Todo:
 Priority HIgh:
  - make fighting abilities
- - - make hitbox.
+ - - find a way to check if the punch ability's hitbox hits anyone. 
  - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
  - make basic fighting AI that the nightclub guards can use for example. 
  - make characters blink when they get hit. 
+
 
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. 
@@ -17,6 +18,8 @@ Priority HIgh:
  - 
  - make the menuScreen
  - make the pauseScreen
+
+ - make a pistol shooter boss fight that dashes around you :D (nightclub owner)
 
 Priority Medium:
  - make it so that i can make the entire world a sprite. 

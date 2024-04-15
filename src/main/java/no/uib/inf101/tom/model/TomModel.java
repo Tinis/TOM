@@ -102,10 +102,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public ArrayList<ViewableCharacter> getCharacters() {
         ArrayList<ViewableCharacter> characters = new ArrayList<>();
-        characters.add(this.player);
         for (ViewableCharacter npc : this.npcList) {
             characters.add(npc);
         }
+        characters.add(this.player);
         return characters;
     }
 

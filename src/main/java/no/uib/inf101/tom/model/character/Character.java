@@ -11,6 +11,7 @@ import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
+
 public abstract class Character extends CharacterBox implements ViewableCharacter, ActionableCharacter{
     protected String name;
 
@@ -122,14 +123,18 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.currentAction.setActingCharacter(this);
     }
 
-    public void updateCharacter() {
+    public void updateAction() {
         //TODO: this must take a map as an argument to check for collission or something. this is called from the model. 
         if (this.currentAction != null) {
             this.currentAction.updateActionFrame();
-        }
-        if (this.currentAction instanceof Walk) {
-            move();
-        }
+            if (this.currentAction instanceof Walk) {
+                move();
+            }
+        } 
+    }
+
+    public void updateCharacter() {
+        updateAction();
     }
 
     private void move() {

@@ -14,5 +14,10 @@ public class NPC extends Character{
     public String getName() {
         return this.name;
     }
+
+    @Override
+    public void updateCharacter() {
+        updateAction();
+    }
     
 }

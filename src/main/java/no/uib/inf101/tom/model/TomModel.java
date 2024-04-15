@@ -32,7 +32,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         this.levelLoader = new LevelLoader();
         this.loadLevel("demo");
 
-        //makes the active game
+        //makes the active game - this info should also probably be relative to the levelloader 
+        //so that we know wether or not to play a cutscene. But thats later.
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         Point2D screenCenter = new Point2D.Double(
             Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
@@ -45,6 +46,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         this.debugMode = true;
         this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
     }
+
+///////////////
+//LEVEL-RELATED
+///////////////
 
     private void loadLevel(String levelName) {
         this.levelName = levelName;
@@ -63,6 +68,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         level.setPlayer(this.player);
     }
 
+////////////////
+//UPDATE-RELATED
+////////////////
+
     @Override
     public void update() {
         this.player.updateCharacter();
@@ -71,7 +80,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
         }
     }
 
+//////////////
+//VIEW-RELATED
+//////////////
 
+//Getters
     @Override
     public CoordinatePointConverter getCoordinateConverter() {
         return this.coordinateConverter;
@@ -103,6 +116,16 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     }
 
     @Override
+    public Coordinate getMousePos() {
+        return this.mousePos;
+    }
+
+////////////////////
+//CONTROLLER-RELATED
+////////////////////
+
+    //Controlls
+    @Override
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
         player.sendActionCommand(new Walk(), clickedCoordinate);
@@ -117,14 +140,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     public void mouseIsAt(Point2D point) {
         this.mousePos = this.coordinateConverter.coordinateFromPoint(point);
     }
-
-    @Override
-    public Coordinate getMousePos() {
-        return this.mousePos;
-    }
-
-
-    
     
 
 

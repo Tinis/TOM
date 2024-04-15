@@ -23,5 +23,6 @@ Priority Medium:
 
 
 Priority Low:
+ - emotes :D
  - make the stop of the walk more accurate. 
  - light engine.

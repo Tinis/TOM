@@ -15,7 +15,7 @@ public class Main {
   public static void main(String[] args) {
 
     //Initializing model, view, controller and gameloop
-    TomModel model = new TomModel();
+    TomModel model = new TomModel(Config.START_UP_STATE);
     TomView view = new TomView(model);
     TomController controller = new TomController(model, view);
     GameLoop gameLoop = new GameLoop(model, view, controller);

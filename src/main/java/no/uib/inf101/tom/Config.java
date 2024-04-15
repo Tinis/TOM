@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
 
 import no.uib.inf101.tom.model.Direction;
 
@@ -24,6 +25,8 @@ public class Config {
     //SWING CONSTANTS (THESE ARE UNCHANGEABLE BECAUSE THEY ARE SWING-RELATED)
     public static final int SWING_COMPONENT_MAX_WIDTH = 1280;
     public static final int SWING_COMPONENT_MAX_HEIGHT = 720;
+    public static final Point2D SCREEN_CENTER = new Point2D.Double(
+        SWING_COMPONENT_MAX_WIDTH/2, SWING_COMPONENT_MAX_HEIGHT/2);
 
     //WINDOW CONFIGURATIONS
     public static final String WINDOW_TITLE = "Tom";
@@ -51,6 +54,8 @@ public class Config {
 
 
     //-----MODEL RELATED
+    public static final String START_UP_STATE = "demo"; //options: "demo", "mainmenu"
+
     //CHARACTER STATS
     public static final double CHILD_CHARACTER_HEIGHT = 16;
     public static final double STANDARD_CHARACTER_HEIGHT = 32;

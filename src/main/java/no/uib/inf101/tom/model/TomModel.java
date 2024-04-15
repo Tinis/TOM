@@ -28,20 +28,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     private Coordinate mousePos;
 
 
-    public TomModel() {
-        //loads the demo level
+    public TomModel(String startUpState) {
         this.levelLoader = new LevelLoader();
-        this.loadLevel("demo");
-
-        Point2D screenCenter = new Point2D.Double(
-        Config.SWING_COMPONENT_MAX_WIDTH/2, Config.SWING_COMPONENT_MAX_HEIGHT/2);
-        this.coordinateConverter = new CoordinatePointConverter(
-            screenCenter, new Coordinate(0, 0), player);
-        //makes the active game - this info should also probably be relative to the levelloader
-        //so that we know wether or not to play a cutscene. But thats later.
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
-        this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
-        this.gameState.setGameState(GameState.ACTIVE_GAME);
+        //loads the demo level
+        if (startUpState == "demo") {
+            this.loadLevel("demo", 1);
+        }
 
         //extra stuff
         this.debugMode = true;
@@ -52,20 +45,24 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
 //LEVEL-RELATED
 ///////////////
 
-    private void loadLevel(String levelName) {
+    private void loadLevel(String levelName, int entrance) {
         this.levelName = levelName;
-        Level level = this.levelLoader.loadLevel(levelName);
+        Level level = this.levelLoader.getLevel(levelName);
         if (this.player == null) {
-            this.player = new Player(level.getPlayer().getBox().getCenter());
+            this.player = new Player(level.getEnteredCoordinate(entrance));
         } else {
-            this.player.setPos(level.getPlayer().getBox().getCenter());
+            this.player.setPos(level.getEnteredCoordinate(entrance));
         }
         this.npcList = level.getNpcs();
 
+        this.coordinateConverter = new CoordinatePointConverter(
+            new Coordinate(0, 0), this.player);
+        this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
+        this.gameState.setGameState(level.getGameState());
     }
 
     private void writeLevel(String levelName) {
-        Level level = this.levelLoader.loadLevel(levelName);
+        Level level = this.levelLoader.getLevel(levelName);
         level.setPlayer(this.player);
     }
 

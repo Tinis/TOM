@@ -15,7 +15,7 @@ public class LevelLoader {
         this.levels.put("demo", demo());
     }
 
-    public Level loadLevel(String name) {
+    public Level getLevel(String name) {
         return this.levels.get(name);
     }
 
@@ -24,7 +24,8 @@ public class LevelLoader {
     }
 
     private Level demo() {
-        Level demo = new Level("demo", new Player(new Coordinate(0, 0)));
+        Level demo = new Level("demo", new Player(new Coordinate(0, 0)),
+            new Coordinate(50, 50));
         demo.putNPC(new NPC(new Coordinate(50, -50)));
         return demo;
     }

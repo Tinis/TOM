@@ -7,16 +7,12 @@ import no.uib.inf101.tom.model.box.ViewableBox;
 
 public class CoordinatePointConverter {
     private Coordinate coordAtCenter;
-    private final Point2D screenCenter;
+    private final Point2D screenCenter = Config.SCREEN_CENTER;
     private ViewableBox player;
     private ViewableBox currentlyFollowedCharacter;
     private boolean isFollowingCharacter;
 
-    public CoordinatePointConverter(
-        Point2D screenCenter, Coordinate coordAtCenter, 
-        ViewableBox player) {
-
-        this.screenCenter = screenCenter;
+    public CoordinatePointConverter(Coordinate coordAtCenter, ViewableBox player) {
         this.coordAtCenter = coordAtCenter;
         this.player = player;
         this.currentlyFollowedCharacter = player;

@@ -30,4 +30,11 @@ public interface ViewableCharacter {
      */
     public ViewableAction getViewableAction();
 
+    /**
+     * 
+     * @return the name of the current commander (such as player or the name of the current ai.
+     * For debug purposes. 
+     */
+    public String getCommander();
+
 }

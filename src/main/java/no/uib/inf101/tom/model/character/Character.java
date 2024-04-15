@@ -5,6 +5,7 @@ import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.Direction;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
+import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Idle;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
@@ -97,7 +98,13 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         }
     }
 
-    public void sendActionCommand(Action action, Coordinate pointer) {
+    public void sendActionCommand(ActionCommand actionCommand) {
+        if (actionCommand == null) {
+            return;
+        }
+        
+        Action action = actionCommand.action();
+        Coordinate pointer = actionCommand.pointer();
         if (this.currentAction.isOverrideable()) {
             faceToward(pointer);
         }

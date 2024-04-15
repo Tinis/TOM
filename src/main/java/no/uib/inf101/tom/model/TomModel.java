@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.Updatable;
+import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
@@ -128,7 +129,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     @Override
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
-        player.sendActionCommand(new Walk(), clickedCoordinate);
+        player.sendActionCommand(new ActionCommand(new Walk(), clickedCoordinate));
     }
 
     @Override

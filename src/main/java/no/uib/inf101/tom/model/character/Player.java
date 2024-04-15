@@ -15,4 +15,11 @@ public class Player extends Character{
         return this.name;
     }
 
+    @Override
+    public String getCommander() {
+        return "player";
+    }
+
+    
+
 }

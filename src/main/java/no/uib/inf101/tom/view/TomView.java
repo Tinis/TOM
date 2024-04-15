@@ -78,12 +78,20 @@ public class TomView extends JPanel {
         //draw the actual sprite
         //draw the debuginfo
         if (this.model.isDebugging()) {
-            //drawing the box (which includes the name)
-            drawDebugBox(g2, character.getBox());
-            //drawing the character data in the box
+            ViewableBox box = character.getBox();
+            //drawing the box
+            drawDebugBox(g2, box);
+            //drawing the name and commander name
             setDebugFont(g2);
+            Point2D center = this.model.getCoordinateConverter().pointFromCoordinate(
+                box.getCenter());
+            double x = center.getX();
+            double y = center.getY() - Config.MEDIUM_MARGIN;
+            String nameString = String.format("%s - %s", box.getName(), character.getCommander());
+            Inf101Graphics.drawCenteredString(g2, nameString, x, y);
+            //drawing the character data in the box
             String movement = character.getViewableMovementVector();
-            String pos = getPosString(character.getBox().getCenter());
+            String pos = getPosString(box.getCenter());
             String action = character.getViewableAction().getActionName();
             int actionState = character.getViewableAction().getActionState();
             String facing = character.getFacing().toString();
@@ -92,17 +100,11 @@ public class TomView extends JPanel {
                 movement, pos, action, actionState, facing);
             Inf101Graphics.drawCenteredString(
                 g2, characterData, 
-                character.getBox().getShape(this.model.getCoordinateConverter()));
+                box.getShape(this.model.getCoordinateConverter()));
         }
     }
 
     private void drawDebugBox(Graphics2D g2, ViewableBox box) {
-        setDebugFont(g2);
-        Point2D center = this.model.getCoordinateConverter().pointFromCoordinate(box.getCenter());
-        double x = center.getX();
-        double y = center.getY() - Config.MEDIUM_MARGIN;
-        Inf101Graphics.drawCenteredString(g2, box.getName(), x, y);
-
         if (box instanceof Player) {
             FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
         } else if (box instanceof NPC) {

@@ -1,10 +1,7 @@
 Todo:
 Priority HIgh:
-
- - fix the coordinatePointConverter so that its accurate whenever you load in a level. 
- - this is fine whenever i make a level i can load it in and drop the player in the center. 
- - then i can go find the entrance and note it down. 
- - REMEMBER the middle of a map image is the coordinate 0,0.
+ - make fighting abilities
+ - make basic fighting AI that the nightclub guards can use for example. 
 
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. 
@@ -19,6 +16,7 @@ Priority HIgh:
  - make the pauseScreen
 
 Priority Medium:
+ - make it so that i can make the entire world a sprite. 
  - make some sort of cutScene ai that makes the characters do a cutScene.
 
 

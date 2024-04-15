@@ -7,6 +7,7 @@ import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Idle;
+import no.uib.inf101.tom.model.action.Punch;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
@@ -19,6 +20,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected int health;
     protected int maxHealth;
     protected int strength;
+    protected double reach;
 
     protected double speed;
     protected PlaneVector movement;
@@ -27,6 +29,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected Direction facing;
 
     protected Action currentAction;
+
 
     public Character(Coordinate pos, double width, double height) {
         super(pos, width, height);
@@ -37,11 +40,16 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.destination = pos;
 
         this.currentAction = new Idle();
+        this.reach = Config.STANDARD_PUNCH_REACH;
     }
 
     public Character(Coordinate pos) {
         this(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
     }
+
+/////////////////////
+//Setters and getters
+/////////////////////
 
     public void setPos(Coordinate pos) {
         this.pos = pos;
@@ -73,11 +81,25 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         return this.currentAction;
     }
 
+    @Override
+    public Coordinate getPos() {
+        return this.getBox().getCenter();
+    }
+
+    @Override
+    public double getReach() {
+        return this.reach;
+    }
+
     public void setDestination(Coordinate coord) {
         this.destination = coord;
         PlaneVector newMovement = new PlaneVector(this.pos, coord);
         this.movement = newMovement;
     }
+
+////////////////
+//Action-related
+////////////////
 
     private void faceToward(Coordinate coord) {
         PlaneVector facingVector = new PlaneVector(this.pos, coord);
@@ -102,32 +124,38 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         if (actionCommand == null) {
             return;
         }
-        
         Action action = actionCommand.action();
         Coordinate pointer = actionCommand.pointer();
+        action.setPointer(pointer);
         if (this.currentAction.isOverrideable()) {
             faceToward(pointer);
         }
-        startAction(action);
         if (action instanceof Walk) {
             setDestination(pointer);
         }
+        startAction(action);
     }
 
+    
     @Override
-    public void startAction(Action action) {
+    public boolean startAction(Action action) {
         if (this.currentAction.isOverrideable()) {
             if (!this.currentAction.isSameActionAs(action)) {
                 this.currentAction = action;
                 this.currentAction.setActingCharacter(this);
+                return true;
             }
         }
+        return false;
     }
 
     @Override
     public void overrideAction(Action action) {
         this.currentAction = action;
         this.currentAction.setActingCharacter(this);
+        if (action instanceof Walk) {
+            faceToward(this.destination);
+        }
     }
 
     public void updateAction() {

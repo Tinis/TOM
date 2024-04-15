@@ -51,6 +51,11 @@ public class Config {
     public static final int KILL_KEY = KeyEvent.VK_F9;
     public static final int DEBUG_KEY = KeyEvent.VK_F3;
 
+    public static final int PUNCH_KEY = KeyEvent.VK_Q;
+    public static final int BLOCK_KEY = KeyEvent.VK_W;
+    public static final int DASK_KEY = KeyEvent.VK_E;
+    public static final int HEAVY_KEY = KeyEvent.VK_R;
+
 
 
     //-----MODEL RELATED
@@ -62,6 +67,8 @@ public class Config {
     public static final double STANDARD_CHARACTER_WIDTH = 16;
     public static final double STANDARD_SPEED = 1.5;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
+    public static final double STANDARD_PUNCH_REACH = 10;
+    public static final double STANDARD_PUNCH_WIDTH = 10;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
 

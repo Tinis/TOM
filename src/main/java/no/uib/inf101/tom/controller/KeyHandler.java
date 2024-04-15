@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import no.uib.inf101.tom.Config;
+import no.uib.inf101.tom.model.action.Punch;
 import no.uib.inf101.tom.view.TomView;
 
 public class KeyHandler implements KeyListener{
@@ -19,6 +20,7 @@ public class KeyHandler implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
+        //CONSTANT KEYS (THEY ALWAYS WORK)
         if (code == Config.KILL_KEY) {
             System.out.println(
                 "Closing program using kill key: " + KeyEvent.getKeyText(Config.KILL_KEY));
@@ -26,6 +28,11 @@ public class KeyHandler implements KeyListener{
         } else if (code == Config.DEBUG_KEY) {
             this.model.toggleDebug();
         }
+        //QWER (ABILITIES)
+        if (code == Config.PUNCH_KEY) {
+            this.model.sendAction(new Punch());
+        }
+
     }
 
     @Override

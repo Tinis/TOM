@@ -1,5 +1,6 @@
 package no.uib.inf101.tom.model.action;
 
+import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.character.ActionableCharacter;
 
 public abstract class Action implements ViewableAction{
@@ -16,12 +17,13 @@ public abstract class Action implements ViewableAction{
     protected boolean looping;
     protected boolean overridable;
 
+    protected Coordinate pointer;
+
     public Action() {
         this.actionName = "undefined action";
 
         this.actionFrame = 0;
         this.actionState = 0;
-
     }
 
     public void updateActionFrame() {
@@ -50,7 +52,17 @@ public abstract class Action implements ViewableAction{
         }
     }
 
+    /**
+     * performs the ability asociated with this action. 
+     * Such as the actual punch of a punch action. 
+     */
     protected abstract void doAbility();
+
+    /**
+     * update the fields based on the acting character. 
+     * Is only to be called after the acting character has been defined. 
+     */
+    protected abstract void customizeActionToActingCharacter();
 
     /**
      * 
@@ -66,6 +78,11 @@ public abstract class Action implements ViewableAction{
      */
     public void setActingCharacter(ActionableCharacter character) {
         this.actingCharacter = character;
+        customizeActionToActingCharacter();
+    }
+
+    public void setPointer(Coordinate pointer) {
+        this.pointer = pointer;
     }
 
     @Override
@@ -88,7 +105,7 @@ public abstract class Action implements ViewableAction{
     }
 
     /**
-     * stops the current action by replacing it with another one. Often idling. 
+     * stops the current action by replacing it with another one. idling by default. 
      */
     public void stop() {
         this.actingCharacter.overrideAction(new Idle());

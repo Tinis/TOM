@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.Updatable;
+import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.character.NPC;
@@ -122,6 +123,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
 //CONTROLLER-RELATED
 ////////////////////
 
+    @Override
+    public void mouseIsAt(Point2D point) {
+        this.mousePos = this.coordinateConverter.coordinateFromPoint(point);
+    }
+
     //Controlls
     @Override
     public void walk(Point2D point) {
@@ -130,14 +136,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     }
 
     @Override
+    public void sendAction(Action action) {
+        player.sendActionCommand(new ActionCommand(action, this.mousePos));
+    }
+
+    @Override
     public void toggleDebug() {
         this.debugMode = !this.debugMode;
     }
 
-    @Override
-    public void mouseIsAt(Point2D point) {
-        this.mousePos = this.coordinateConverter.coordinateFromPoint(point);
-    }
     
 
 

@@ -37,4 +37,10 @@ public interface ViewableCharacter {
      */
     public String getCommander();
 
+    /**
+     * 
+     * @return a String with Good if the character is good. Bad if not. 
+     */
+    public String getGoodOrBad();
+
 }

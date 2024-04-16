@@ -101,6 +101,15 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         return this.reach;
     }
 
+    @Override
+    public String getGoodOrBad() {
+        if (this.good) {
+            return "Good";
+        } else {
+            return "Bad";
+        }
+    }
+
     public void setDestination(Coordinate coord) {
         this.destination = coord;
         PlaneVector newMovement = new PlaneVector(this.pos, coord);

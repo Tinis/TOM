@@ -47,6 +47,9 @@ public class TomView extends JPanel {
         }
     }
 
+////////////
+//DEBUGSTUFF
+////////////
     private void setDebugFont(Graphics2D g2) {
         g2.setPaint(Config.DEBUG_TEXT_COLOR);
         g2.setFont(Config.DEBUG_TEXT_FONT);
@@ -68,6 +71,17 @@ public class TomView extends JPanel {
         Inf101Graphics.drawCenteredString(g2, pos, mousePoint);
     }
 
+    private void drawDebugBox(Graphics2D g2, ViewableBox box) {
+        if (box instanceof Player) {
+            FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
+        } else if (box instanceof NPC) {
+            FillBoxWithColor(g2, box, Config.NPC_DEBUG_COLOR);
+        }
+    }
+
+////////////////
+//CHARACTERSTUFF
+////////////////
     private void drawCharacters(Graphics2D g2) {
         for (ViewableCharacter character : this.model.getCharacters()) {
             drawCharacter(g2, character);
@@ -81,13 +95,15 @@ public class TomView extends JPanel {
             ViewableBox box = character.getBox();
             //drawing the box
             drawDebugBox(g2, box);
-            //drawing the name and commander name
+            //drawing the name and commander name and good-value
             setDebugFont(g2);
             Point2D center = this.model.getCoordinateConverter().pointFromCoordinate(
                 box.getCenter());
             double x = center.getX();
             double y = center.getY() - Config.MEDIUM_MARGIN;
-            String nameString = String.format("%s - %s", box.getName(), character.getCommander());
+            String nameString = String.format(
+                "%s - %s - %s", 
+                box.getName(), character.getCommander(), character.getGoodOrBad());
             Inf101Graphics.drawCenteredString(g2, nameString, x, y);
             //drawing the character data in the box
             String movement = character.getViewableMovementVector();
@@ -104,24 +120,19 @@ public class TomView extends JPanel {
         }
     }
 
-    private void drawDebugBox(Graphics2D g2, ViewableBox box) {
-        if (box instanceof Player) {
-            FillBoxWithColor(g2, box, Config.PLAYER_DEBUG_COLOR);
-        } else if (box instanceof NPC) {
-            FillBoxWithColor(g2, box, Config.NPC_DEBUG_COLOR);
-        }
-    }
-
-    private String getPosString(Coordinate pos) {
-        return String.format("(%.3f, %.3f)", pos.x(), pos.y());
-    }
-
+////////////
+//LEVELSTUFF
+////////////
     private void drawLevel(Graphics2D g2) {
         String levelName = this.model.getLevelName();
         BufferedImage levelImage = this.imageFinder.findImage(levelName);
         drawImageAtCoords(g2, levelImage, new Coordinate(0, 0));
     }
 
+
+///////////////
+//EXTRA METHODS
+///////////////
     private void FillBoxWithColor(Graphics2D g2, ViewableBox box, Color color) {
         g2.setPaint(color);
         g2.fill(box.getShape(this.model.getCoordinateConverter()));
@@ -131,6 +142,11 @@ public class TomView extends JPanel {
         Point2D point = model.getCoordinateConverter().pointFromCoordinate(coords);
         Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
     }
+
+    private String getPosString(Coordinate pos) {
+        return String.format("(%.3f, %.3f)", pos.x(), pos.y());
+    }
+
 
 
 }

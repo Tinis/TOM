@@ -43,4 +43,10 @@ public interface ViewableCharacter {
      */
     public String getGoodOrBad();
 
+    /**
+     * 
+     * @return a formatted string containing the stats and names (for the stats). 
+     */
+    public String getStatsString();
+
 }

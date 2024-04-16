@@ -10,7 +10,7 @@ import no.uib.inf101.tom.model.Direction;
 
 public class Config {
 
-    //-----VIEW RELATED
+//-----VIEW RELATED
     //SCREEN CONFIGURATIONS
     public static final int PICTURE_TILE_SIZE = 16;
     public static final int SCALING = 3;
@@ -37,16 +37,17 @@ public class Config {
 
     //COLORS
     public static final Color BACKGROUND_COLOR = Color.BLACK;
+    public static final Color DEBUG_TEXT_COLOR = Color.WHITE;
     public static final Color PLAYER_DEBUG_COLOR = new Color(0, 255, 0, 128);
     public static final Color NPC_DEBUG_COLOR = new Color(255, 255, 0, 128);
-    public static final Color DEBUG_TEXT_COLOR = Color.WHITE;
+    public static final Color HIT_DEBUG_COLOR = new Color(255, 0, 0, 128);
 
     //FONTS
     public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
 
     
 
-    //-----CONTROLLER RELATED
+//-----CONTROLLER RELATED
     //KEYS
     public static final int KILL_KEY = KeyEvent.VK_F9;
     public static final int DEBUG_KEY = KeyEvent.VK_F3;
@@ -58,17 +59,20 @@ public class Config {
 
 
 
-    //-----MODEL RELATED
+//-----MODEL RELATED
     public static final String START_UP_STATE = "demo"; //options: "demo", "mainmenu"
 
-    //CHARACTER STATS
+    //CHARACTER PROPERTIES
     public static final double CHILD_CHARACTER_HEIGHT = 16;
     public static final double STANDARD_CHARACTER_HEIGHT = 32;
     public static final double STANDARD_CHARACTER_WIDTH = 16;
+    //CHARACTER STATS
     public static final double STANDARD_SPEED = 1.5;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
     public static final double STANDARD_PUNCH_REACH = 10;
     public static final double STANDARD_PUNCH_WIDTH = 10;
+    public static final int STANDARD_MAX_HEALTH = 100;
+    public static final int STANDARD_STRENGTH = 10;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
 

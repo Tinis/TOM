@@ -10,6 +10,7 @@ import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.HitBox;
+import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -23,6 +24,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     private Player player;
     private ArrayList<NPC> npcList;
+    private ArrayList<HitBox> hitList;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;
@@ -41,6 +43,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         //extra stuff
         this.debugMode = true;
         this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
+        this.hitList = new ArrayList<>();
     }
 
 ///////////////
@@ -84,6 +87,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     @Override
     public void update() {
+        if (this.hitList.size() > 10) {
+            this.hitList.remove(0);
+        }
         this.player.updateCharacter();
         for (NPC npc : npcList) {
             npc.updateCharacter();
@@ -95,6 +101,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //////////////
 
 //Getters
+    @Override
+    public ArrayList<ViewableBox> getHitBoxes() {
+        ArrayList<ViewableBox> viewableHitBoxes = new ArrayList<>();
+        for (HitBox hit : this.hitList) {
+            viewableHitBoxes.add((ViewableBox) hit);
+        }
+        return viewableHitBoxes;
+    }
+
     @Override
     public CoordinatePointConverter getCoordinateConverter() {
         return this.coordinateConverter;
@@ -162,6 +177,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 ///////////////
     @Override
     public void hitCharactersInBox(HitBox hit, boolean actorIsGood, int strength) {
+        this.hitList.add(hit);
         if (this.player.overlapsWith(hit)) {
             this.player.takeHit(actorIsGood, strength);
         }

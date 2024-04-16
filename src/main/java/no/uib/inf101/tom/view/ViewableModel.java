@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.GameState;
+import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 
 public interface ViewableModel {
@@ -32,6 +33,12 @@ public interface ViewableModel {
      * @return a list of all current characters (including the player). 
      */
     public ArrayList<ViewableCharacter> getCharacters();
+
+    /**
+     * 
+     * @return a list of all current hitboxes as viewablebox objects. 
+     */
+    public ArrayList<ViewableBox> getHitBoxes();
 
     /**
      * 

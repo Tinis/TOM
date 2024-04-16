@@ -3,6 +3,8 @@ Priority HIgh:
  - make fighting abilities
  - - find a way to check if the punch ability's hitbox hits anyone. 
  - - Maybe every character has a method that is called by the eventbus and the punch calls the eventbus?
+ - make the characters have a standard hp. 
+ - make dying (the characters disappear when they get zero health)
  - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
  - make basic fighting AI that the nightclub guards can use for example. 
  - make characters blink when they get hit. 

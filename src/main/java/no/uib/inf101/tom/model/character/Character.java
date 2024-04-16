@@ -40,6 +40,9 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         super(pos, width, height);
         
         //a standard chracter would have these stats
+        this.maxHealth = Config.STANDARD_MAX_HEALTH;
+        this.health = this.maxHealth;
+        this.strength = Config.STANDARD_STRENGTH;
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
         this.reach = Config.STANDARD_PUNCH_REACH;
@@ -108,6 +111,14 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         } else {
             return "Bad";
         }
+    }
+
+    @Override
+    public String getStatsString() {
+        return String.format(
+            "hp: %s, maxHp: %s, strength: %s, reach: %.3f, targetable: %s, speed: %.3f",
+            this.health, this.maxHealth, this.strength, this.reach, this.targetable, this.speed
+        );
     }
 
     public void setDestination(Coordinate coord) {

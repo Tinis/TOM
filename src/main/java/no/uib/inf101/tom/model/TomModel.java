@@ -9,6 +9,7 @@ import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
+import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -16,7 +17,7 @@ import no.uib.inf101.tom.model.level.Level;
 import no.uib.inf101.tom.model.level.LevelLoader;
 import no.uib.inf101.tom.view.ViewableModel;
 
-public class TomModel implements ViewableModel, ControllableModel, Updatable{
+public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel{
     private LevelLoader levelLoader;
     private String levelName;
 
@@ -49,17 +50,27 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     private void loadLevel(String levelName, int entrance) {
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
+        //loads characters
         if (this.player == null) {
             this.player = new Player(level.getEnteredCoordinate(entrance));
         } else {
             this.player.setPos(level.getEnteredCoordinate(entrance));
         }
         this.npcList = level.getNpcs();
-
+        giveAllCharactersActionAccess();
+        //creates coordConverter
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
+        //sets the gamestate
         this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
         this.gameState.setGameState(level.getGameState());
+    }
+
+    private void giveAllCharactersActionAccess() {
+        this.player.setModel(this);
+        for (NPC npc : this.npcList) {
+            npc.setModel(this);
+        }
     }
 
     private void writeLevel(String levelName) {
@@ -146,6 +157,20 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable{
     }
 
     
-
+///////////////
+//EXTRA METHODS
+///////////////
+    @Override
+    public void hitCharactersInBox(HitBox hit, boolean actorIsGood, int strength) {
+        if (this.player.overlapsWith(hit)) {
+            this.player.takeHit(actorIsGood, strength);
+        }
+        for (NPC npc : npcList) {
+            if (npc.overlapsWith(hit)) {
+                npc.takeHit(actorIsGood, strength);
+            }
+        }
+    }
+    
 
 }

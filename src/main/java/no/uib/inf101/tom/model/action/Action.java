@@ -1,7 +1,6 @@
 package no.uib.inf101.tom.model.action;
 
 import no.uib.inf101.tom.model.Coordinate;
-import no.uib.inf101.tom.model.character.ActionableCharacter;
 
 public abstract class Action implements ViewableAction{
     protected String actionName;

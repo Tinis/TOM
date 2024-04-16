@@ -1,16 +1,18 @@
 package no.uib.inf101.tom.model.character;
 
 import no.uib.inf101.tom.Config;
+import no.uib.inf101.tom.model.ActionableModel;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.Direction;
 import no.uib.inf101.tom.model.PlaneVector;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
+import no.uib.inf101.tom.model.action.ActionableCharacter;
 import no.uib.inf101.tom.model.action.Idle;
-import no.uib.inf101.tom.model.action.Punch;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
+import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
 
@@ -21,6 +23,8 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected int maxHealth;
     protected int strength;
     protected double reach;
+    protected boolean targetable;
+    protected boolean good;
 
     protected double speed;
     protected PlaneVector movement;
@@ -29,18 +33,24 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected Direction facing;
 
     protected Action currentAction;
+    protected ActionableModel model;
 
 
     public Character(Coordinate pos, double width, double height) {
         super(pos, width, height);
-
+        
+        //a standard chracter would have these stats
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
+        this.reach = Config.STANDARD_PUNCH_REACH;
+        //and these properties
+        this.targetable = false;
+        this.good = true;
+        this.currentAction = new Idle();
         this.movement = new PlaneVector(0,0);
         this.destination = pos;
 
-        this.currentAction = new Idle();
-        this.reach = Config.STANDARD_PUNCH_REACH;
+
     }
 
     public Character(Coordinate pos) {
@@ -189,5 +199,36 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
             this.movement = new PlaneVector(0, 0);
             this.currentAction.stop();
         } 
-    }    
+    }
+
+    @Override
+    public void dealHit(HitBox hit) {
+        this.model.hitCharactersInBox(hit, this.good, this.strength);
+    }
+
+    /**
+     * makes the character take a hit
+     * @param actorIsGood
+     * @param strength
+     * @return true if this character dies, false if they don't. 
+     * (might change later with a dying action to have that animation).
+     */
+    public boolean takeHit(boolean actorIsGood, int strength) {
+        if (actorIsGood != this.good) {
+            this.health -= strength;
+        }
+        return this.health > 0;
+    }
+
+    /**
+     * sets the model that the character will change with some actions. 
+     * @param model the model as an ActionableModel. 
+     */
+    public void setModel(ActionableModel model) {
+        this.model = model;
+    }
+
+    
+
+    
 }

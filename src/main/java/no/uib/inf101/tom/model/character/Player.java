@@ -9,6 +9,7 @@ public class Player extends Character{
         super(pos, Config.STANDARD_CHARACTER_WIDTH, Config.CHILD_CHARACTER_HEIGHT);
         this.name = "tom";
         this.reach = Config.STANDARD_PUNCH_REACH + 10;
+        this.good = true;
     }
 
     @Override

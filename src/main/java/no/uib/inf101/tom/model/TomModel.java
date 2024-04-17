@@ -181,10 +181,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         if (this.player.overlapsWith(hit)) {
             this.player.takeHit(actorIsGood, strength);
         }
-        for (NPC npc : npcList) {
+        for (int i = this.npcList.size() - 1; i >= 0; i--) {
+            NPC npc = this.npcList.get(i);
             if (npc.overlapsWith(hit)) {
-                npc.takeHit(actorIsGood, strength);
-            }
+                if (npc.takeHit(actorIsGood, strength)) {
+                    //if the npc dies i remove it from the npcList(this is why i iterate backwards)
+                    this.npcList.remove(i);
+                }
+            }      
         }
     }
     

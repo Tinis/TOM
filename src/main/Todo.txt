@@ -1,35 +1,36 @@
 Todo:
 Priority HIgh:
- - make fighting abilities
- - - find a way to check if the punch ability's hitbox hits anyone. 
- - - Maybe every character has a method that is called by the eventbus and the punch calls the eventbus?
- - make the characters have a standard hp. 
- - make dying (the characters disappear when they get zero health)
- - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
  - make basic fighting AI that the nightclub guards can use for example. 
- - make characters blink when they get hit. 
-
-
- - make it so that i can write to the level in a smart way. 
- MEANING improve the writeLevel method in the model. 
-
- - make gameover screen. ye.
 
  - make the world
  - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)
+
+ - make it so that i can write to the level in a smart way. 
+ MEANING improve the writeLevel method in the model. Also hey the write level method will be 
+ triggered by a door interaction
+
+ - make gameover screen. ye. and make it so that you can quit or restart at the last level entry. 
+
  - 
  - make the menuScreen
  - make the pauseScreen
 
- - make a pistol shooter boss fight that dashes around you :D (nightclub owner)
+ - design a short story
+ - make art and music 
+ - implement the short story
+ - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
+ - (he shoots a lot and has to reload)
 
 Priority Medium:
+ - make characters blink when they get hit. 
  - make it so that i can make the entire world a sprite. 
  - make some sort of cutScene ai that makes the characters do a cutScene.
+ - make more fighting abilities (block dash heavy (or ranged))
+ - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
+ - make the story longer. 
 
 
 Priority Low:
- - emotes :D
- - make the stop of the walk more accurate. 
  - light engine.
+ - emotes :D

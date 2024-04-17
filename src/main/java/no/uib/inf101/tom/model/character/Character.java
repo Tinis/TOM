@@ -232,12 +232,13 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
      * @param strength
      * @return true if this character dies, false if they don't. 
      * (might change later with a dying action to have that animation).
+     * (Could make this return true when the dying action is finished).
      */
     public boolean takeHit(boolean actorIsGood, int strength) {
         if (actorIsGood != this.good) {
             this.health -= strength;
         }
-        return this.health > 0;
+        return this.health <= 0;
     }
 
     /**

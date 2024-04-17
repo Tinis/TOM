@@ -27,6 +27,7 @@ public class LevelLoader {
         Level demo = new Level("demo", new Player(new Coordinate(0, 0)),
             new Coordinate(50, 50));
         demo.putNPC(new NPC(new Coordinate(50, -50), false));
+        demo.putNightclubGuard(new Coordinate(-50, 0));
         return demo;
     }
 

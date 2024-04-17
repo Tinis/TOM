@@ -10,6 +10,7 @@ import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.character.ai.BasicPunchingAI;
 
 public class Level {
     private String name;
@@ -60,8 +61,16 @@ public class Level {
         this.player = player;
     }
 
+////////////////////////
+//PUTTHINGS ON THE LEVEL
+////////////////////////
     public void putNPC(NPC npc) {
         this.npcList.add(npc);
+    }
+
+    public void putNightclubGuard(Coordinate pos) {
+        NPC nightclubGuard = new NPC(pos, new BasicPunchingAI(), false, "nightclubGuard");
+        putNPC(nightclubGuard);
     }
 
     //TODO: putNormalHouse(Coordinate topLeft)

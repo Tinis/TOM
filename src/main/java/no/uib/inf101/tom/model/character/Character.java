@@ -14,6 +14,7 @@ import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
+import no.uib.inf101.tom.view.ViewableModel;
 
 
 public abstract class Character extends CharacterBox implements ViewableCharacter, ActionableCharacter{
@@ -198,7 +199,12 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         } 
     }
 
-    public void updateCharacter() {
+    /**
+     * Updates the character. 
+     * @param model the model as a viewable model. 
+     * (because the npcs need to see the model to know what to do)
+     */
+    public void updateCharacter(ViewableModel viewModel) {
         updateAction();
     }
 

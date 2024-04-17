@@ -46,7 +46,6 @@ public class Config {
     public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
 
     
-
 //-----CONTROLLER RELATED
     //KEYS
     public static final int KILL_KEY = KeyEvent.VK_F9;

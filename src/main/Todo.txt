@@ -1,10 +1,9 @@
 Todo:
 Priority HIgh:
- - make basic fighting AI that the nightclub guards can use for example. 
-
  - make the world
  - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)
+ - - make a building in the demo with a door that leads to another level.
 
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. Also hey the write level method will be 
@@ -34,3 +33,4 @@ Priority Medium:
 Priority Low:
  - light engine.
  - emotes :D
+ - spiller flytter seg litt på skjermen i midten. som i noken spel lism. 

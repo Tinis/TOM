@@ -36,6 +36,12 @@ public interface ViewableModel {
 
     /**
      * 
+     * @return the player as a viewableCharacter.
+     */
+    public ViewableCharacter getPlayer();
+
+    /**
+     * 
      * @return a list of all current hitboxes as viewablebox objects. 
      */
     public ArrayList<ViewableBox> getHitBoxes();

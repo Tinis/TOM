@@ -90,9 +90,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         if (this.hitList.size() > 10) {
             this.hitList.remove(0);
         }
-        this.player.updateCharacter();
+        this.player.updateCharacter(this);
         for (NPC npc : npcList) {
-            npc.updateCharacter();
+            npc.updateCharacter(this);
         }
     }
 
@@ -133,6 +133,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         }
         characters.add(this.player);
         return characters;
+    }
+
+    @Override
+    public ViewableCharacter getPlayer() {
+        return this.player;
     }
 
     @Override
@@ -185,7 +190,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             NPC npc = this.npcList.get(i);
             if (npc.overlapsWith(hit)) {
                 if (npc.takeHit(actorIsGood, strength)) {
-                    //if the npc dies i remove it from the npcList(this is why i iterate backwards)
+                    //if the npc dies i remove it from the npcList
+                    //(this is why i iterate backwards)
                     this.npcList.remove(i);
                 }
             }      

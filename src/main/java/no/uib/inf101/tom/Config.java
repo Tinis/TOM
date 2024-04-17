@@ -69,10 +69,11 @@ public class Config {
     //CHARACTER STATS
     public static final double STANDARD_SPEED = 1.5;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
-    public static final double STANDARD_PUNCH_REACH = 10;
+    public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;
     public static final int STANDARD_MAX_HEALTH = 100;
     public static final int STANDARD_STRENGTH = 10;
+    public static final int PLAYER_STRENGTH = 35;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
     //BUILDINGS AND INTERACTIONS

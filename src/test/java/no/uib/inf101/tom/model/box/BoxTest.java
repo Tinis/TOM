@@ -14,16 +14,16 @@ public class BoxTest {
         //RectangularBoxes
         Box box1 = new RectangularBox(new Coordinate(0, 0), 2, 2);
         Box box2 = new RectangularBox(new Coordinate(0, 0), 2, 2);
-        // assertTrue(box1.overlapsWith(box2));
+        assertTrue(box1.overlapsWith(box2));
 
-        // box2 = new RectangularBox(new Coordinate(2, 2), 0.1, 0.1);
-        // assertFalse(box1.overlapsWith(box2));
+        box2 = new RectangularBox(new Coordinate(2, 2), 0.1, 0.1);
+        assertFalse(box1.overlapsWith(box2));
 
-        // box2 = new RectangularBox(new Coordinate(3, 0), 2, 2);
-        // assertFalse(box1.overlapsWith(box2));
+        box2 = new RectangularBox(new Coordinate(3, 0), 2, 2);
+        assertFalse(box1.overlapsWith(box2));
 
-        // box2 = new RectangularBox(new Coordinate(0.5, 0), 2, 2);
-        // assertTrue(box1.overlapsWith(box2));
+        box2 = new RectangularBox(new Coordinate(0.5, 0), 2, 2);
+        assertTrue(box1.overlapsWith(box2));
 
         box2 = new RectangularBox(new Coordinate(-100, 0), 2, 2);
         assertFalse(box1.overlapsWith(box2));

@@ -11,6 +11,7 @@ public class Player extends Character{
         this.reach = Config.STANDARD_PUNCH_REACH * 1.5;
         this.good = true;
         this.strength = Config.PLAYER_STRENGTH;
+        this.speed = Config.PLAYER_SPEED;
     }
 
     @Override

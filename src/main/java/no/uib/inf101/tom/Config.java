@@ -68,6 +68,7 @@ public class Config {
     public static final double STANDARD_CHARACTER_WIDTH = 16;
     //CHARACTER STATS
     public static final double STANDARD_SPEED = 1.5;
+    public static final double PLAYER_SPEED = 1.8;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
     public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;

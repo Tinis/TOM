@@ -2,11 +2,9 @@ package no.uib.inf101.tom.model.character;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
-import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.character.ai.AICommander;
 import no.uib.inf101.tom.model.character.ai.NullAI;
-import no.uib.inf101.tom.view.ViewableModel;
 
 public class NPC extends Character{
     AICommander ai;
@@ -37,8 +35,8 @@ public class NPC extends Character{
     }
 
     @Override
-    public void updateCharacter(ViewableModel viewModel) {
-        updateAction();
+    public void updateCharacter(CharacterViewableModel viewModel) {
+        updateAction(viewModel);
         ActionCommand nextAction = this.ai.getActionCommand(viewModel);
         sendActionCommand(nextAction);
     }

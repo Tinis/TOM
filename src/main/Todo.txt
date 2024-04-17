@@ -1,5 +1,6 @@
 Todo:
 Priority HIgh:
+ - FIX COLLISION DETECTION! now if you have two rectangles and do rec1.overlapsWith(rec2) og rec2 er til venstre for boxen så returner den true selv om det er false. 
  - make the world
  - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)

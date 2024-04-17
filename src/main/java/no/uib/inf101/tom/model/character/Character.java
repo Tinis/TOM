@@ -12,6 +12,7 @@ import no.uib.inf101.tom.model.action.Idle;
 import no.uib.inf101.tom.model.action.ViewableAction;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
+import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.view.ViewableModel;
@@ -189,12 +190,11 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         }
     }
 
-    public void updateAction() {
-        //TODO: this must take a map as an argument to check for collission or something. this is called from the model. 
+    public void updateAction(CharacterViewableModel viewModel) {
         if (this.currentAction != null) {
             this.currentAction.updateActionFrame();
             if (this.currentAction instanceof Walk) {
-                move();
+                move(viewModel);
             }
         } 
     }
@@ -204,11 +204,11 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
      * @param model the model as a viewable model. 
      * (because the npcs need to see the model to know what to do)
      */
-    public void updateCharacter(ViewableModel viewModel) {
-        updateAction();
+    public void updateCharacter(CharacterViewableModel viewModel) {
+        updateAction(viewModel);
     }
 
-    private void move() {
+    private void move(CharacterViewableModel viewModel) {
         //if the distance between the character and the destination is less than the speed
         //set the length to the distance.
         double disctanceToDestination = PlaneVector.distanceBetweenTwoCoords(
@@ -219,8 +219,15 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
             this.movement.setLength(this.speed);
         }
         Coordinate endCoord = PlaneVector.coordMoved(this.pos, this.movement);
-        //TODO: check for collission. do something smart if there is a collission. 
+        //Checks for collision
+        Coordinate oldPos = this.pos;
         this.pos = endCoord;
+        for (CollisionBox box : viewModel.getCollisionBoxesForCharacter()) {
+            if (box.overlapsWith(this)) {
+                this.pos = oldPos;
+            }
+        }
+        //stop if pos is almost at destination
         if (this.pos.isAlmostEqualTo(this.destination)){
             this.movement = new PlaneVector(0, 0);
             this.currentAction.stop();

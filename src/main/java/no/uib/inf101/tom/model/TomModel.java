@@ -9,9 +9,11 @@ import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
+import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.buildingsandinteractions.Building;
+import no.uib.inf101.tom.model.character.CharacterViewableModel;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -19,7 +21,7 @@ import no.uib.inf101.tom.model.level.Level;
 import no.uib.inf101.tom.model.level.LevelLoader;
 import no.uib.inf101.tom.view.ViewableModel;
 
-public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel{
+public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel, CharacterViewableModel{
     private LevelLoader levelLoader;
     private String levelName;
 
@@ -105,6 +107,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //////////////
 
 //Getters
+
     @Override
     public ArrayList<ViewableBox> getHitBoxes() {
         ArrayList<ViewableBox> viewableHitBoxes = new ArrayList<>();
@@ -112,6 +115,20 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             viewableHitBoxes.add((ViewableBox) hit);
         }
         return viewableHitBoxes;
+    }
+
+    @Override
+    public ArrayList<CollisionBox> getCollisionBoxesForCharacter() {
+        ArrayList<CollisionBox> collisions = new ArrayList<>();
+        for (CollisionBox box : this.buildingList) {
+            collisions.add(box);
+        }
+        return collisions;
+    }
+
+    @Override
+    public Coordinate getPlayerCenter() {
+        return this.player.getCenter();
     }
 
     @Override

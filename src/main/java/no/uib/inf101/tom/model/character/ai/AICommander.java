@@ -1,7 +1,7 @@
 package no.uib.inf101.tom.model.character.ai;
 
 import no.uib.inf101.tom.model.action.ActionCommand;
-import no.uib.inf101.tom.view.ViewableModel;
+import no.uib.inf101.tom.model.character.CharacterViewableModel;
 
 /**
  * An AICommander that is updated once every frame. 
@@ -21,7 +21,7 @@ public abstract class AICommander {
      * @param model the model containing the info that the commander needs to do the command. 
      * @return the next actioncommand. 
      */
-    public ActionCommand getActionCommand(ViewableModel model) {
+    public ActionCommand getActionCommand(CharacterViewableModel model) {
         this.state += 1;
         if (this.state == this.stateAmount) {
             this.state = 0;
@@ -29,7 +29,7 @@ public abstract class AICommander {
         return getActionCommandForState(model, this.state);
     }
 
-    protected abstract ActionCommand getActionCommandForState(ViewableModel model, int state);
+    protected abstract ActionCommand getActionCommandForState(CharacterViewableModel model, int state);
 
     /**
      * 

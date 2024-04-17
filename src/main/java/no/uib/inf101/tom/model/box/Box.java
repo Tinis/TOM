@@ -26,8 +26,14 @@ public abstract class Box implements ViewableBox{
         ArrayList<Double> seperations = new ArrayList<>();
         Coordinate[] myVertices = this.getCornerCoords();
         Coordinate[] otherVertices = otherBox.getCornerCoords();
-        for (int i = 1; i < myVertices.length; i++) {
-            PlaneVector edgeVector = new PlaneVector(myVertices[i - 1], myVertices[i]);
+        for (int i = 0; i < myVertices.length; i++) {
+            int iForNextVertex = i + 1; //index value for the next vertex in the list of myVertices.
+            if (iForNextVertex == myVertices.length) {
+                iForNextVertex -= myVertices.length; 
+                //i do this because we need to check every edge vector and one of the edge vectors 
+                //go from the last vertex to the first vertex
+            }
+            PlaneVector edgeVector = new PlaneVector(myVertices[i], myVertices[iForNextVertex]);
             //The edgeVector will follow in the clockwise direction. 
             //Because that is how the getCornerCoords() method works. 
             PlaneVector normal = edgeVector.rotate(false);
@@ -42,7 +48,7 @@ public abstract class Box implements ViewableBox{
             }
             seperations.add(smallestDouble(seperationsForOneNormal));
         }
-        return (biggestDouble(seperations) <= 0);
+        return (biggestDouble(seperations) < 0);
     }
 
     private double smallestDouble(ArrayList<Double> list) {

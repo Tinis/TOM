@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.GameState;
+import no.uib.inf101.tom.model.buildingsandinteractions.Building;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -16,6 +18,7 @@ public class Level {
     private String name;
     private Player player;
     private ArrayList<NPC> npcList;
+    private ArrayList<Building> buildingList;
     private HashMap<Integer, Coordinate> enctrances;
     private GameState state;
 
@@ -24,6 +27,7 @@ public class Level {
         this.state = initialState;
         this.player = player;
         this.npcList = new ArrayList<>();
+        this.buildingList = new ArrayList<>();
         this.enctrances = new HashMap<>();
         this.enctrances.put(1, enctrance1);
     }
@@ -35,7 +39,9 @@ public class Level {
     public Level(String name, Player player) {
         this(name, player, new Coordinate(0, 0));
     }
-
+/////////
+//GETTERS
+/////////
     public ViewableCharacter getPlayer() {
         return this.player;
     }
@@ -50,20 +56,29 @@ public class Level {
 
     /**
      * 
-     * @return the list of this level containing the npcs. 
+     * @return the list from this level that contains the npcs. 
      * (Meaning if it is changed the list in the level object also changes)
      */
     public ArrayList<NPC> getNpcs() {
         return this.npcList;
     }
 
+    /**
+     * 
+     * @return the list of buildings for this level. 
+     */
+    public ArrayList<Building> getBuildings() {
+        return this.buildingList;
+    }
+
+
+////////////////////////
+//PUT THINGS ON THE LEVEL
+////////////////////////
     public void setPlayer(Player player) {
         this.player = player;
     }
 
-////////////////////////
-//PUTTHINGS ON THE LEVEL
-////////////////////////
     public void putNPC(NPC npc) {
         this.npcList.add(npc);
     }
@@ -73,8 +88,20 @@ public class Level {
         putNPC(nightclubGuard);
     }
 
-    //TODO: putNormalHouse(Coordinate topLeft)
-    //putNightclubGuard(Coordinate topLeft)
+    public void putBuilding(Building building) {
+        this.buildingList.add(building);
+    }
+
+    /**
+     * puts a normal house building (64*32).
+     * 
+     * @param topLeft the topleft of the house
+     */
+    public void putNormalHouse(Coordinate topLeft) {
+        Building house = new Building(
+            topLeft, Config.NORMAL_HOUSE_WIDTH, Config.NORMAL_HOUSE_HEIGHT);
+        putBuilding(house);
+    }
     //putDad(Coordinate topLeft)
     //ELLER HELLER putCharacter(String name, Coordinate topLeft, AI ai)
     //AI kan være en CutsceneDirector?

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.NPC;
@@ -45,6 +46,7 @@ public class TomView extends JPanel {
             setDebugFont(g2);
             drawMouseCoordinates(g2);
             drawDebugText(g2);
+            drawCollisionBoxes(g2);
             drawHits(g2);
         }
     }
@@ -52,12 +54,17 @@ public class TomView extends JPanel {
 ////////////
 //DEBUGSTUFF
 ////////////
+    private void drawCollisionBoxes(Graphics2D g2) {
+        for (ViewableBox collision : this.model.getCollisionBoxes()) {
+            drawDebugBox(g2, collision);
+        }
+    }
+
     private void drawHits(Graphics2D g2) {
         for (ViewableBox hit : this.model.getHitBoxes()) {
             drawDebugBox(g2, hit);
         }
     }
-
 
     private void setDebugFont(Graphics2D g2) {
         g2.setPaint(Config.DEBUG_TEXT_COLOR);
@@ -87,6 +94,8 @@ public class TomView extends JPanel {
             FillBoxWithColor(g2, box, Config.NPC_DEBUG_COLOR);
         } else if (box instanceof HitBox) {
             FillBoxWithColor(g2, box, Config.HIT_DEBUG_COLOR);
+        } else if (box instanceof CollisionBox) {
+            FillBoxWithColor(g2, box, Config.COLLISION_DEBUG_COLOR);
         }
     }
 

@@ -28,6 +28,7 @@ public class LevelLoader {
             new Coordinate(50, 50));
         demo.putNPC(new NPC(new Coordinate(50, -50), false));
         demo.putNightclubGuard(new Coordinate(-50, 0));
+        demo.putNormalHouse(new Coordinate(200, -100));
         return demo;
     }
 

@@ -22,6 +22,7 @@ Priority HIgh:
  - (he shoots a lot and has to reload)
 
 Priority Medium:
+ - make a red vignett when you have low health. 
  - make characters blink when they get hit. 
  - make it so that i can make the entire world a sprite. 
  - make some sort of cutScene ai that makes the characters do a cutScene.
@@ -33,4 +34,5 @@ Priority Medium:
 Priority Low:
  - light engine.
  - emotes :D
+ - make the player animations better. 
  - spiller flytter seg litt på skjermen i midten. som i noken spel lism. 

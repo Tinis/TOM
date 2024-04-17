@@ -48,6 +48,12 @@ public interface ViewableModel {
 
     /**
      * 
+     * @return a list of all current collisionboxes as viewablebox objects. 
+     */
+    public ArrayList<ViewableBox> getCollisionBoxes();
+
+    /**
+     * 
      * @return true if debug_mode is activated, false if not. 
      */
     public boolean isDebugging();

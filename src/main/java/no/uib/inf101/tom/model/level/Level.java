@@ -8,7 +8,7 @@ import java.util.List;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.GameState;
-import no.uib.inf101.tom.model.buildingsandinteractions.Building;
+import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;

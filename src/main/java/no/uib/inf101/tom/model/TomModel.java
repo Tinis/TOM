@@ -9,10 +9,10 @@ import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
+import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
-import no.uib.inf101.tom.model.buildingsandinteractions.Building;
 import no.uib.inf101.tom.model.character.CharacterViewableModel;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
@@ -53,8 +53,12 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 ///////////////
 //LEVEL-RELATED
 ///////////////
-
-    private void loadLevel(String levelName, int entrance) {
+    /**
+     * load a level onto the model
+     * @param levelName the name of the level to load. 
+     * @param entrance the number of the entrance that the player enters from (often 1). 
+     */
+    public void loadLevel(String levelName, int entrance) {
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
         //loads characters

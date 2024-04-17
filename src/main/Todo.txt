@@ -1,8 +1,6 @@
 Todo:
 Priority HIgh:
- - FIX COLLISION DETECTION! now if you have two rectangles and do rec1.overlapsWith(rec2) og rec2 er til venstre for boxen så returner den true selv om det er false. 
  - make the world
- - - make buildings (remember the debug_stuff)
  - - make interactions (remember the debug_stuff)
  - - make a building in the demo with a door that leads to another level.
 
@@ -21,10 +19,16 @@ Priority HIgh:
  - implement the short story
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
+ - (make an ability where you can pull a feather out of the pillow and throw it on people 
+ - (exactly like shooting))
 
 Priority Medium:
+ - make targetable property actually work. 
  - make a red vignett when you have low health. 
+ - make the health regenerate
+ - make the 
  - make characters blink when they get hit. 
+ - make some interactions get highlighted when hovered.
  - make it so that i can make the entire world a sprite. 
  - make some sort of cutScene ai that makes the characters do a cutScene.
  - make more fighting abilities (block dash heavy (or ranged))

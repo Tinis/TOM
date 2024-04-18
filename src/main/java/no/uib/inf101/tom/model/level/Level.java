@@ -117,6 +117,10 @@ public class Level {
         Door door = new Door(pos, level, entrance);
         this.interactionList.add(door);
     }
+
+    public void putEntrance(int entrance, Coordinate pos) {
+        this.enctrances.put(entrance, pos);
+    }
     //putDad(Coordinate topLeft)
     //ELLER HELLER putCharacter(String name, Coordinate topLeft, AI ai)
     //AI kan være en CutsceneDirector?

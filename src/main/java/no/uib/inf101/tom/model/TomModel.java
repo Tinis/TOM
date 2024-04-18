@@ -39,6 +39,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
 
     public TomModel(String startUpState) {
+        //extra stuff
+        this.debugMode = true;
+        this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
+        this.hitList = new ArrayList<>();
+
         this.levelLoader = new LevelLoader();
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         //loads the demo level
@@ -46,10 +51,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             this.loadLevel("demo", 1);
         }
 
-        //extra stuff
-        this.debugMode = true;
-        this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
-        this.hitList = new ArrayList<>();
     }
 
 ///////////////
@@ -61,6 +62,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
      * @param entrance the number of the entrance that the player enters from (often 1). 
      */
     public void loadLevel(String levelName, int entrance) {
+        writeLevel(this.levelName);
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
         //loads characters
@@ -95,8 +97,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     }
 
     private void writeLevel(String levelName) {
-        Level level = this.levelLoader.getLevel(levelName);
-        level.setPlayer(this.player);
+        if (levelName != null) {
+            //clears the hitList
+            this.hitList.clear();
+            Level level = this.levelLoader.getLevel(levelName);
+            //writes player information
+            level.setPlayer(this.player);
+            //we dont have to write npcList, buildingList or interactionlist 
+            //because those lists are the same instances as the ones in the model. 
+        }
     }
 
 ////////////////

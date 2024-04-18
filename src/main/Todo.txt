@@ -1,12 +1,8 @@
 Todo:
 Priority HIgh:
- - make the world
- - - make interactions (remember the debug_stuff)
- - - make a building in the demo with a door that leads to another level.
-
  - make it so that i can write to the level in a smart way. 
  MEANING improve the writeLevel method in the model. Also hey the write level method will be 
- triggered by a door interaction
+ triggered by a door interaction or any load level interaction actually. 
 
  - make gameover screen. ye. and make it so that you can quit or restart at the last level entry. 
 
@@ -40,4 +36,4 @@ Priority Low:
  - light engine.
  - emotes :D
  - make the player animations better. 
- - spiller flytter seg litt på skjermen i midten. som i noken spel lism. 
+ - make more items?

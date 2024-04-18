@@ -12,6 +12,12 @@ public interface ActionableCharacter {
      */
     public void dealHit(HitBox hit);
 
+    /**
+     * multiplies the characters speed with the scaler. 
+     * @param scaler the scaler that is two be multiplied with the speed to make the new speed. 
+     */
+    public void scaleSpeed(double scaler);
+
 
     /**
      * attempt to start a new action (it will not start if its current action is not overridable). 

@@ -15,13 +15,16 @@ public abstract class Action implements ViewableAction{
 
     protected boolean looping;
     protected boolean overridable;
+    protected boolean isMovingAction;
 
     protected Coordinate pointer;
     protected double reach;
     protected double width;
 
     public Action() {
+        //standard properties
         this.actionName = "undefined action";
+        this.isMovingAction = false;
 
         this.actionFrame = 0;
         this.actionState = 0;
@@ -66,6 +69,10 @@ public abstract class Action implements ViewableAction{
      */
     public boolean isOverrideable() {
         return this.overridable;
+    }
+
+    public boolean isMovingAction() {
+        return this.isMovingAction;
     }
 
     /**

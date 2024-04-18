@@ -129,6 +129,11 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.movement = newMovement;
     }
 
+    @Override
+    public void scaleSpeed(double scaler) {
+        this.speed *= scaler;
+    }
+
 ////////////////
 //Action-related
 ////////////////
@@ -193,7 +198,7 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     public void updateAction(CharacterViewableModel viewModel) {
         if (this.currentAction != null) {
             this.currentAction.updateActionFrame();
-            if (this.currentAction instanceof Walk) {
+            if (this.currentAction.isMovingAction()) {
                 move(viewModel);
             }
         } 

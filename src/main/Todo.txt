@@ -1,18 +1,17 @@
 Todo:
 Priority HIgh:
- - make it so that i can write to the level in a smart way. 
- MEANING improve the writeLevel method in the model. Also hey the write level method will be 
- triggered by a door interaction or any load level interaction actually. 
-
- - make gameover screen. ye. and make it so that you can quit or restart at the last level entry. 
-
- - 
+ - make different gamestates: 
+ - make gameover screen (can be an image over the whole screen for now, 
+ - can add a leading in dying cutscene later). ye. and make it so that you can quit or restart at the last level entry. 
  - make the menuScreen
- - make the pauseScreen
+ - make the pauseScreen (can be an image over the whole screen forever). 
 
- - design a short story
- - make art and music 
+ - make cutscenes?
+
+ - design a VERY short story
+ - make some art and add some music (just kinda demo music rly)
  - implement the short story
+ - make dashing (we have to add it to the e button)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
  - (make an ability where you can pull a feather out of the pillow and throw it on people 
@@ -21,8 +20,8 @@ Priority HIgh:
 Priority Medium:
  - make targetable property actually work. 
  - make a red vignett when you have low health. 
+ - make a dying cutscene. 
  - make the health regenerate
- - make the 
  - make characters blink when they get hit. 
  - make some interactions get highlighted when hovered.
  - make it so that i can make the entire world a sprite. 

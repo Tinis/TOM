@@ -42,6 +42,13 @@ public class LevelLoader {
         return demo2; 
     }
 
+    private Level nightclubBossFight() {
+        Level nighclubBossFight = new Level("nighclubBossFight", new Coordinate(0, 0));
+        nighclubBossFight.putNightclubBoss(new Coordinate(0, -100));
+        //TODO: finish this
+        return null;
+    }
+
     
 
 }

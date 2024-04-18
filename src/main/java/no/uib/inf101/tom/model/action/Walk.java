@@ -10,6 +10,8 @@ public class Walk extends Action{
 
         this.actionStateDuration = Config.STANDARD_ACTION_STATE_DURATION;
         this.actionStateAmount = 4;
+
+        this.isMovingAction = true;
     
         this.looping = true;
         this.overridable = true;

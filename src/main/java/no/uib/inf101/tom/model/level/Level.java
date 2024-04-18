@@ -85,6 +85,7 @@ public class Level {
 ////////////////////////
 //PUT THINGS ON THE LEVEL
 ////////////////////////
+    //CHARACTERS
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -98,6 +99,11 @@ public class Level {
         putNPC(nightclubGuard);
     }
 
+    public void putNightclubBoss(Coordinate pos) {
+        //NPC nightclubBocc = new NPC(pos, new ) //Basic shooting ai
+    }
+
+    //BUILDINGS
     public void putBuilding(Building building) {
         this.buildingList.add(building);
     }
@@ -113,11 +119,13 @@ public class Level {
         putBuilding(house);
     }
 
+    //INTERACTIONS
     public void putDoor(Coordinate pos, String level, int entrance) {
         Door door = new Door(pos, level, entrance);
         this.interactionList.add(door);
     }
 
+    //OTHER
     public void putEntrance(int entrance, Coordinate pos) {
         this.enctrances.put(entrance, pos);
     }

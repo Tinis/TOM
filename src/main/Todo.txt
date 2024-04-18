@@ -11,7 +11,6 @@ Priority HIgh:
  - design a VERY short story
  - make some art and add some music (just kinda demo music rly)
  - implement the short story
- - make dashing (we have to add it to the e button)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
  - (make an ability where you can pull a feather out of the pillow and throw it on people 

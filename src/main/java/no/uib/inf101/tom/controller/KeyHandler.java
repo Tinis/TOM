@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import no.uib.inf101.tom.Config;
+import no.uib.inf101.tom.model.action.Dash;
 import no.uib.inf101.tom.model.action.Punch;
 import no.uib.inf101.tom.view.TomView;
 
@@ -31,6 +32,8 @@ public class KeyHandler implements KeyListener{
         //QWER (ABILITIES)
         if (code == Config.PUNCH_KEY) {
             this.model.sendAction(new Punch());
+        } else if (code == Config.DASK_KEY) {
+            this.model.sendAction(new Dash());
         }
 
     }

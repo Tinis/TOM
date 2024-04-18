@@ -10,7 +10,7 @@ public class Dash extends Action{
 
         this.actionStateDuration = Config.STANDARD_ACTION_STATE_DURATION;
         this.actionStateAmount = 3;
-        this.abilityState = 0;
+        this.abilityState = 1;
 
         this.isMovingAction = true;
 
@@ -22,12 +22,13 @@ public class Dash extends Action{
     @Override
     protected void doAbility() {
         this.actingCharacter.scaleSpeed(Config.DASH_SPEED_SCALER);
+        this.actingCharacter.setDestination(this.pointer);
     }
 
     @Override
     public void stop() {
         this.actingCharacter.scaleSpeed(1 / Config.DASH_SPEED_SCALER);
-        this.actingCharacter.overrideAction(new Walk());
+        this.actingCharacter.overrideAction(new Idle());
     }
 
 }

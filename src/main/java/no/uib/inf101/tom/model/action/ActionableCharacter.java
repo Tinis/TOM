@@ -20,6 +20,13 @@ public interface ActionableCharacter {
 
 
     /**
+     * sets the destination of the character
+     * @param destination
+     */
+    public void setDestination(Coordinate destination);
+
+
+    /**
      * attempt to start a new action (it will not start if its current action is not overridable). 
      * @param action the new action that will be started. 
      * @return will return true if a new action was started. false if not. 

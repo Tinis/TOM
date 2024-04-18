@@ -15,7 +15,6 @@ import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
-import no.uib.inf101.tom.view.ViewableModel;
 
 
 public abstract class Character extends CharacterBox implements ViewableCharacter, ActionableCharacter{
@@ -123,15 +122,16 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         );
     }
 
-    public void setDestination(Coordinate coord) {
-        this.destination = coord;
-        PlaneVector newMovement = new PlaneVector(this.pos, coord);
+    @Override
+    public void setDestination(Coordinate destination) {
+        this.destination = destination;
+        PlaneVector newMovement = new PlaneVector(this.pos, destination);
         this.movement = newMovement;
     }
 
     @Override
     public void scaleSpeed(double scaler) {
-        this.speed *= scaler;
+        this.speed = this.speed * scaler;
     }
 
 ////////////////

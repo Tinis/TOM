@@ -1,14 +1,14 @@
 package no.uib.inf101.tom.model.level;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.Building;
+import no.uib.inf101.tom.model.box.interactions.Door;
+import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
@@ -19,6 +19,7 @@ public class Level {
     private Player player;
     private ArrayList<NPC> npcList;
     private ArrayList<Building> buildingList;
+    private ArrayList<Interaction> interactionList;
     private HashMap<Integer, Coordinate> enctrances;
     private GameState state;
 
@@ -28,6 +29,7 @@ public class Level {
         this.player = player;
         this.npcList = new ArrayList<>();
         this.buildingList = new ArrayList<>();
+        this.interactionList = new ArrayList<>();
         this.enctrances = new HashMap<>();
         this.enctrances.put(1, enctrance1);
     }
@@ -38,6 +40,10 @@ public class Level {
 
     public Level(String name, Player player) {
         this(name, player, new Coordinate(0, 0));
+    }
+
+    public Level(String name, Coordinate entrance1) {
+        this(name, new Player(entrance1), entrance1);
     }
 /////////
 //GETTERS
@@ -71,6 +77,10 @@ public class Level {
         return this.buildingList;
     }
 
+    public ArrayList<Interaction> getInteractions() {
+        return this.interactionList;
+    }
+
 
 ////////////////////////
 //PUT THINGS ON THE LEVEL
@@ -101,6 +111,11 @@ public class Level {
         Building house = new Building(
             topLeft, Config.NORMAL_HOUSE_WIDTH, Config.NORMAL_HOUSE_HEIGHT);
         putBuilding(house);
+    }
+
+    public void putDoor(Coordinate pos, String level, int entrance) {
+        Door door = new Door(pos, level, entrance);
+        this.interactionList.add(door);
     }
     //putDad(Coordinate topLeft)
     //ELLER HELLER putCharacter(String name, Coordinate topLeft, AI ai)

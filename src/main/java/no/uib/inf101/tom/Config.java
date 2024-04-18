@@ -42,6 +42,7 @@ public class Config {
     public static final Color NPC_DEBUG_COLOR = new Color(255, 255, 0, 128);
     public static final Color HIT_DEBUG_COLOR = new Color(255, 0, 0, 128);
     public static final Color COLLISION_DEBUG_COLOR = new Color(0, 0, 255, 128);
+    public static final Color INTERACTION_DEBUG_COLOR = new Color(255, 0, 128, 128);
 
     //FONTS
     public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
@@ -80,6 +81,9 @@ public class Config {
     //BUILDINGS AND INTERACTIONS
     public static final int NORMAL_HOUSE_WIDTH = 16*10;
     public static final int NORMAL_HOUSE_HEIGHT = 16*4;
+    public static final int DOOR_WIDTH = 16;
+    public static final int DOOR_HEIGHT = 16;
+    public static final double INTERACTION_RANGE = 32;
 
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;

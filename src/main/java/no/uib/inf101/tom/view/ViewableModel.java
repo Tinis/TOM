@@ -54,6 +54,12 @@ public interface ViewableModel {
 
     /**
      * 
+     * @return a list of all current interactions as viewablebox objects. 
+     */
+    public ArrayList<ViewableBox> getInteractions();
+
+    /**
+     * 
      * @return true if debug_mode is activated, false if not. 
      */
     public boolean isDebugging();

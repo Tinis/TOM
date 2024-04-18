@@ -16,7 +16,8 @@ import no.uib.inf101.tom.model.PlaneVector;
 public abstract class Box implements ViewableBox{
 
     /**
-     * Checks if the box overlaps with another box using the seperating axis theorem.
+     * Checks if the box overlaps with another box using the seperating axis theorem. 
+     * Only works for convex polygons. 
      * @param otherBox the other box that this may overlap with.
      * @return true if it overlaps, false if not. 
      */
@@ -90,6 +91,35 @@ public abstract class Box implements ViewableBox{
         }
         polygon.closePath();
         return polygon;
+    }
+
+    /**
+     * checks if a coord is on this box. Only works for convex polygons. 
+     * @param coord the coord to check. 
+     * @return true if it is false if not. 
+     */
+    public boolean coordIsOnBox(Coordinate coord) {
+        Coordinate[] myVertices = this.getCornerCoords();
+        for (int i = 0; i < myVertices.length; i++) {
+            int iForNextVertex = i + 1;
+            if (iForNextVertex == myVertices.length) {
+                iForNextVertex -= myVertices.length; 
+            }
+            PlaneVector edgeVector = new PlaneVector(
+                myVertices[i], myVertices[iForNextVertex]);
+            //creates a normal from the edge vector that faces away from the center of the polygon. 
+            PlaneVector normal = edgeVector.rotate(false);
+            normal.normalize();
+            //creates a vector from a vertex to the coord
+            PlaneVector vertexToCoord = new PlaneVector(myVertices[i], coord);
+            //if the dotproduct for the two vectors is positive then the coord is not in the box. 
+            if (vertexToCoord.dotProduct(normal) > 0) {
+                return false;
+            }
+        }
+        //if the vertex to coord vector points the opposite direction from the normal
+        // for every normal, then the coord is in the polygon. 
+        return true;
     }
 
 

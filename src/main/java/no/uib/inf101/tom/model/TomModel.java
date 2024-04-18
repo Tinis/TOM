@@ -13,6 +13,7 @@ import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
+import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.CharacterViewableModel;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
@@ -29,6 +30,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private ArrayList<NPC> npcList;
     private ArrayList<HitBox> hitList;
     private ArrayList<Building> buildingList;
+    private ArrayList<Interaction> interactionList;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;
@@ -71,6 +73,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         giveAllCharactersActionAccess();
         //loads buildings
         this.buildingList = level.getBuildings();
+        //loads interactions
+        this.interactionList = level.getInteractions();
         //creates coordConverter
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
@@ -111,6 +115,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //////////////
 
 //Getters
+    @Override
+    public ArrayList<ViewableBox> getInteractions() {
+        ArrayList<ViewableBox> viewableInteractions = new ArrayList<>();
+        for (ViewableBox interaction : this.interactionList) {
+            viewableInteractions.add(interaction);
+        }
+        return viewableInteractions;
+    }
 
     @Override
     public ArrayList<ViewableBox> getHitBoxes() {

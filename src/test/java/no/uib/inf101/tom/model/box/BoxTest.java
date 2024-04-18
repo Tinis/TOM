@@ -41,4 +41,11 @@ public class BoxTest {
         assertFalse(box1.overlapsWith(hitBox));
         assertFalse(hitBox.overlapsWith(box1));
     }
+    @Test
+    void testCoordIsOnBox() {
+        Box box1 = new RectangularBox(new Coordinate(0, 0), 2, 2);
+        assertTrue(box1.coordIsOnBox(new Coordinate(0, 0)));
+        assertFalse(box1.coordIsOnBox(new Coordinate(3, 3)));
+        assertFalse(box1.coordIsOnBox(new Coordinate(-100, 0)));
+    }
 }

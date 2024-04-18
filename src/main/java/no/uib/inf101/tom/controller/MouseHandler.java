@@ -43,6 +43,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener{
         if (e.getButton() == MouseEvent.BUTTON3) {
             this.rightClicking = true;
             this.model.walk(this.mousePos);
+        } else if (e.getButton() == MouseEvent.BUTTON1) {
+            this.model.interact(this.mousePos);
         }
     }
 

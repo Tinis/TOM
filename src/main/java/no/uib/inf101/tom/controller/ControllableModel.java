@@ -14,6 +14,12 @@ public interface ControllableModel {
     public void walk(Point2D point);
 
     /**
+     * interacts with the interaction at the point. 
+     * @param point the point that was clicked. 
+     */
+    public void interact(Point2D point);
+
+    /**
      * send an action to the model based on the keypress. 
      * For example, the Q key would send a punch action. 
      * @param action the action to send. 

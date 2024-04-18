@@ -44,10 +44,10 @@ public class TomView extends JPanel {
         drawLevel(g2);
         drawCharacters(g2);
         if (this.model.isDebugging()) {
-            setDebugFont(g2);
             drawCollisionBoxes(g2);
             drawInteractionBoxes(g2);
             drawHits(g2);
+            setDebugFont(g2);
             drawDebugText(g2);
             drawMouseCoordinates(g2);
         }
@@ -174,7 +174,11 @@ public class TomView extends JPanel {
 
     private void drawImageAtCoords(Graphics2D g2, BufferedImage image, Coordinate coords) {
         Point2D point = model.getCoordinateConverter().pointFromCoordinate(coords);
-        Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
+        if (image != null) {
+            Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
+        } else {
+            Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
+        }
     }
 
     private String getPosString(Coordinate pos) {

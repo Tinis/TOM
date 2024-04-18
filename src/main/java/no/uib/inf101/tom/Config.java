@@ -83,7 +83,7 @@ public class Config {
     public static final int NORMAL_HOUSE_HEIGHT = 16*4;
     public static final int DOOR_WIDTH = 16;
     public static final int DOOR_HEIGHT = 16;
-    public static final double INTERACTION_RANGE = 32;
+    public static final double INTERACTION_RANGE = 64;
 
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;

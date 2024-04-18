@@ -69,12 +69,16 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         } else {
             this.player.setPos(level.getEnteredCoordinate(entrance));
         }
+        this.player.setDestination(this.player.getCenter());
         this.npcList = level.getNpcs();
         giveAllCharactersActionAccess();
         //loads buildings
         this.buildingList = level.getBuildings();
         //loads interactions
         this.interactionList = level.getInteractions();
+        for (Interaction interaction : this.interactionList) {
+            interaction.setModel(this);
+        }
         //creates coordConverter
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
@@ -210,6 +214,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
         player.sendActionCommand(new ActionCommand(new Walk(), clickedCoordinate));
+    }
+
+    @Override
+    public void interact(Point2D point) {
+        Coordinate click = this.coordinateConverter.coordinateFromPoint(point);
+        for (Interaction interaction : this.interactionList) {
+            interaction.checkIfClicked(click);
+        }
     }
 
     @Override

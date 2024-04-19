@@ -20,11 +20,16 @@ import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.level.Level;
 import no.uib.inf101.tom.model.level.LevelLoader;
+import no.uib.inf101.tom.model.screen.Screen;
+import no.uib.inf101.tom.model.screen.ScreenLoader;
 import no.uib.inf101.tom.view.ViewableModel;
 
 public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel, CharacterViewableModel{
     private LevelLoader levelLoader;
     private String levelName;
+
+    private ScreenLoader screenLoader;
+    private Screen screen;
 
     private Player player;
     private ArrayList<NPC> npcList;
@@ -33,7 +38,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private ArrayList<Interaction> interactionList;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
-    private ObservableGameState gameState;
+    private ObservableGameState gameState;    
 
     private Coordinate mousePos;
 
@@ -41,11 +46,12 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     public TomModel(String startUpState) {
         //extra stuff
         this.debugMode = true;
-        this.mousePos = new Coordinate(0, 0); //placeholder. Will probably not cause bugs.
+        this.mousePos = new Coordinate(0, 0); //placeholder value. Will probably not cause bugs.
         this.hitList = new ArrayList<>();
 
         this.levelLoader = new LevelLoader();
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
+        this.gameState.addGameStateListener(this::reactToStateChange);
         //loads the demo level
         if (startUpState == "demo") {
             this.loadLevel("demo", 1);
@@ -128,6 +134,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //////////////
 
 //Getters
+    @Override
+    public Screen getScreen() {
+        return this.screen;
+    }
+
     @Override
     public ArrayList<ViewableBox> getInteractions() {
         ArrayList<ViewableBox> viewableInteractions = new ArrayList<>();
@@ -251,7 +262,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     public void hitCharactersInBox(HitBox hit, boolean actorIsGood, int strength) {
         this.hitList.add(hit);
         if (this.player.overlapsWith(hit)) {
-            this.player.takeHit(actorIsGood, strength);
+            if (this.player.takeHit(actorIsGood, strength)) {
+                this.gameState.setGameState(GameState.GAME_OVER);
+            }
         }
         for (int i = this.npcList.size() - 1; i >= 0; i--) {
             NPC npc = this.npcList.get(i);
@@ -263,6 +276,12 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
                 }
             }      
         }
+    }
+
+    public void reactToStateChange(GameState newState) {
+        if (newState == GameState.MAIN_MENU) {
+            this.screen = this.screenLoader.getScreen("mainmenu");
+        } 
     }
     
 

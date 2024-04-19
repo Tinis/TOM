@@ -7,6 +7,7 @@ import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.screen.Screen;
 
 public interface ViewableModel {
 
@@ -69,4 +70,10 @@ public interface ViewableModel {
      * @return the position of the mouse currently as a coordinate object. 
      */
     public Coordinate getMousePos();
+
+    /**
+     * 
+     * @return the current screen object. 
+     */
+    public Screen getScreen();
 }

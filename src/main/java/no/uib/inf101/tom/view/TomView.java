@@ -1,9 +1,11 @@
 package no.uib.inf101.tom.view;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
@@ -33,16 +35,24 @@ public class TomView extends JPanel {
         this.model = model;
 
         this.imageFinder = new ImageFinder();
-
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
-        drawLevel(g2);
-        drawCharacters(g2);
+        if (this.model.getGameState() == GameState.ACTIVE_GAME || 
+        this.model.getGameState() == GameState.PAUSED_GAME ||
+        this.model.getGameState() == GameState.CUT_SCENE) {
+            drawLevel(g2);
+            drawCharacters(g2);
+        } 
+        if (this.model.getGameState() == GameState.GAME_OVER ||
+        this.model.getGameState() == GameState.MAIN_MENU ||
+        this.model.getGameState() == GameState.PAUSED_GAME) {
+            drawScreen(g2);
+        }
+        
         if (this.model.isDebugging()) {
             drawCollisionBoxes(g2);
             drawInteractionBoxes(g2);
@@ -159,8 +169,17 @@ public class TomView extends JPanel {
 ////////////
     private void drawLevel(Graphics2D g2) {
         String levelName = this.model.getLevelName();
-        BufferedImage levelImage = this.imageFinder.findImage(levelName);
+        BufferedImage levelImage = this.imageFinder.findLevel(levelName);
         drawImageAtCoords(g2, levelImage, new Coordinate(0, 0));
+    }
+
+
+/////////////
+//SCREENSTUFF
+/////////////
+    private void drawScreen(Graphics2D g2) {
+        BufferedImage screen = this.imageFinder.findScreen(this.model.getScreen());
+        drawImageAtPoint(g2, screen, Config.SCREEN_CENTER);
     }
 
 
@@ -174,6 +193,14 @@ public class TomView extends JPanel {
 
     private void drawImageAtCoords(Graphics2D g2, BufferedImage image, Coordinate coords) {
         Point2D point = model.getCoordinateConverter().pointFromCoordinate(coords);
+        if (image != null) {
+            Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
+        } else {
+            Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
+        }
+    }
+
+    private void drawImageAtPoint(Graphics2D g2, BufferedImage image, Point2D point) {
         if (image != null) {
             Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
         } else {

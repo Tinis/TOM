@@ -61,7 +61,7 @@ public class Config {
 
 
 //-----MODEL RELATED
-    public static final String START_UP_STATE = "demo"; //options: "demo", "mainmenu"
+    public static final String START_UP_STATE = "main"; //options: "demo", "main"
 
     //CHARACTER PROPERTIES
     public static final double CHILD_CHARACTER_HEIGHT = 16;

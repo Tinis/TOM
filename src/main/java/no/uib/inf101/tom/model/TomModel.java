@@ -44,24 +44,36 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
 
     public TomModel(String startUpState) {
-        //extra stuff
-        this.debugMode = true;
-        this.mousePos = new Coordinate(0, 0); //placeholder value. Will probably not cause bugs.
+        //placeholder values. Will probably not cause bugs.
         this.hitList = new ArrayList<>();
-
+        this.buildingList = new ArrayList<>();
+        this.interactionList = new ArrayList<>();
+        this.npcList = new ArrayList<>();
+        this.mousePos = new Coordinate(0, 0);
+        this.player = new Player(mousePos);
+        this.coordinateConverter = new CoordinatePointConverter(
+            new Coordinate(0, 0), this.player);
+        
+        //Initial values
+        this.debugMode = true;
         this.levelLoader = new LevelLoader();
+        this.screenLoader = new ScreenLoader();
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         this.gameState.addGameStateListener(this::reactToStateChange);
-        //loads the demo level
+        
+        //Starts up
         if (startUpState == "demo") {
             this.loadLevel("demo", 1);
+        } else if (startUpState == "main") {
+            this.gameState.setGameState(GameState.MAIN_MENU);
+            this.debugMode = false;
         }
 
     }
 
-///////////////
+//////////////////////////
 //LEVEL-RELATED
-///////////////
+//////////////////////////
     /**
      * load a level onto the model
      * @param levelName the name of the level to load. 
@@ -114,18 +126,21 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         }
     }
 
+
 ////////////////
 //UPDATE-RELATED
 ////////////////
 
     @Override
     public void update() {
-        if (this.hitList.size() > 10) {
-            this.hitList.remove(0);
-        }
-        this.player.updateCharacter(this);
-        for (NPC npc : npcList) {
-            npc.updateCharacter(this);
+        if (this.gameState.getGameState() == GameState.ACTIVE_GAME) {
+            if (this.hitList.size() > 10) {
+                this.hitList.remove(0);
+            }
+            this.player.updateCharacter(this);
+            for (NPC npc : npcList) {
+                npc.updateCharacter(this);
+            }
         }
     }
 

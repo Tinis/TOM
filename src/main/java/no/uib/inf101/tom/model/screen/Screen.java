@@ -12,6 +12,7 @@ public class Screen {
     private ArrayList<Button> buttonList;
 
     public Screen(String name) {
+        this.name = name;
         this.buttonList = new ArrayList<>();
     }
 /////////

@@ -9,6 +9,7 @@ public class ScreenLoader {
     public ScreenLoader() {
         this.screens = new HashMap<>();
         this.screens.put("mainmenu", mainMenu());
+        this.screens.put("gameover", gameOver());
     }
 
     public Screen getScreen(String name) {

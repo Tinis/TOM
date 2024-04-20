@@ -13,20 +13,28 @@ import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.screen.Button;
+import no.uib.inf101.tom.model.screen.Screen;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class TomView extends JPanel {
 
     private ViewableModel model;
     private ImageFinder imageFinder;
 
+    private Font buttonFont;
 
-    public TomView(ViewableModel model) {
+
+    public TomView(ViewableModel model) throws FontFormatException, IOException {
         this.setBackground(Config.BACKGROUND_COLOR);
         this.setFocusable(true);
         this.setPreferredSize(Config.WINDOW_DIMENSION);
@@ -35,6 +43,12 @@ public class TomView extends JPanel {
         this.model = model;
 
         this.imageFinder = new ImageFinder();
+
+        //I have to initialize the font here so that i can catch the exception. 
+        InputStream fontStream = 
+            ClassLoader.getSystemClassLoader().getResourceAsStream(Config.BUTTON_FONT_PATH);
+        this.buttonFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(
+            Config.BUTTON_FONT_SIZE);
     }
 
     @Override
@@ -178,8 +192,24 @@ public class TomView extends JPanel {
 //SCREENSTUFF
 /////////////
     private void drawScreen(Graphics2D g2) {
-        BufferedImage screen = this.imageFinder.findScreen(this.model.getScreen());
-        drawImageAtPoint(g2, screen, Config.SCREEN_CENTER);
+        Screen screen = this.model.getScreen();
+        //draw the screen image
+        BufferedImage screenImage = this.imageFinder.findScreen(screen);
+        drawImageAtPoint(g2, screenImage, Config.SCREEN_CENTER);
+        //draw the buttons
+        for (Button button : screen.getButtons()) {
+            drawButton(g2, button);
+        }
+    }
+
+    private void drawButton(Graphics2D g2, Button button) {
+        BufferedImage buttonImage = this.imageFinder.findOther("button");
+        drawImageAtCoords(g2, buttonImage, button.getCenter());
+        g2.setPaint(Config.BUTTON_TEXT_COLOR);
+        g2.setFont(buttonFont);
+        Inf101Graphics.drawCenteredString(g2, button.getName(), 
+            button.getShape(this.model.getCoordinateConverter()));
+        
     }
 
 

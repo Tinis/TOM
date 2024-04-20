@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
+import java.io.File;
 
 import no.uib.inf101.tom.model.Direction;
 
@@ -43,9 +44,16 @@ public class Config {
     public static final Color HIT_DEBUG_COLOR = new Color(255, 0, 0, 128);
     public static final Color COLLISION_DEBUG_COLOR = new Color(0, 0, 255, 128);
     public static final Color INTERACTION_DEBUG_COLOR = new Color(255, 0, 128, 128);
+    public static final Color BUTTON_TEXT_COLOR = Color.WHITE;
 
     //FONTS
     public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
+    public static final String BUTTON_FONT_PATH = "fonts/CurvyPixelText.ttf";
+    public static final Float BUTTON_FONT_SIZE = 14f;
+
+    //OTHER
+    public static final double BUTTON_WIDTH = 87;
+    public static final double BUTTON_HEIGHT = 30;
 
     
 //-----CONTROLLER RELATED

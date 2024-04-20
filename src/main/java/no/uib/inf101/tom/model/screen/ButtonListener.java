@@ -1,6 +1,6 @@
 package no.uib.inf101.tom.model.screen;
 
-public interface ButtonConsequence {
+public interface ButtonListener {
 
     /**
      * executes the consequence of the button.

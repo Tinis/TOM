@@ -57,10 +57,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         //Initial values
         this.debugMode = true;
         this.levelLoader = new LevelLoader();
-        this.screenLoader = new ScreenLoader();
+        this.screenLoader = new ScreenLoader(this);
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         this.gameState.addGameStateListener(this::reactToStateChange);
-        
+
         //Starts up
         if (startUpState == "demo") {
             this.loadLevel("demo", 1);

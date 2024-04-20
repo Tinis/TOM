@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObservableGameState {
-    //Struktur for klassen tatt frå kursnotatene:
+    //Struktur for klassen er frå kursnotatene:
     //https://inf101v23.stromme.me/notat/observer/
     private GameState gameState;
     private List<GameStateListener> listeners;

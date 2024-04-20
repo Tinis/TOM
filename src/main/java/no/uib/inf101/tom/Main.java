@@ -1,5 +1,8 @@
 package no.uib.inf101.tom;
 
+import java.awt.FontFormatException;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 
 import no.uib.inf101.tom.controller.TomController;
@@ -12,7 +15,8 @@ import no.uib.inf101.tom.view.TomView;
  */
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws FontFormatException, IOException {
+    System. getProperty("user. dir");
 
     //Initializing model, view, controller and gameloop
     TomModel model = new TomModel(Config.START_UP_STATE);

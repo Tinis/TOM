@@ -20,6 +20,7 @@ import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.level.Level;
 import no.uib.inf101.tom.model.level.LevelLoader;
+import no.uib.inf101.tom.model.screen.Button;
 import no.uib.inf101.tom.model.screen.Screen;
 import no.uib.inf101.tom.model.screen.ScreenLoader;
 import no.uib.inf101.tom.view.ViewableModel;
@@ -254,8 +255,16 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public void interact(Point2D point) {
         Coordinate click = this.coordinateConverter.coordinateFromPoint(point);
-        for (Interaction interaction : this.interactionList) {
-            interaction.checkIfClicked(click);
+        if (this.gameState.getGameState() == GameState.ACTIVE_GAME) {
+            for (Interaction interaction : this.interactionList) {
+                interaction.checkIfClicked(click);
+            }
+        } else if (this.gameState.getGameState() == GameState.MAIN_MENU ||
+        this.gameState.getGameState() == GameState.PAUSED_GAME ||
+        this.gameState.getGameState() == GameState.GAME_OVER) {
+            for (Button button : this.screen.getButtons()) {
+                button.checkIfClicked(click);
+            }
         }
     }
 

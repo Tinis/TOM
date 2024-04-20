@@ -1,9 +1,7 @@
 Todo:
 Priority HIgh:
- - make different gamestates: 
  - make gameover screen (can be an image over the whole screen for now, 
  - can add a leading in dying cutscene later). ye. and make it so that you can quit or restart at the last level entry. 
- - make buttons. ScreenClass? A screen only has buttons and screens.
  - make the menuScreen
  - make the pauseScreen (can be an image over the whole screen forever). 
 

@@ -41,6 +41,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private CoordinatePointConverter coordinateConverter;
     private ObservableGameState gameState;    
 
+    private String lastLevelLoaded;
+    private int lastEntrance;
+
     private Coordinate mousePos;
 
 
@@ -73,14 +76,22 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     }
 
 //////////////////////////
-//LEVEL-RELATED
+//LEVEL-RELATED and SCREEN
 //////////////////////////
+    public void loadScreen(String screenName) {
+        this.coordinateConverter = new CoordinatePointConverter(new Coordinate(0, 0), this.player);
+        this.coordinateConverter.stopFollowingCharacter();
+        this.screen = this.screenLoader.getScreen(screenName);
+    }
+
     /**
      * load a level onto the model
      * @param levelName the name of the level to load. 
      * @param entrance the number of the entrance that the player enters from (often 1). 
      */
     public void loadLevel(String levelName, int entrance) {
+        this.lastLevelLoaded = levelName;
+        this.lastEntrance = entrance;
         writeLevel(this.levelName);
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
@@ -145,6 +156,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         }
     }
 
+    public void healPlayer() {
+        this.player.setHealthToFull();
+    }
+
 //////////////
 //VIEW-RELATED
 //////////////
@@ -153,6 +168,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public Screen getScreen() {
         return this.screen;
+    }
+
+    public String getLastLevelLoaded() {
+        return lastLevelLoaded;
+    }
+
+    public int getLastEntrance() {
+        return lastEntrance;
     }
 
     @Override
@@ -304,8 +327,12 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     public void reactToStateChange(GameState newState) {
         if (newState == GameState.MAIN_MENU) {
-            this.screen = this.screenLoader.getScreen("mainmenu");
-        } 
+            loadScreen("mainmenu");
+        } else if (newState == GameState.GAME_OVER) {
+            this.levelLoader = new LevelLoader();
+            this.levelName = null;
+            loadScreen("gameover");
+        }
     }
     
 

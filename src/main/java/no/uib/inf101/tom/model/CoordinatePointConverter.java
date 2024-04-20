@@ -22,7 +22,11 @@ public class CoordinatePointConverter {
     public void reactToGameState(GameState newGameState) {
         if (newGameState.equals(GameState.ACTIVE_GAME)) {
             setPlayerInCenter();
-        }
+        } 
+    }
+
+    public void stopFollowingCharacter() {
+        this.isFollowingCharacter = false;
     }
 
     public void setPlayerInCenter() {

@@ -18,6 +18,7 @@ public class Config {
     public static final int ACTUAL_TILE_SIZE = PICTURE_TILE_SIZE * SCALING; //48
     public static final double SMALL_MARGIN = 10;
     public static final double MEDIUM_MARGIN = 50;
+    public static final double BUTTON_MARGIN = 35;
     
     //GAMELOOP CONFIGURATIONS
     public static final int FPS = 60;
@@ -83,7 +84,7 @@ public class Config {
     public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;
     public static final int STANDARD_MAX_HEALTH = 100; 
-    public static final int STANDARD_STRENGTH = 10;
+    public static final int STANDARD_STRENGTH = 100; //should be 10
     public static final int PLAYER_STRENGTH = 35;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;

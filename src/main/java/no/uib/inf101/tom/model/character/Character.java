@@ -64,6 +64,9 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 /////////////////////
 //Setters and getters
 /////////////////////
+    public void setHealthToFull() {
+        this.health = this.maxHealth;
+    }
 
     public void setPos(Coordinate pos) {
         this.pos = pos;

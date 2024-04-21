@@ -3,7 +3,6 @@ package no.uib.inf101.tom.model;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
@@ -115,7 +114,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
         //sets the gamestate
-        this.gameState.addGameStateListener(this.coordinateConverter::reactToGameState);
         this.gameState.setGameState(level.getGameState());
     }
 
@@ -262,6 +260,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 ////////////////////
 //CONTROLLER-RELATED
 ////////////////////
+    @Override
+    public void pause() {
+        if (getGameState() == GameState.ACTIVE_GAME) {
+            this.gameState.setGameState(GameState.PAUSED_GAME);
+        } else if (getGameState() == GameState.PAUSED_GAME) {
+            this.gameState.setGameState(GameState.ACTIVE_GAME);
+        }
+    }
 
     @Override
     public void mouseIsAt(Point2D point) {
@@ -332,8 +338,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             this.levelLoader = new LevelLoader();
             this.levelName = null;
             loadScreen("gameover");
+        } else if (newState == GameState.PAUSED_GAME) {
+            loadScreen("pause");
+        } else if (newState == GameState.ACTIVE_GAME) {
+            this.coordinateConverter.setPlayerInCenter();
         }
     }
     
+    public void setGameState(GameState nextState) {
+        this.gameState.setGameState(nextState);
+    }
 
 }

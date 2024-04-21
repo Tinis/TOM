@@ -29,11 +29,14 @@ public class KeyHandler implements KeyListener{
         } else if (code == Config.DEBUG_KEY) {
             this.model.toggleDebug();
         }
-        //QWER (ABILITIES)
+        //QWER (ABILITIES and stuff that only works during an active game (the filter is in the model))
         if (code == Config.PUNCH_KEY) {
             this.model.sendAction(new Punch());
-        } else if (code == Config.DASK_KEY) {
+        } else if (code == Config.DASH_KEY) {
             this.model.sendAction(new Dash());
+        }
+        if (code == Config.PAUSE_KEY) {
+            this.model.pause();
         }
 
     }

@@ -25,7 +25,8 @@ Priority Medium:
  - make some sort of cutScene ai that makes the characters do a cutScene.
  - make more fighting abilities (block dash heavy (or ranged))
  - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
- - make the story longer. 
+ - make the story longer.
+ - fastlege banke an for medisin 
 
 
 Priority Low:
@@ -34,3 +35,8 @@ Priority Low:
  - make the player animations better. 
  - make buttons highlightable.
  - make more items?
+
+
+debugging learning:
+ - i may have two coordinate point converters at times. 
+    meaning that the listener should be the model so that it always changes the actual active one.

@@ -64,8 +64,10 @@ public class Config {
 
     public static final int PUNCH_KEY = KeyEvent.VK_Q;
     public static final int BLOCK_KEY = KeyEvent.VK_W;
-    public static final int DASK_KEY = KeyEvent.VK_E;
+    public static final int DASH_KEY = KeyEvent.VK_E;
     public static final int HEAVY_KEY = KeyEvent.VK_R;
+
+    public static final int PAUSE_KEY = KeyEvent.VK_ESCAPE;
 
 
 
@@ -84,7 +86,7 @@ public class Config {
     public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;
     public static final int STANDARD_MAX_HEALTH = 100; 
-    public static final int STANDARD_STRENGTH = 100; //should be 10
+    public static final int STANDARD_STRENGTH = 0; //should be 10
     public static final int PLAYER_STRENGTH = 35;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;

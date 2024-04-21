@@ -37,4 +37,9 @@ public interface ControllableModel {
      * @param point the point where the mouse is at. 
      */
     public void mouseIsAt(Point2D point);
+
+    /**
+     * pauses (and unpauses) the game by setting the gameState to PAUSED_GAME.
+     */
+    public void pause();
 }

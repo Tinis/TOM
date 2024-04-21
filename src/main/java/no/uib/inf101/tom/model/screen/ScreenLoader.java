@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.TomModel;
 
 public class ScreenLoader {
@@ -17,6 +18,7 @@ public class ScreenLoader {
         this.screens.put("mainmenu", mainMenu());
         this.screens.put("gameover", gameOver());
         this.screens.put("howtoplay", howToPlay());
+        this.screens.put("pause", pause());
 
         this.model = model;
     }
@@ -58,6 +60,15 @@ public class ScreenLoader {
         return howtoplay;
     }
 
+    private Screen pause() {
+        Screen pause = new Screen("pause");
+        Button continueButton = new Button(new Coordinate(0, 0),
+            this::continueGame, "Continue");
+        pause.putButton(continueButton);
+        pause.putButton(new Button(new Coordinate(-150, 90), this::loadMainMenu, "Back"));
+        return pause;
+    }
+
 //////////////////
 //BUTTON FUNCTIONS
 //////////////////
@@ -68,7 +79,7 @@ public class ScreenLoader {
 
     //loading screens
     private void loadMainMenu() {
-        this.model.loadScreen("mainmenu");
+        this.model.setGameState(GameState.MAIN_MENU);
     }
 
     private void loadHowToPlay() {
@@ -80,6 +91,11 @@ public class ScreenLoader {
         this.model.healPlayer();
         this.model.loadLevel(this.model.getLastLevelLoaded(), this.model.getLastEntrance());
     }
+
+    private void continueGame() {
+        this.model.setGameState(GameState.ACTIVE_GAME);
+    }
+
     private void quit() {
         System.exit(0);
     }

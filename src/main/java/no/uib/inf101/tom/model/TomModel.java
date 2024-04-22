@@ -95,7 +95,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         Level level = this.levelLoader.getLevel(levelName);
         //loads characters
         if (this.player == null) {
-            System.out.println("player was null");
             this.player = new Player(level.getPlayer().getBox().getCenter());
         } else {
             this.player.setPos(level.getEnteredCoordinate(entrance));

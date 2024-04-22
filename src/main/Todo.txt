@@ -21,6 +21,8 @@ Priority Medium:
  - make characters blink when they get hit. 
  - make some interactions get highlighted when hovered.
  - make it so that i can make the entire world a sprite. 
+ this can be done in the view because it doesn't change based on anything.
+ (make a computerscreen in the room that has a screwy screen)
  - make some sort of cutScene ai that makes the characters do a cutScene.
  - make more fighting abilities (block dash heavy (or ranged))
  - make cooldowns for abilities. maybe have a list of abilites on cooldown. 

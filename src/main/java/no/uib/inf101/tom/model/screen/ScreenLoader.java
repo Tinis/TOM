@@ -33,7 +33,7 @@ public class ScreenLoader {
     private Screen mainMenu() {
         Screen mainmenu = new Screen("mainmenu");
         Button startButton = new Button(new Coordinate(0, 0),
-            this::loadBedroom1, "Start");
+            this::loadIntro, "Start");
         mainmenu.putButton(startButton);
         Button howToPlayButton = new Button(new Coordinate(0, Config.BUTTON_MARGIN),
             this::loadHowToPlay, "How To Play");
@@ -72,9 +72,13 @@ public class ScreenLoader {
 //////////////////
 //BUTTON FUNCTIONS
 //////////////////
-    //loading levels
+    //loading levels and cutscenes
     private void loadDemoLevel() {
         this.model.loadLevel("demo", 1);
+    }
+
+    private void loadIntro() {
+        this.model.loadCutscene("intro");
     }
 
     private void loadBedroom1() {

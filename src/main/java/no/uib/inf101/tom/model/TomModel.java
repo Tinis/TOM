@@ -17,6 +17,8 @@ import no.uib.inf101.tom.model.character.CharacterViewableModel;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.cutscene.Cutscene;
+import no.uib.inf101.tom.model.cutscene.CutsceneLoader;
 import no.uib.inf101.tom.model.level.Level;
 import no.uib.inf101.tom.model.level.LevelLoader;
 import no.uib.inf101.tom.model.screen.Button;
@@ -27,6 +29,9 @@ import no.uib.inf101.tom.view.ViewableModel;
 public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel, CharacterViewableModel{
     private LevelLoader levelLoader;
     private String levelName;
+
+    private CutsceneLoader cutsceneLoader;
+    private Cutscene cutscene;
 
     private ScreenLoader screenLoader;
     private Screen screen;
@@ -60,6 +65,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         this.debugMode = true;
         this.levelLoader = new LevelLoader();
         this.screenLoader = new ScreenLoader(this);
+        this.cutsceneLoader = new CutsceneLoader(this);
         this.gameState = new ObservableGameState(GameState.ACTIVE_GAME);
         this.gameState.addGameStateListener(this::reactToStateChange);
 
@@ -74,8 +80,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     }
 
 //////////////////////////
-//LEVEL-RELATED and SCREEN
+//LOADING-RELATED
 //////////////////////////
+    public void loadCutscene(String cutsceneName) {
+        this.gameState.setGameState(GameState.CUT_SCENE);
+        this.cutscene = this.cutsceneLoader.getCutscene(cutsceneName);
+    }
+
     public void loadScreen(String screenName) {
         this.coordinateConverter = new CoordinatePointConverter(new Coordinate(0, 0), this.player);
         this.coordinateConverter.stopFollowingCharacter();
@@ -150,6 +161,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             for (NPC npc : npcList) {
                 npc.updateCharacter(this);
             }
+        } else if (this.gameState.getGameState() == GameState.CUT_SCENE) {
+            this.cutscene.updateFrameCount();
         }
     }
 

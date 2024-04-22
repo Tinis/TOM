@@ -13,3 +13,8 @@ the state count begins at 1.
 For example "tom_south_idle_1"
 (remember "tom_south_idle_0" is not supposed to exist
  even though the action states start counting at 0 [meaning the idle has a 0-state].)
+
+Cutscene images should be named with this format:
+"name{number}" 
+name is the name of the cutscene. 
+{number} is to be replaced with whatever number frame this is in the cutscene starts count at 1. 

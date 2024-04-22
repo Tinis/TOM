@@ -12,6 +12,7 @@ public class ImageFinder {
     private HashMap<String, BufferedImage> screenImages;
     private HashMap<String, BufferedImage> otherImages;
     private HashMap<String, BufferedImage> spriteImages;
+    private HashMap<String, BufferedImage> cutsceneImages;
 
 
     public ImageFinder() {
@@ -31,6 +32,10 @@ public class ImageFinder {
         this.spriteImages = new HashMap<>();
         directory = new File("src/main/resources/sprites");
         loadHashMapFromDirectory(this.spriteImages, directory);
+        //Cutscenes
+        this.cutsceneImages = new HashMap<>();
+        directory = new File("src/main/resources/cutscenes");
+        loadHashMapFromDirectory(this.cutsceneImages, directory);
     }
 
     private void loadHashMapFromDirectory(HashMap<String, BufferedImage> hashMap, File directory) {
@@ -82,4 +87,7 @@ public class ImageFinder {
             name, facing, action, actionState);
         return this.spriteImages.get(fileName);
     }
+
+    // public BufferedImage findCutsceneImage(Cutscene cutscene)
+    // TODO: finish this method. 
 }

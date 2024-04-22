@@ -36,7 +36,7 @@ public class Config {
     public static final Dimension WINDOW_DIMENSION = new Dimension(1280, 720);
     public static final boolean WINDOW_RESIZABLE = false; //should be false (has option for debugpurposes)
     public static final boolean WINDOW_FULLSCREEN = true; //should be true
-    public static final boolean DOUBLE_BUFFERED = true;
+    public static final boolean DOUBLE_BUFFERED = true; //should be true (reduces lag)
 
     //COLORS
     public static final Color BACKGROUND_COLOR = Color.BLACK;
@@ -100,4 +100,6 @@ public class Config {
 
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
+    public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12
+    public static final boolean DISABLE_CUTSCENES = false; //sets cutscene stateAmount to zero (meaning the cutscenes are skipped).
 }

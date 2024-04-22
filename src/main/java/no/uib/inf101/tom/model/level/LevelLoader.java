@@ -14,6 +14,8 @@ public class LevelLoader {
         this.levels = new HashMap<>();
         this.levels.put("demo", demo());
         this.levels.put("demo2", demo2());
+        this.levels.put("bedroom1", bedroom1());
+        this.levels.put("livingroom1", livingroom1());
     }
 
     public Level getLevel(String name) {
@@ -40,6 +42,19 @@ public class LevelLoader {
         demo2.putNightclubGuard(new Coordinate(0, -60));
         demo2.putDoor(new Coordinate(0, 0), "demo", 2);
         return demo2; 
+    }
+
+    private Level bedroom1() {
+        Level bedroom1 = new Level("bedroom1", new Player(new Coordinate(9, -32)));
+        
+        bedroom1.putBoundsRectangle(new Coordinate(-33.5, -48));
+        bedroom1.putDoor(new Coordinate(-25, 40), "livingroom1", 1);
+        return bedroom1;
+    }
+
+    private Level livingroom1() {
+        Level livingroom1 = new Level("livingroom1", new Coordinate(0, 0));
+        return livingroom1;
     }
 
     private Level nightclubBossFight() {

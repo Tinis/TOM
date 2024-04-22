@@ -7,6 +7,8 @@ import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.Building;
+import no.uib.inf101.tom.model.box.CollisionBox;
+import no.uib.inf101.tom.model.box.Wall;
 import no.uib.inf101.tom.model.box.interactions.Door;
 import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
@@ -18,7 +20,7 @@ public class Level {
     private String name;
     private Player player;
     private ArrayList<NPC> npcList;
-    private ArrayList<Building> buildingList;
+    private ArrayList<CollisionBox> buildingList;
     private ArrayList<Interaction> interactionList;
     private HashMap<Integer, Coordinate> enctrances;
     private GameState state;
@@ -73,7 +75,7 @@ public class Level {
      * 
      * @return the list of buildings for this level. 
      */
-    public ArrayList<Building> getBuildings() {
+    public ArrayList<CollisionBox> getBuildings() {
         return this.buildingList;
     }
 
@@ -103,9 +105,44 @@ public class Level {
         //NPC nightclubBocc = new NPC(pos, new ) //Basic shooting ai
     }
 
-    //BUILDINGS
+    //COLLISIONBOXES
     public void putBuilding(Building building) {
         this.buildingList.add(building);
+    }
+    
+    /**
+     * puts four walls around this rectangle, in the buildlingslist of the level. 
+     * this will ensure that the player cannot walk out of bounds. 
+     * @param topLeft
+     * @param bottomRight
+     */
+    public void putBoundsRectangle(Coordinate topLeft, Coordinate bottomRight) {
+        Coordinate topRight = new Coordinate(bottomRight.x(), topLeft.y());
+        Coordinate bottomLeft = new Coordinate(topLeft.x(), bottomRight.y());
+        Wall topWall = new Wall(topLeft, topRight);
+        Wall rightWall = new Wall(topRight, bottomRight);
+        Wall bottomWall = new Wall(bottomRight, bottomLeft);
+        Wall leftWall = new Wall(bottomLeft, topLeft);
+        this.buildingList.add(topWall);
+        this.buildingList.add(rightWall);
+        this.buildingList.add(bottomWall);
+        this.buildingList.add(leftWall);
+    }
+
+    /**
+     * puts four walls around this rectangle, in the buildlingslist of the level. 
+     * this will ensure that the player cannot walk out of bounds. 
+     * If you only give this methods one coordinate, 
+     * the method assumes that the bottomright is at the opposite point from the center.
+     * @param topLeft
+     */
+    public void putBoundsRectangle(Coordinate topLeft) {
+        Coordinate bottomRight = new Coordinate(-topLeft.x(), -topLeft.y());
+        putBoundsRectangle(topLeft, bottomRight);
+    }
+
+    public void putWall(Wall wall) {
+        this.buildingList.add(wall);
     }
 
     /**

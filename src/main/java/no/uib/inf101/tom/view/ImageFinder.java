@@ -4,12 +4,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 
+import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.screen.Screen;
 
 public class ImageFinder {
     private HashMap<String, BufferedImage> levelImages;
     private HashMap<String, BufferedImage> screenImages;
     private HashMap<String, BufferedImage> otherImages;
+    private HashMap<String, BufferedImage> spriteImages;
+
 
     public ImageFinder() {
         //Levels
@@ -24,6 +27,10 @@ public class ImageFinder {
         this.otherImages = new HashMap<>();
         directory = new File("src/main/resources/other");
         loadHashMapFromDirectory(this.otherImages, directory);
+        //Sprites
+        this.spriteImages = new HashMap<>();
+        directory = new File("src/main/resources/sprites");
+        loadHashMapFromDirectory(this.spriteImages, directory);
     }
 
     private void loadHashMapFromDirectory(HashMap<String, BufferedImage> hashMap, File directory) {
@@ -64,5 +71,15 @@ public class ImageFinder {
      */
     public BufferedImage findOther(String imageName) {
         return this.otherImages.get(imageName);
+    }
+
+    public BufferedImage findSprite(ViewableCharacter character) {
+        String name = character.getBox().getName();
+        String facing = character.getFacing().toString().toLowerCase();
+        String action = character.getViewableAction().getActionName();
+        int actionState = character.getViewableAction().getActionState() + 1;
+        String fileName = String.format("%s_%s_%s_%s", 
+            name, facing, action, actionState);
+        return this.spriteImages.get(fileName);
     }
 }

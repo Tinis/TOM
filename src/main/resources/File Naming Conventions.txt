@@ -1,0 +1,15 @@
+All names are all lowercase with no spaces. 
+
+Level- screen- and other- images should have the
+same name as the corresponding objects in the program. 
+For example the level image corresponding to the level 
+"bedroom1" is called "bedroom1.png" 
+(the filetype doesn't really matter but i use .png).
+
+Sprite images (by which i mean frames of animations)
+should be named with this format:
+"character_facing_action_state"
+the state count begins at 1.
+For example "tom_south_idle_1"
+(remember "tom_south_idle_0" is not supposed to exist
+ even though the action states start counting at 0 [meaning the idle has a 0-state].)

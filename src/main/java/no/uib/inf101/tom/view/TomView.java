@@ -143,10 +143,12 @@ public class TomView extends JPanel {
     }
 
     private void drawCharacter(Graphics2D g2, ViewableCharacter character) {
+        ViewableBox box = character.getBox();
         //draw the actual sprite
+        BufferedImage sprite = this.imageFinder.findSprite(character);
+        drawImageAtCoords(g2, sprite, box.getCenter());
         //draw the debuginfo
         if (this.model.isDebugging()) {
-            ViewableBox box = character.getBox();
             //drawing the box
             drawDebugBox(g2, box);
             //drawing the name and commander name and good-value

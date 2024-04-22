@@ -1,18 +1,17 @@
 Todo:
 Priority HIgh:
- - make the pauseScreen (can be an image over the whole screen forever). 
+ - make cutscenes? (they can actually just be animations i make in aseprite using the charactersprites)
 
- - make cutscenes?
-
- - design a VERY short story
- - make some art and add some music (just kinda demo music rly)
  - implement the short story
+ - make some art and add some music (just kinda demo music rly)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
- - (make an ability where you can pull a feather out of the pillow and throw it on people 
- - (exactly like shooting))
+
 
 Priority Medium:
+ - make it so that characters stop walking action when they hit a wall. 
+ - (make an ability where you can pull a feather out of the pillow and throw it on people 
+ - (exactly like shooting))
  - fix dashing so that the new destination is set before the moving happens. 
  - implement good chapterselectionscreen.
  - make targetable property actually work. 

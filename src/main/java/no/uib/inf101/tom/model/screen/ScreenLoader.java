@@ -33,7 +33,7 @@ public class ScreenLoader {
     private Screen mainMenu() {
         Screen mainmenu = new Screen("mainmenu");
         Button startButton = new Button(new Coordinate(0, 0),
-            this::loadDemoLevel, "Start");
+            this::loadBedroom1, "Start");
         mainmenu.putButton(startButton);
         Button howToPlayButton = new Button(new Coordinate(0, Config.BUTTON_MARGIN),
             this::loadHowToPlay, "How To Play");
@@ -65,7 +65,7 @@ public class ScreenLoader {
         Button continueButton = new Button(new Coordinate(0, 0),
             this::continueGame, "Continue");
         pause.putButton(continueButton);
-        pause.putButton(new Button(new Coordinate(-150, 90), this::loadMainMenu, "Back"));
+        pause.putButton(new Button(new Coordinate(-150, 90), this::loadMainMenu, "Main Menu"));
         return pause;
     }
 
@@ -75,6 +75,10 @@ public class ScreenLoader {
     //loading levels
     private void loadDemoLevel() {
         this.model.loadLevel("demo", 1);
+    }
+
+    private void loadBedroom1() {
+        this.model.loadLevel("bedroom1", 1);
     }
 
     //loading screens

@@ -7,7 +7,7 @@ import no.uib.inf101.tom.model.character.ai.AICommander;
 import no.uib.inf101.tom.model.character.ai.NullAI;
 
 public class NPC extends Character{
-    AICommander ai;
+    private AICommander ai;
 
     public NPC(Coordinate pos, AICommander ai, boolean isGood, String name) {
         super(pos, Config.STANDARD_CHARACTER_WIDTH, Config.STANDARD_CHARACTER_HEIGHT);
@@ -16,6 +16,7 @@ public class NPC extends Character{
         this.good = isGood;
         this.name = name;
     }
+    
     public NPC(Coordinate pos, AICommander ai, boolean isGood) {
         this(pos, ai, isGood, "Some NPC");
     }

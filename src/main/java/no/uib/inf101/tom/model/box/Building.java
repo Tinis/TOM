@@ -5,6 +5,7 @@ import no.uib.inf101.tom.model.PlaneVector;
 
 /**
  * A building. Does not need to contain drawing info. 
+ * (the reason i have a class for building and wall is to have more constructors with the same types). 
  * The pixelart drawing will be part of the levelImage. 
  */
 public class Building extends CollisionBox{

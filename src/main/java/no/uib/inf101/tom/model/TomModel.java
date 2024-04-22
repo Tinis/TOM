@@ -34,7 +34,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private Player player;
     private ArrayList<NPC> npcList;
     private ArrayList<HitBox> hitList;
-    private ArrayList<Building> buildingList;
+    private ArrayList<CollisionBox> buildingList;
     private ArrayList<Interaction> interactionList;
     private boolean debugMode;
     private CoordinatePointConverter coordinateConverter;
@@ -53,7 +53,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         this.interactionList = new ArrayList<>();
         this.npcList = new ArrayList<>();
         this.mousePos = new Coordinate(0, 0);
-        this.player = new Player(mousePos);
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
         
@@ -96,7 +95,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         Level level = this.levelLoader.getLevel(levelName);
         //loads characters
         if (this.player == null) {
-            this.player = new Player(level.getEnteredCoordinate(entrance));
+            System.out.println("player was null");
+            this.player = new Player(level.getPlayer().getBox().getCenter());
         } else {
             this.player.setPos(level.getEnteredCoordinate(entrance));
         }

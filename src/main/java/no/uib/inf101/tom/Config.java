@@ -19,6 +19,7 @@ public class Config {
     public static final double SMALL_MARGIN = 10;
     public static final double MEDIUM_MARGIN = 50;
     public static final double BUTTON_MARGIN = 35;
+    public static final double WALL_THICKNESS = 1;
     
     //GAMELOOP CONFIGURATIONS
     public static final int FPS = 60;

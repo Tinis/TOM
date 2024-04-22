@@ -56,8 +56,7 @@ public class TomView extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (this.model.getGameState() == GameState.ACTIVE_GAME || 
-        this.model.getGameState() == GameState.PAUSED_GAME ||
-        this.model.getGameState() == GameState.CUT_SCENE) {
+        this.model.getGameState() == GameState.PAUSED_GAME) {
             drawLevel(g2);
             drawCharacters(g2);
         } 

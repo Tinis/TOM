@@ -8,7 +8,6 @@ import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
-import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
 import no.uib.inf101.tom.model.box.ViewableBox;
@@ -345,10 +344,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     public void reactToStateChange(GameState newState) {
         if (newState == GameState.MAIN_MENU) {
+            this.levelLoader = new LevelLoader();
+            this.levelName = null;
+            this.player = null;
             loadScreen("mainmenu");
         } else if (newState == GameState.GAME_OVER) {
             this.levelLoader = new LevelLoader();
             this.levelName = null;
+            this.player = null; //TODO: this line may lead to bugs
             loadScreen("gameover");
         } else if (newState == GameState.PAUSED_GAME) {
             loadScreen("pause");

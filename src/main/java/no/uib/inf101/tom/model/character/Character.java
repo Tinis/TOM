@@ -193,9 +193,6 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     public void overrideAction(Action action) {
         this.currentAction = action;
         this.currentAction.setActingCharacter(this);
-        if (action instanceof Walk) {
-            faceToward(this.destination);
-        }
     }
 
     public void updateAction(CharacterViewableModel viewModel) {

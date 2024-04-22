@@ -1,2 +1,4 @@
-# Empty Java Project
-This repository contains an empty Java project which you can use for anything :) 
+# TOM
+Helu :)
+
+Press f3 to open the debug screen and f9 to kill the program. 

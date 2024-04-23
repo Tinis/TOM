@@ -175,6 +175,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
 //Getters
     @Override
+    public Cutscene getCutscene() {
+        return this.cutscene;
+    }
+    @Override
     public Screen getScreen() {
         return this.screen;
     }

@@ -7,6 +7,7 @@ import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.cutscene.Cutscene;
 import no.uib.inf101.tom.model.screen.Screen;
 
 public interface ViewableModel {
@@ -76,4 +77,10 @@ public interface ViewableModel {
      * @return the current screen object. 
      */
     public Screen getScreen();
+
+    /**
+     * 
+     * @return the current cutscene object.
+     */
+    public Cutscene getCutscene();
 }

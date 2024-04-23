@@ -4,7 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 
+import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.cutscene.Cutscene;
 import no.uib.inf101.tom.model.screen.Screen;
 
 public class ImageFinder {
@@ -33,9 +35,11 @@ public class ImageFinder {
         directory = new File("src/main/resources/sprites");
         loadHashMapFromDirectory(this.spriteImages, directory);
         //Cutscenes
-        this.cutsceneImages = new HashMap<>();
-        directory = new File("src/main/resources/cutscenes");
-        loadHashMapFromDirectory(this.cutsceneImages, directory);
+        if (!Config.DISABLE_CUTSCENES) {
+            this.cutsceneImages = new HashMap<>();
+            directory = new File("src/main/resources/cutscenes");
+            loadHashMapFromDirectory(this.cutsceneImages, directory);
+        }
     }
 
     private void loadHashMapFromDirectory(HashMap<String, BufferedImage> hashMap, File directory) {
@@ -88,6 +92,7 @@ public class ImageFinder {
         return this.spriteImages.get(fileName);
     }
 
-    // public BufferedImage findCutsceneImage(Cutscene cutscene)
-    // TODO: finish this method. 
+    public BufferedImage findCutsceneImage(Cutscene cutscene) {
+        return this.cutsceneImages.get(cutscene.getImagename());
+    }
 }

@@ -5,11 +5,10 @@ import java.io.File;
 import no.uib.inf101.tom.Config;
 
 /**
- * cutscenes are series of images with varying framerate 
+ * cutscenes are series of images
  * (one cutscene may only have one constant framerate). 
  * They work in much the same way as an action 
  * and are organized in much the same way as a level/screen 
- * and are triggered by a gamestate-change.
  */
 public class Cutscene {
     private String name;
@@ -33,17 +32,29 @@ public class Cutscene {
         } else {
             File directory = new File("src/main/resources/cutscenes");
             for (String filename : directory.list()) {
-                int dotIndex = filename.indexOf(".");
-                String cutsceneName = filename.substring(0, dotIndex - 1);
+                int underscoreIndex = filename.indexOf("_");
+                String cutsceneName = filename.substring(0, underscoreIndex - 1);
                 if (cutsceneName.equals(this.name)) {
                     this.stateAmount ++;
+                    System.out.println(cutsceneName + " is " + this.name);
+                    System.out.println("!!!!!!!!!!!!!becuase filename:" + filename);
+                } else {
+                    System.out.println(cutsceneName + " is not " + this.name);
+                    System.out.println("becuase filename:" + filename);
                 }
             }
         }
+        String debugString = String.format("loaded cutscene %s with states: %s", 
+        this.name, this.stateAmount);
+        System.out.println(debugString);
     }
 
     public Cutscene(String name, CutsceneConsequence consequence) {
         this(name, Config.STANDARD_CUTSCENE_STATE_DURATION, consequence);
+    }
+
+    public String getImagename() {
+        return String.format("%s%s", this.name, this.currentState);
     }
 
     public void updateFrameCount() {

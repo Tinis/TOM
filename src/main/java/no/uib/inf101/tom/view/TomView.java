@@ -13,6 +13,7 @@ import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
+import no.uib.inf101.tom.model.cutscene.Cutscene;
 import no.uib.inf101.tom.model.screen.Button;
 import no.uib.inf101.tom.model.screen.Screen;
 
@@ -64,6 +65,9 @@ public class TomView extends JPanel {
         this.model.getGameState() == GameState.MAIN_MENU ||
         this.model.getGameState() == GameState.PAUSED_GAME) {
             drawScreen(g2);
+        }
+        if (this.model.getGameState() == GameState.CUT_SCENE) {
+            drawCutsceneImage(g2);
         }
         
         if (this.model.isDebugging()) {
@@ -211,6 +215,16 @@ public class TomView extends JPanel {
         Inf101Graphics.drawCenteredString(g2, button.getName(), 
             button.getShape(this.model.getCoordinateConverter()));
         
+    }
+
+////////////////
+//CUTSCENE STUFF
+////////////////
+    private void drawCutsceneImage(Graphics2D g2) {
+        Cutscene cutscene = this.model.getCutscene();
+        //draw the cutscene image
+        BufferedImage cutsceneImage = this.imageFinder.findCutsceneImage(cutscene);
+        drawImageAtPoint(g2, cutsceneImage, Config.SCREEN_CENTER);
     }
 
 

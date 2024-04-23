@@ -11,7 +11,9 @@ Priority Medium:
  - make it so that characters stop walking action when they hit a wall. 
  - (make an ability where you can pull a feather out of the pillow and throw it on people 
  - (exactly like shooting))
- - fix dashing so that the new destination is set before the moving happens. Also its completely broken and the speed gets fucked. 
+ - fix dashing so that the new destination is set before the moving happens. 
+ Also its completely broken and the speed gets fucked. 
+ if you dash whilst standing still, you lose speed. 
  - implement good chapterselectionscreen.
  - make targetable property actually work. 
  - make a red vignett when you have low health. 

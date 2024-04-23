@@ -100,6 +100,6 @@ public class Config {
 
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
-    public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12
+    public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
     public static final boolean DISABLE_CUTSCENES = false; //sets cutscene stateAmount to zero (meaning the cutscenes are skipped).
 }

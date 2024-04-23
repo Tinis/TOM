@@ -33,14 +33,10 @@ public class Cutscene {
             File directory = new File("src/main/resources/cutscenes");
             for (String filename : directory.list()) {
                 int underscoreIndex = filename.indexOf("_");
-                String cutsceneName = filename.substring(0, underscoreIndex - 1);
+                String cutsceneName = filename.substring(0, underscoreIndex);
                 if (cutsceneName.equals(this.name)) {
                     this.stateAmount ++;
-                    System.out.println(cutsceneName + " is " + this.name);
-                    System.out.println("!!!!!!!!!!!!!becuase filename:" + filename);
                 } else {
-                    System.out.println(cutsceneName + " is not " + this.name);
-                    System.out.println("becuase filename:" + filename);
                 }
             }
         }
@@ -54,7 +50,7 @@ public class Cutscene {
     }
 
     public String getImagename() {
-        return String.format("%s%s", this.name, this.currentState);
+        return String.format("%s_%s", this.name, this.currentState+1);
     }
 
     public void updateFrameCount() {

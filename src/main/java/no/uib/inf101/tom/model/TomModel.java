@@ -298,6 +298,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         } else if (getGameState() == GameState.PAUSED_GAME) {
             this.gameState.setGameState(GameState.ACTIVE_GAME);
         }
+        if (getGameState() == GameState.CUT_SCENE) {
+            this.cutscene.skip();
+        }
     }
 
     @Override

@@ -33,10 +33,15 @@ public class SoundPlayer {
                 playSound(sound);
             }
         }
+        ArrayList<String> toBeRemoved = new ArrayList<>(); 
+        //having this list^ avoids a ConcurrentModificationException.
         for (String playingSound : this.playingSounds) {
             if (!sounds.contains(playingSound)) {
-                stopSound(playingSound);
+                toBeRemoved.add(playingSound);
             }
+        }
+        for (String sound : toBeRemoved) {
+            stopSound(sound);
         }
     }
 

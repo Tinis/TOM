@@ -1,12 +1,9 @@
 Todo:
 Priority HIgh:
- - implement lucid dream over the cutscene
-
  - implement the short story
  - make some art and add some music (just kinda demo music rly)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
- - implement good chapterselectionscreen.
 
 
 Priority Medium:

@@ -80,8 +80,8 @@ public class Config {
     public static final double STANDARD_CHARACTER_HEIGHT = 32;
     public static final double STANDARD_CHARACTER_WIDTH = 16;
     //CHARACTER STATS
-    public static final double STANDARD_SPEED = 1.5;
-    public static final double PLAYER_SPEED = 1.8;
+    public static final double STANDARD_SPEED = 1.0;
+    public static final double PLAYER_SPEED = 1.4;
     public static final double DASH_SPEED_SCALER = 2;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
     public static final double STANDARD_PUNCH_REACH = 30;
@@ -101,8 +101,7 @@ public class Config {
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
     public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
-    public static final boolean DISABLE_CUTSCENES = true; 
+    public static final boolean DISABLE_CUTSCENES = false; 
     //sets cutscene stateAmount to zero (meaning the cutscenes are skipped). And doesn't load them. 
     public static final boolean DISABLE_SOUNDS = false;
-    //TODO: make the disable sounds variable disable sounds. 
 }

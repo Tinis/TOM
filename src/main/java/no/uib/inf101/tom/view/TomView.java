@@ -1,6 +1,5 @@
 package no.uib.inf101.tom.view;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import no.uib.inf101.tom.Config;

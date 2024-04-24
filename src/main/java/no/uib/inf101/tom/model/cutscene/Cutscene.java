@@ -65,11 +65,17 @@ public class Cutscene {
         return this.songName;
     }
 
+    /**
+     * updates the frame count of the cutscene. 
+     * This does not make the cutscene go on to the next actual cutscene frame. 
+     * Cutscenes will count frames 60 times per second (the games framerate)
+     *  but the cutscene will probably not be 60 times per second. 
+     * The cutscene therefore counts frames to know when to change to the next frame 
+     * (cutsceneframes are known within the class as states).
+     */
     public void updateFrameCount() {
         if (this.currentState >= this.stateAmount) {
-            this.consequence.executeConsequence();
-            this.currentState = 0;
-            this.frameCount = 0;
+            end();
             return;
         } 
         if (this.frameCount >= this.stateDuration) {
@@ -78,6 +84,22 @@ public class Cutscene {
         }
         this.frameCount ++;
         
+    }
+
+    /**
+     * ends the cutscene.
+     */
+    private void end() {
+        this.consequence.executeConsequence();
+        this.currentState = 0;
+        this.frameCount = 0;
+    }
+
+    /**
+     * skips the cutscene
+     */
+    public void skip() {
+        end();
     }
 
 }

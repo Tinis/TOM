@@ -18,6 +18,7 @@ public class ScreenLoader {
         this.screens.put("mainmenu", mainMenu());
         this.screens.put("gameover", gameOver());
         this.screens.put("howtoplay", howToPlay());
+        this.screens.put("chapterselection", chapterSelection());
         this.screens.put("pause", pause());
 
         this.model = model;
@@ -38,6 +39,9 @@ public class ScreenLoader {
         Button howToPlayButton = new Button(new Coordinate(0, Config.BUTTON_MARGIN),
             this::loadHowToPlay, "How To Play");
         mainmenu.putButton(howToPlayButton);
+        Button chapterSelectionButton = new Button(new Coordinate(0, Config.BUTTON_MARGIN * 2),
+            this::loadChapterSelection, "Chapters");
+        mainmenu.putButton(chapterSelectionButton);
         Button quitButton = new Button(new Coordinate(150, 90),
             this::quit, "Quit");
         mainmenu.putButton(quitButton);
@@ -58,6 +62,15 @@ public class ScreenLoader {
         Screen howtoplay = new Screen("howtoplay");
         howtoplay.putButton(new Button(new Coordinate(-150, 90), this::loadMainMenu, "Back"));
         return howtoplay;
+    }
+
+    private Screen chapterSelection() {
+        Screen chapterselection = new Screen("chapterselection");
+        chapterselection.putButton(new Button(new Coordinate(0, -Config.BUTTON_MARGIN), 
+            this::loadBedroom1, "Chapter 1"));     
+        chapterselection.putButton(new Button(new Coordinate(-150, 90), 
+            this::loadMainMenu, "Back"));
+        return chapterselection;
     }
 
     private Screen pause() {
@@ -92,6 +105,10 @@ public class ScreenLoader {
 
     private void loadHowToPlay() {
         this.model.loadScreen("howtoplay");
+    }
+
+    private void loadChapterSelection() {
+        this.model.loadScreen("chapterselection");
     }
 
     //other

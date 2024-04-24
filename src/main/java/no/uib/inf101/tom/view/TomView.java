@@ -45,7 +45,9 @@ public class TomView extends JPanel {
         this.model = model;
 
         this.imageFinder = new ImageFinder();
-        this.soundPlayer = new SoundPlayer();
+        if (!Config.DISABLE_SOUNDS) {
+            this.soundPlayer = new SoundPlayer();
+        }
 
         //I have to initialize the font here so that i can catch the exception. 
         InputStream fontStream = 
@@ -56,6 +58,7 @@ public class TomView extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        //Graphics related:
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (this.model.getGameState() == GameState.ACTIVE_GAME || 
@@ -71,7 +74,11 @@ public class TomView extends JPanel {
         if (this.model.getGameState() == GameState.CUT_SCENE) {
             drawCutsceneImage(g2);
         }
-        
+        //Sound related
+        if (!Config.DISABLE_SOUNDS) {
+            this.soundPlayer.playAndKeepSounds(this.model.getActiveSounds());
+        }
+        //Debug related
         if (this.model.isDebugging()) {
             drawCollisionBoxes(g2);
             drawInteractionBoxes(g2);

@@ -32,6 +32,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private CutsceneLoader cutsceneLoader;
     private Cutscene cutscene;
 
+    private ArrayList<String> activeSounds;
+
     private ScreenLoader screenLoader;
     private Screen screen;
 
@@ -51,11 +53,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
 
     public TomModel(String startUpState) {
-        //placeholder values. Will probably not cause bugs.
+        //initializing lists
         this.hitList = new ArrayList<>();
         this.buildingList = new ArrayList<>();
         this.interactionList = new ArrayList<>();
         this.npcList = new ArrayList<>();
+        this.activeSounds = new ArrayList<>();
+
+        //placeholder values. Will probably not cause bugs.
         this.mousePos = new Coordinate(0, 0);
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
@@ -84,6 +89,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     public void loadCutscene(String cutsceneName) {
         this.gameState.setGameState(GameState.CUT_SCENE);
         this.cutscene = this.cutsceneLoader.getCutscene(cutsceneName);
+        if (this.cutscene.getSongName() != null) {
+            this.activeSounds.add(this.cutscene.getSongName());
+        }
     }
 
     public void loadScreen(String screenName) {
@@ -98,9 +106,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
      * @param entrance the number of the entrance that the player enters from (often 1). 
      */
     public void loadLevel(String levelName, int entrance) {
+        //prepares to load new level
+        this.activeSounds.clear();
         this.lastLevelLoaded = levelName;
         this.lastEntrance = entrance;
         writeLevel(this.levelName);
+
+        //loads the new level
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
         //loads characters
@@ -174,6 +186,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //////////////
 
 //Getters
+    @Override
+    public ArrayList<String> getActiveSounds() {
+        return this.activeSounds;
+    }
     @Override
     public Cutscene getCutscene() {
         return this.cutscene;

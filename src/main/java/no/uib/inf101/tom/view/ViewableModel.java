@@ -83,4 +83,10 @@ public interface ViewableModel {
      * @return the current cutscene object.
      */
     public Cutscene getCutscene();
+
+    /**
+     * 
+     * @return a list of the names of all active sounds (songs are sounds). 
+     */
+    public ArrayList<String> getActiveSounds();
 }

@@ -20,7 +20,7 @@ public class CutsceneLoader {
 
     //CUTSCENES
     private Cutscene intro() {
-        Cutscene intro = new Cutscene("intro", this::loadBedroom1);
+        Cutscene intro = new Cutscene("intro", this::loadBedroom1, "luciddream");
         return intro;
     }
 

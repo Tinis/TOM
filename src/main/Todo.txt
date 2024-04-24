@@ -7,7 +7,8 @@ Priority HIgh:
 
 
 Priority Medium:
- - make it so that characters stop walking action when they hit a wall. 
+ - make awake theme play when waking up (meaning shorten the lucid dream file in audacity)
+ - make a text show up on screen with the next objective
  - (make an ability where you can pull a feather out of the pillow and throw it on people 
  - (exactly like shooting))
  - fix dashing so that the new destination is set before the moving happens. 
@@ -26,7 +27,8 @@ Priority Medium:
  - make more fighting abilities (block dash heavy (or ranged))
  - make cooldowns for abilities. maybe have a list of abilites on cooldown. 
  - make the story longer.
- - fastlege banke an for medisin 
+ - make it so that characters stop walking action when they hit a wall. 
+ - fastlege, bank an for medisin 
 
 
 Priority Low:

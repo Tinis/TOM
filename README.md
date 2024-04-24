@@ -16,5 +16,6 @@ Such as:
 - changing keybinds: *all variables under //KEYS*
 - changing the startup state (will change how the program starts): START_UP_STATE
 
+Btw, this game does have some sound. Play with volume on :)
 
 ENJOY!

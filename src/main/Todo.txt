@@ -1,10 +1,12 @@
 Todo:
 Priority HIgh:
+ - implement lucid dream over the cutscene
 
  - implement the short story
  - make some art and add some music (just kinda demo music rly)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
+ - implement good chapterselectionscreen.
 
 
 Priority Medium:
@@ -14,7 +16,6 @@ Priority Medium:
  - fix dashing so that the new destination is set before the moving happens. 
  Also its completely broken and the speed gets fucked. 
  if you dash whilst standing still, you lose speed. 
- - implement good chapterselectionscreen.
  - make targetable property actually work. 
  - make a red vignett when you have low health. 
  - make a dying cutscene. 
@@ -32,11 +33,11 @@ Priority Medium:
 
 
 Priority Low:
+ - make more items? like boots and shit.
  - lighting.
  - emotes :D
  - make the player animations better. 
  - make buttons highlightable.
- - make more items?
 
 
 debugging learning:

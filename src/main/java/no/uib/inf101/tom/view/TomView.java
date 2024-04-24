@@ -31,6 +31,7 @@ public class TomView extends JPanel {
 
     private ViewableModel model;
     private ImageFinder imageFinder;
+    private SoundPlayer soundPlayer;
 
     private Font buttonFont;
 
@@ -44,6 +45,7 @@ public class TomView extends JPanel {
         this.model = model;
 
         this.imageFinder = new ImageFinder();
+        this.soundPlayer = new SoundPlayer();
 
         //I have to initialize the font here so that i can catch the exception. 
         InputStream fontStream = 

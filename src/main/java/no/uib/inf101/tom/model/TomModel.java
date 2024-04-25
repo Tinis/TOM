@@ -1,6 +1,7 @@
 package no.uib.inf101.tom.model;
 
 import java.awt.geom.Point2D;
+import java.io.File;
 import java.util.ArrayList;
 
 import no.uib.inf101.tom.controller.ControllableModel;
@@ -28,6 +29,10 @@ import no.uib.inf101.tom.view.ViewableModel;
 public class TomModel implements ViewableModel, ControllableModel, Updatable, ActionableModel, CharacterViewableModel{
     private LevelLoader levelLoader;
     private String levelName;
+    private int levelStateAmount;
+    private int levelState;
+    private int levelFramesPerState;
+    private int levelFrameCount;
 
     private CutsceneLoader cutsceneLoader;
     private Cutscene cutscene;
@@ -112,6 +117,20 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         this.lastEntrance = entrance;
         writeLevel(this.levelName);
 
+        //finds how many levelstates the level has
+        this.levelStateAmount = 0;
+        for (String filename : new File("src/main/resources/levels").list()) {
+            int underScoreIndex = filename.indexOf("_");
+            String fileLevelName = filename.substring(0, underScoreIndex);
+            if (fileLevelName.equals(levelName)) {
+                this.levelStateAmount ++;
+            }
+        }
+        this.levelState = 1;
+        //finds the frames per state the level has
+        this.levelFramesPerState = findLevelFramesPerState(levelName);
+        this.levelFrameCount = 0;
+
         //loads the new level
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
@@ -136,6 +155,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             new Coordinate(0, 0), this.player);
         //sets the gamestate
         this.gameState.setGameState(level.getGameState());
+    }
+
+    private int findLevelFramesPerState(String levelName) {
+        if (levelName.equals("livingroom1")) {
+            return 60;
+        }
+        return 1;
     }
 
     private void giveAllCharactersActionAccess() {
@@ -165,15 +191,30 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public void update() {
         if (this.gameState.getGameState() == GameState.ACTIVE_GAME) {
+            //update the hitlist
             if (this.hitList.size() > 10) {
                 this.hitList.remove(0);
             }
+            //update the characters
             this.player.updateCharacter(this);
             for (NPC npc : npcList) {
                 npc.updateCharacter(this);
             }
+            //update the levelstate
+            updateLevelFrameCount();
         } else if (this.gameState.getGameState() == GameState.CUT_SCENE) {
             this.cutscene.updateFrameCount();
+        }
+    }
+
+    private void updateLevelFrameCount() {
+        this.levelFrameCount ++;
+        if (this.levelFrameCount > this.levelFramesPerState) {
+            this.levelFrameCount = 0;
+            this.levelState ++;
+            if (this.levelState > this.levelStateAmount) {
+                this.levelState = 1;
+            }
         }
     }
 
@@ -251,7 +292,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     @Override
     public String getLevelName() {
-        return this.levelName;
+        return this.levelName + "_" + this.levelState;
     }
 
     @Override

@@ -45,7 +45,8 @@ public class LevelLoader {
     }
 
     private Level bedroom1() {
-        Level bedroom1 = new Level("bedroom1", new Player(new Coordinate(9, -32)));
+        Level bedroom1 = new Level("bedroom1", new Player(new Coordinate(9, -32)),
+            new Coordinate(-9, 34));
         
         bedroom1.putBoundsRectangle(new Coordinate(-33.5, -48));
         bedroom1.putDoor(new Coordinate(-25, 40), "livingroom1", 1);
@@ -53,7 +54,9 @@ public class LevelLoader {
     }
 
     private Level livingroom1() {
-        Level livingroom1 = new Level("livingroom1", new Coordinate(0, 0));
+        Level livingroom1 = new Level("livingroom1", new Coordinate(20, -70));
+        livingroom1.putBoundsRectangle(new Coordinate(-30, -95));
+        livingroom1.putDoor(new Coordinate(24, -90), "bedroom1", 1);
         return livingroom1;
     }
 

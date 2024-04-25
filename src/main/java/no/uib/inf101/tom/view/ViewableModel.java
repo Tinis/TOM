@@ -20,7 +20,8 @@ public interface ViewableModel {
 
     /**
      * 
-     * @return the name of the level as a string.
+     * @return the name of the levelimage as a string. This will be in this format:
+     * "levelname_state"
      */
     public String getLevelName();
 

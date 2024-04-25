@@ -2,9 +2,14 @@ All names are all lowercase with no spaces.
 
 Level- screen- and other- images should have the
 same name as the corresponding objects in the program. 
-For example the level image corresponding to the level 
-"bedroom1" is called "bedroom1.png" 
+For example the screen image corresponding to the screen
+"howtoplay" is called "howtoplay.png" 
 (the filetype doesn't really matter but i use .png).
+
+Levels can be animated. The images are named as such:
+"levelname_state". So since the level bedroom1 only has one state the image is called bedroom1_1.png
+remember to add the framesPerState number to the findLevelFramesPerState method in TomModel.java
+
 
 Sprite images (by which i mean frames of animations)
 should be named with this format:

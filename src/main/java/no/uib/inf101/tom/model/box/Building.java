@@ -28,4 +28,8 @@ public class Building extends CollisionBox{
     public Building(Coordinate upLeft, double width, double height) {
         this(upLeft, new Coordinate(upLeft.x() + width, upLeft.y() + height), "unnamed building");
     }
+
+    public Building(Coordinate upLeft, Coordinate downRight) {
+        this(upLeft, downRight.x() - upLeft.x(), downRight.y() - upLeft.y());
+    }
 }

@@ -96,6 +96,11 @@ public class Level {
         this.npcList.add(npc);
     }
 
+    public void putBully(Coordinate pos) {
+        NPC bully = new NPC(pos, new BasicPunchingAI(), false, "bully");
+        this.npcList.add(bully);
+    }
+
     public void putNightclubGuard(Coordinate pos) {
         NPC nightclubGuard = new NPC(pos, new BasicPunchingAI(), false, "nightclubGuard");
         putNPC(nightclubGuard);
@@ -108,6 +113,12 @@ public class Level {
     //COLLISIONBOXES
     public void putBuilding(Building building) {
         this.buildingList.add(building);
+    }
+
+    public void putBlock(Coordinate topLeft) {
+        //127.5 width, 287.5 height
+        Building block = new Building(topLeft, 127.5, 287.5);
+        this.buildingList.add(block);
     }
     
     /**

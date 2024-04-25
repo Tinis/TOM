@@ -86,9 +86,9 @@ public class Config {
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
     public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;
-    public static final int STANDARD_MAX_HEALTH = 100; 
-    public static final int STANDARD_STRENGTH = 0; //should be 10
-    public static final int PLAYER_STRENGTH = 35;
+    public static final int STANDARD_MAX_HEALTH = 200; 
+    public static final int STANDARD_STRENGTH = 10; //should be 10
+    public static final int PLAYER_STRENGTH = 10;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
     //BUILDINGS AND INTERACTIONS
@@ -101,8 +101,9 @@ public class Config {
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
     public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
-    public static final boolean DISABLE_CUTSCENES = true; 
+    public static final int STANDARD_LEVEL_FRAMES_PER_STATE = 5;
+    public static final boolean DISABLE_CUTSCENES = false; 
     //sets cutscene stateAmount to zero (meaning the cutscenes are skipped). And doesn't load them. 
-    public static final boolean DISABLE_SOUNDS = true;
+    public static final boolean DISABLE_SOUNDS = false;
     //TODO: set these values back to normal before turning this in. 
 }

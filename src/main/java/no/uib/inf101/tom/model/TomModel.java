@@ -4,6 +4,7 @@ import java.awt.geom.Point2D;
 import java.io.File;
 import java.util.ArrayList;
 
+import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.controller.ControllableModel;
 import no.uib.inf101.tom.gameloop.Updatable;
 import no.uib.inf101.tom.model.action.Action;
@@ -161,7 +162,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         if (levelName.equals("livingroom1")) {
             return 60;
         }
-        return 1;
+        return Config.STANDARD_LEVEL_FRAMES_PER_STATE;
     }
 
     private void giveAllCharactersActionAccess() {

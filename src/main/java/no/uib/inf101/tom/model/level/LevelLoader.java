@@ -3,6 +3,8 @@ package no.uib.inf101.tom.model.level;
 import java.util.HashMap;
 
 import no.uib.inf101.tom.model.Coordinate;
+import no.uib.inf101.tom.model.box.Building;
+import no.uib.inf101.tom.model.box.Wall;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 
@@ -16,6 +18,7 @@ public class LevelLoader {
         this.levels.put("demo2", demo2());
         this.levels.put("bedroom1", bedroom1());
         this.levels.put("livingroom1", livingroom1());
+        this.levels.put("city1", city1());
     }
 
     public Level getLevel(String name) {
@@ -57,7 +60,35 @@ public class LevelLoader {
         Level livingroom1 = new Level("livingroom1", new Coordinate(20, -70));
         livingroom1.putBoundsRectangle(new Coordinate(-30, -95));
         livingroom1.putDoor(new Coordinate(24, -90), "bedroom1", 1);
+        livingroom1.putDoor(new Coordinate(-6.5, 86.5), "city1", 1);
+        livingroom1.putDoor(new Coordinate(6.5, 86.5), "city1", 1);
+        livingroom1.putEntrance(2, new Coordinate(6.5, 76.5));
         return livingroom1;
+    }
+
+    private Level city1() {
+        Level city1 = new Level("city1", new Coordinate(-350.5, -99.5));
+        //add the doors
+        city1.putDoor(new Coordinate(-352.7, -128.5), "livingroom1", 2);
+        city1.putDoor(new Coordinate(-96, 285.5), "pharmacistBossfight", 1);
+        //add the bounds
+        city1.putBoundsRectangle(new Coordinate(-400, -400));
+        city1.putBlock(new Coordinate(-400, -400));
+        city1.putBlock(new Coordinate(-145, -400));
+        city1.putBlock(new Coordinate(16, -400));
+        city1.putBlock(new Coordinate(272, -400));
+        city1.putBlock(new Coordinate(-400, 14));
+        city1.putBlock(new Coordinate(-145, 14));
+        city1.putBlock(new Coordinate(16, 14));
+        city1.putBlock(new Coordinate(272, 14));
+        city1.putBuilding(new Building(new Coordinate(-272, -400), new Coordinate(-246, -112)));
+        //add walls
+        city1.putWall(new Wall(new Coordinate(-85, -114), new Coordinate(-85, 400)));
+        //add npcs
+        city1.putBully(new Coordinate(-228, -370));
+        city1.putBully(new Coordinate(-228, -340));
+        city1.putBully(new Coordinate(-228, -310));
+        return city1;
     }
 
     private Level nightclubBossFight() {

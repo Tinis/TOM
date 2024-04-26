@@ -13,6 +13,7 @@ public class CutsceneLoader {
         this.model = model;
         this.cutscenes.put("intro", intro());
         this.cutscenes.put("objective1", objective1());
+        this.cutscenes.put("objective2", objective2());
     }
 
     public Cutscene getCutscene(String name) {
@@ -28,7 +29,14 @@ public class CutsceneLoader {
     private Cutscene objective1() {
         Cutscene objective1 = new Cutscene("objective1", 
             300, this::loadBedroom1, null);
+        //300 states means 5 seconds: 300f / 60fps = 5s
         return objective1;
+    }
+
+    private Cutscene objective2() {
+        Cutscene objective2 = new Cutscene("objective2", 
+            300, this::loadCity2, "carstart");
+        return objective2;
     }
 
     //CONSEQUENCES
@@ -38,5 +46,9 @@ public class CutsceneLoader {
 
     private void loadObjective1() {
         this.model.loadCutscene("objective1");
+    }
+
+    private void loadCity2() {
+        this.model.loadLevel("city2", 1);
     }
 }

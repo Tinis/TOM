@@ -39,6 +39,9 @@ Priority Medium:
  - make the story longer.
  - make it so that characters stop walking action when they hit a wall. 
  - fastlege, bank an for medisin 
+ - sound is acting weird. Sometimes it just doesn't play. 
+ it happened know because i played the cutscene and then went back to the menu, 
+ and then back to start. 
 
 
 Priority Low:

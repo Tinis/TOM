@@ -103,6 +103,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 //LOADING-RELATED
 //////////////////////////
     public void loadCutscene(String cutsceneName) {
+        this.activeSounds.clear();
         this.gameState.setGameState(GameState.CUT_SCENE);
         this.cutscene = this.cutsceneLoader.getCutscene(cutsceneName);
         if (this.cutscene.getSongName() != null) {
@@ -111,6 +112,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     }
 
     public void loadScreen(String screenName) {
+        this.activeSounds.clear();
         this.coordinateConverter = new CoordinatePointConverter(new Coordinate(0, 0), this.player);
         this.coordinateConverter.stopFollowingCharacter();
         this.screen = this.screenLoader.getScreen(screenName);
@@ -217,7 +219,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             }
             //update the levelstate
             updateLevelFrameCount();
-            //TODO: Check triggers (if you've defeated the happy family, 
+            //TODO: Check triggers (if you've defeated the happy family, (i do this after an npc death)
             //move on to a small cutscene and then city 2 
             //(the small cutscene could be a black screen that says 
             //"you deafeated the happy family, and made them move their car :D")
@@ -419,6 +421,17 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 ///////////////
 //EXTRA METHODS
 ///////////////
+    /**
+     * this method checks if there is something that is supposed to be happening after an npc dies.
+     */
+    private void checkDeathTriggers() {
+        if (this.levelName.equals("happyapartment1")) {
+            if (this.npcList.size() == 0) {
+                this.loadCutscene("objective2");
+            }
+        }
+    }
+
     @Override
     public void hitCharactersInBox(HitBox hit, boolean actorIsGood, int strength) {
         this.hitList.add(hit);
@@ -435,6 +448,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
                     //if the npc dies i remove it from the npcList
                     //(this is why i iterate backwards)
                     this.npcList.remove(i);
+                    checkDeathTriggers();
                 }
             }      
         }

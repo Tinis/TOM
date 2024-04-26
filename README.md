@@ -31,6 +31,7 @@ For eksempel:
 - changing keybinds: *all variables under //KEYS*
 - changing the startup state (will change how the program starts): START_UP_STATE
 
-Btw, dette spelet har litt lyd. Spel med lyd på :)
+P.S dette spelet har litt lyd. Spel med lyd på :)
+P.P.S Grunnen til at det ikkje er nokon kildehenvisning for musikken og pixelarten er fordi eg har lagd alt av det sjølv. 
 
 ENJOY!

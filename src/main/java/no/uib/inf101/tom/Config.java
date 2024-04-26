@@ -91,7 +91,7 @@ public class Config {
     public static final double STANDARD_PUNCH_REACH = 12;
     public static final double PLAYER_PUNCH_REACH = 15;
     public static final int STANDARD_MAX_HEALTH = 100; 
-    public static final int STANDARD_STRENGTH = 15; //should be 10
+    public static final int STANDARD_STRENGTH = 15; //should be 15 prob
     public static final int PLAYER_STRENGTH = 10;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
@@ -106,8 +106,8 @@ public class Config {
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
     public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
     public static final int STANDARD_LEVEL_FRAMES_PER_STATE = 5;
-    public static final boolean DISABLE_CUTSCENES = true; 
+    public static final boolean DISABLE_CUTSCENES = false; 
     //sets cutscene stateAmount to zero (meaning the cutscenes are skipped). And doesn't load them. 
-    public static final boolean DISABLE_SOUNDS = true;
+    public static final boolean DISABLE_SOUNDS = false;
     //TODO: set these values back to normal before turning this in. 
 }

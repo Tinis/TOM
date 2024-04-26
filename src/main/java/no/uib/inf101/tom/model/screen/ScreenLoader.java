@@ -67,7 +67,9 @@ public class ScreenLoader {
     private Screen chapterSelection() {
         Screen chapterselection = new Screen("chapterselection");
         chapterselection.putButton(new Button(new Coordinate(0, -Config.BUTTON_MARGIN), 
-            this::loadBedroom1, "Chapter 1"));     
+            this::loadBedroom1, "Chapter 1"));
+        chapterselection.putButton(new Button(new Coordinate(0, 0),
+            this::loadCity2, "Chapter 2"));
         chapterselection.putButton(new Button(new Coordinate(-150, 90), 
             this::loadMainMenu, "Back"));
         return chapterselection;
@@ -96,6 +98,10 @@ public class ScreenLoader {
 
     private void loadBedroom1() {
         this.model.loadLevel("bedroom1", 1);
+    }
+
+    private void loadCity2() {
+        this.model.loadLevel("city2", 1);
     }
 
     //loading screens

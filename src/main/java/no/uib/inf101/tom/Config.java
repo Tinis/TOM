@@ -75,7 +75,7 @@ public class Config {
 
 
 //-----MODEL RELATED
-    public static final String START_UP_STATE = "happyapartment1"; 
+    public static final String START_UP_STATE = "main"; 
     //options: "demo", "main", "city1", "happyapartment1"
 
     //CHARACTER PROPERTIES
@@ -106,8 +106,8 @@ public class Config {
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
     public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
     public static final int STANDARD_LEVEL_FRAMES_PER_STATE = 5;
-    public static final boolean DISABLE_CUTSCENES = false; 
+    public static final boolean DISABLE_CUTSCENES = true; 
     //sets cutscene stateAmount to zero (meaning the cutscenes are skipped). And doesn't load them. 
-    public static final boolean DISABLE_SOUNDS = false;
+    public static final boolean DISABLE_SOUNDS = true;
     //TODO: set these values back to normal before turning this in. 
 }

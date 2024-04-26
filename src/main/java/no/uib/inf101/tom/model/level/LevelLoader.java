@@ -7,7 +7,6 @@ import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.Wall;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
-import no.uib.inf101.tom.model.character.ai.NullAI;
 
 public class LevelLoader {
 
@@ -22,6 +21,7 @@ public class LevelLoader {
         this.levels.put("city1", city1());
         this.levels.put("hallway1", hallway1());
         this.levels.put("happyapartment1", happyapartment1());
+        this.levels.put("city2", city2());
     }
 
     public Level getLevel(String name) {
@@ -113,6 +113,16 @@ public class LevelLoader {
 
     private Level city2() {
         Level city2 = new Level("city2", new Coordinate(0, 0));
+        //add the bounds
+        city2.putBoundsRectangle(new Coordinate(-400, -400));
+        city2.putBlock(new Coordinate(-400, -400));
+        city2.putBlock(new Coordinate(-145, -400));
+        city2.putBlock(new Coordinate(16, -400));
+        city2.putBlock(new Coordinate(272, -400));
+        city2.putBlock(new Coordinate(-400, 14));
+        city2.putBlock(new Coordinate(-145, 14));
+        city2.putBlock(new Coordinate(16, 14));
+        city2.putBlock(new Coordinate(272, 14));
         return city2;
     }
 

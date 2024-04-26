@@ -12,6 +12,7 @@ import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
+import no.uib.inf101.tom.model.box.Projectile;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.CharacterViewableModel;
@@ -47,6 +48,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private ArrayList<NPC> npcList;
     private ArrayList<HitBox> hitList;
     private ArrayList<HitBox> hitsThisFrame;
+    private ArrayList<Projectile> projectileList;
     private ArrayList<CollisionBox> buildingList;
     private ArrayList<Interaction> interactionList;
     private boolean debugMode;
@@ -63,6 +65,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         //initializing lists
         this.hitList = new ArrayList<>();
         this.hitsThisFrame = new ArrayList<>();
+        this.projectileList = new ArrayList<>();
         this.buildingList = new ArrayList<>();
         this.interactionList = new ArrayList<>();
         this.npcList = new ArrayList<>();
@@ -86,6 +89,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         if (startUpState == "demo") {
             System.out.println("loading demo");
             this.loadLevel("demo", 1);
+            this.player.setCanFire(true);
         } else if (startUpState == "city1") {
             System.out.println("loading city1");
             this.loadLevel("city1", 1);
@@ -212,6 +216,13 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
                 this.hitList.remove(0);
             }
             this.hitsThisFrame.clear();
+            //update the projectile list
+            for (int i = this.projectileList.size() - 1; i >= 0; i--) {
+                Projectile projectile = this.projectileList.get(i);
+                if (projectile.updateProjectile()) {
+                    this.projectileList.remove(i);
+                }
+            }
             //update the characters
             this.player.updateCharacter(this);
             for (NPC npc : npcList) {
@@ -428,8 +439,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         if (this.levelName.equals("happyapartment1")) {
             if (this.npcList.size() == 0) {
                 this.loadCutscene("objective2");
+                this.player.setCanFire(true);
             }
         }
+    }
+
+    @Override
+    public void addProjectile(Projectile projectile) {
+        this.projectileList.add(projectile);
     }
 
     @Override

@@ -4,8 +4,11 @@ import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.PlaneVector;
 
 public class HitBox extends Box {
-    private Coordinate[] corners;
-    private Coordinate center;
+    protected Coordinate[] corners;
+    protected Coordinate center;
+
+    protected double width;
+    protected double height;
 
     public HitBox(Coordinate from, Coordinate towards, double reach, double width) {
         PlaneVector reachVector = new PlaneVector(from, towards);
@@ -26,6 +29,21 @@ public class HitBox extends Box {
         //now i set the reachvector to half the length and find the center. 
         reachVector.setLength(reach/2);
         this.center = PlaneVector.coordMoved(from, reachVector);
+    }
+
+    public HitBox(Coordinate center, double width, double height) {
+        this.width = width;
+        this.height = height;
+        setPos(center);
+    }
+
+    protected void setPos(Coordinate center) {
+        this.center = center;
+        this.corners = new Coordinate[4];
+        this.corners[0] = new Coordinate(center.x() - this.width / 2, center.y() - this.height / 2);
+        this.corners[1] = new Coordinate(center.x() + this.width / 2, center.y() - this.height / 2);
+        this.corners[2] = new Coordinate(center.x() + this.width / 2, center.y() + this.height / 2);
+        this.corners[3] = new Coordinate(center.x() - this.width / 2, center.y() + this.height / 2);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package no.uib.inf101.tom.model.character;
 
+import java.util.ArrayList;
+
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.ActionableModel;
 import no.uib.inf101.tom.model.Coordinate;
@@ -14,6 +16,7 @@ import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.box.CharacterBox;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
+import no.uib.inf101.tom.model.box.Projectile;
 import no.uib.inf101.tom.model.box.ViewableBox;
 
 
@@ -23,9 +26,12 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected int health;
     protected int maxHealth;
     protected int strength;
+    protected int projetileStrength;
+    protected int projectileLifeSpan;
     protected double reach;
     protected boolean targetable;
     protected boolean good;
+    protected boolean canFire;
 
     protected double speed;
     protected PlaneVector movement;
@@ -36,7 +42,6 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     protected Action currentAction;
     protected ActionableModel model;
 
-
     public Character(Coordinate pos, double width, double height) {
         super(pos, width, height);
         
@@ -44,17 +49,18 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.maxHealth = Config.STANDARD_MAX_HEALTH;
         this.health = this.maxHealth;
         this.strength = Config.STANDARD_STRENGTH;
+        this.projetileStrength = Config.STANDARD_PROJECTILE_STRENGTH;
+        this.projectileLifeSpan = Config.STANDARD_PROJECTILE_LIFESPAN;
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
         this.reach = Config.STANDARD_PUNCH_REACH;
+        this.canFire = false;
         //and these properties
         this.targetable = false;
         this.good = true;
         this.currentAction = new Idle();
         this.movement = new PlaneVector(0,0);
         this.destination = pos;
-
-
     }
 
     public Character(Coordinate pos) {
@@ -64,6 +70,10 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 /////////////////////
 //Setters and getters
 /////////////////////
+    public void setCanFire(boolean canFire) {
+        this.canFire = canFire;
+    }
+
     public void setHealthToFull() {
         this.health = this.maxHealth;
     }
@@ -242,6 +252,17 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
     @Override
     public void dealHit(HitBox hit) {
         this.model.hitCharactersInBox(hit, this.good, this.strength);
+    }
+
+    @Override 
+    public void fireProjectile(Coordinate pointer) {
+        if (this.canFire) {
+            Projectile projectile = new Projectile("projectile1", this.good,
+                Config.PROJECTILE_STATE_AMOUNT, this.projectileLifeSpan, Config.PROJECTILE_FRAMES_PER_STATE, this.pos,
+                new PlaneVector(this.pos, pointer), Config.STANDARD_PROJECTILE_SPEED,
+                this.projetileStrength, this.model);
+            this.model.addProjectile(projectile);
+        }
     }
 
     /**

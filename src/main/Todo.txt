@@ -1,22 +1,37 @@
 Todo:
 Priority HIgh:
  - implement the short story
- - make some art and add some music (just kinda demo music rly)
- - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
- - (he shoots a lot and has to reload)
- shooting ai kan gå skyte gå skyte (stoppe i et hjørne på gulvet) repeat til neste hjørne
- he kan go outside the map and shoot from there for a little 
- somehow (but how will i change the bounding box?). 
+ make two shooting guards,
+ meaning:
+      make projectiles (moving hitboxes). 
+      make shooting
+      make a very basic shooting ai that stands still and shoots in one direction. 
+      make the shooting guard art
+      put them at city 2
+make r do shooting.
+make the nightclub bossfight
+meaning:
+      make a shooting ai that walks in a pattern and shoots. 
+      make the art for idling walking and shooting in all directions. 
+      i can make him shoot alot when he walks vertically and stop shooting when he walks horizontally. 
+make a small cutscene to transition to sleeping 
+(maybe its blacktext-screen=>sleepingtom=>blacktext-screen=>luciddreamplace=>new boss fight)
+make the last bossfight:
+meaning:
+      make a blob with shitty animation (that teleports around (i.e has very high speed))
+      make the last cutscene with hugging the dad (phone notes has more instructions)
 
- - legg til tekst i 
- - make it so that the interactions are animated. 
+ - legg til tekst under dei første trappane ("left click to interact with the stairs")
  
  - lag ein liten video av spelet for innleveringen. 
 Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 
 Youtube (videoen kan være privat) og legg til en link i README.md.
 
+add to the defeated family cutscene ("oh hey btw press R to rip out a feather and throw it at people")
+shooting doesn't work close range (but i mean thats kinda cool). 
 
 Priority Medium:
+ - implement cooldowns (this may fix the weird bug that happens when spamming fire). 
  - make awake theme play when waking up (meaning shorten the lucid dream file in audacity)
  - make a text show up on screen with the next objective
  - (make an ability where you can pull a feather out of the pillow and throw it on people 
@@ -42,6 +57,7 @@ Priority Medium:
  - sound is acting weird. Sometimes it just doesn't play. 
  it happened know because i played the cutscene and then went back to the menu, 
  and then back to start. 
+ - make it so that the interactions are animated. 
 
 
 Priority Low:

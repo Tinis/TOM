@@ -68,14 +68,14 @@ public class Config {
     public static final int PUNCH_KEY = KeyEvent.VK_Q;
     public static final int BLOCK_KEY = KeyEvent.VK_W;
     public static final int DASH_KEY = KeyEvent.VK_E;
-    public static final int HEAVY_KEY = KeyEvent.VK_R;
+    public static final int SHOOT_KEY = KeyEvent.VK_R;
 
     public static final int PAUSE_KEY = KeyEvent.VK_ESCAPE;
 
 
 
 //-----MODEL RELATED
-    public static final String START_UP_STATE = "main"; 
+    public static final String START_UP_STATE = "demo"; 
     //options: "demo", "main", "city1", "happyapartment1"
 
     //CHARACTER PROPERTIES
@@ -90,17 +90,30 @@ public class Config {
     public static final double STANDARD_PUNCH_WIDTH = 10;
     public static final double STANDARD_PUNCH_REACH = 12;
     public static final double PLAYER_PUNCH_REACH = 15;
-    public static final int STANDARD_MAX_HEALTH = 100; 
-    public static final int STANDARD_STRENGTH = 15; //should be 15 prob
-    public static final int PLAYER_STRENGTH = 10;
+    public static final int STANDARD_MAX_HEALTH = 1000; 
+    public static final int STANDARD_STRENGTH = 180; //should be 15 prob
+    public static final int PLAYER_STRENGTH = 100;
+    public static final int STANDARD_PROJECTILE_STRENGTH = 4; 
+    //it hits several times when its on top of someone. Meaning that every hit hits 15x harder 
+    //and is currently spammable
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
+    public static final int SHOOTING_ACTION_STATE_DURATION = 4;
     //BUILDINGS AND INTERACTIONS
     public static final int NORMAL_HOUSE_WIDTH = 16*10;
     public static final int NORMAL_HOUSE_HEIGHT = 16*4;
     public static final int DOOR_WIDTH = 16;
     public static final int DOOR_HEIGHT = 16;
     public static final double INTERACTION_RANGE = 64;
+
+    //PROJECTILES
+    public static final int PROJECTILE_WIDTH = 10;
+    public static final int PROJECTILE_HEIGHT = 10;
+    public static final double STANDARD_PROJECTILE_SPEED = 2;
+    public static final int PROJECTILE_FRAMES_PER_STATE = 30;
+    public static final int STANDARD_PROJECTILE_LIFESPAN = 32;
+    public static final int PROJECTILE_STATE_AMOUNT = 4;
+
 
     //EXTRA
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;

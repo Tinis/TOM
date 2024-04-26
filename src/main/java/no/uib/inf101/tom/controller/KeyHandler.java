@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.action.Dash;
 import no.uib.inf101.tom.model.action.Punch;
+import no.uib.inf101.tom.model.action.Shoot;
 import no.uib.inf101.tom.view.TomView;
 
 public class KeyHandler implements KeyListener{
@@ -34,6 +35,8 @@ public class KeyHandler implements KeyListener{
             this.model.sendAction(new Punch());
         } else if (code == Config.DASH_KEY) {
             this.model.sendAction(new Dash());
+        } else if (code == Config.SHOOT_KEY) {
+            this.model.sendAction(new Shoot());
         }
         if (code == Config.PAUSE_KEY) {
             this.model.pause();

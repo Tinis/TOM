@@ -8,7 +8,7 @@ Målet ditt er å få tak i sovepiller så du kan sove bort livet ditt :D
 
 Kontrollar kan bli funne på how-to-play skjermen etter du har køyrd spelet. Men basically:
 - Høgreklikk for å gå
-- Venstreklikk for å interagere (åpne dørar, gå ned trappar, plukke opp gjenstandar osv...)
+- Venstreklikk for å interagere (åpne dørar, gå ned trappar, klatre stigar, plukke opp gjenstandar osv...)
 - Q for å slå
 - W for å blokkere
 - E for å dashe
@@ -19,7 +19,6 @@ Hjelpsame ekstra kontrollar:
 - F3 for å åpne debug-view
 - F9 for å stenge programmet
 - Esc for å skippe ein cutscene
-- Hold nede Q for å spamme slå
 
 Config.java filen innehelder mange nyttige konfigurerbare variablar. 
 For eksempel:

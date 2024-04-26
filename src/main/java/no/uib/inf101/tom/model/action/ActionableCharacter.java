@@ -13,6 +13,12 @@ public interface ActionableCharacter {
     public void dealHit(HitBox hit);
 
     /**
+     * makes character fire a projectile towards the pointer. 
+     * @param pointer the point at which to shoot. 
+     */
+    public void fireProjectile(Coordinate pointer);
+
+    /**
      * multiplies the characters speed with the scaler. 
      * @param scaler the scaler that is two be multiplied with the speed to make the new speed. 
      */

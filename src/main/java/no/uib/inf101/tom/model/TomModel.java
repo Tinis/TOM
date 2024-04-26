@@ -46,6 +46,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private Player player;
     private ArrayList<NPC> npcList;
     private ArrayList<HitBox> hitList;
+    private ArrayList<HitBox> hitsThisFrame;
     private ArrayList<CollisionBox> buildingList;
     private ArrayList<Interaction> interactionList;
     private boolean debugMode;
@@ -61,6 +62,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     public TomModel(String startUpState) {
         //initializing lists
         this.hitList = new ArrayList<>();
+        this.hitsThisFrame = new ArrayList<>();
         this.buildingList = new ArrayList<>();
         this.interactionList = new ArrayList<>();
         this.npcList = new ArrayList<>();
@@ -68,6 +70,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
         //placeholder values. Will probably not cause bugs.
         this.mousePos = new Coordinate(0, 0);
+        this.player = new Player(new Coordinate(0, 0));
         this.coordinateConverter = new CoordinatePointConverter(
             new Coordinate(0, 0), this.player);
         
@@ -81,7 +84,14 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
         //Starts up
         if (startUpState == "demo") {
+            System.out.println("loading demo");
             this.loadLevel("demo", 1);
+        } else if (startUpState == "city1") {
+            System.out.println("loading city1");
+            this.loadLevel("city1", 1);
+        } else if (startUpState == "happyapartment1") {
+            System.out.println("loading happyapartment1");
+            this.loadLevel("happyapartment1", 1);
         } else if (startUpState == "main") {
             this.gameState.setGameState(GameState.MAIN_MENU);
             this.debugMode = false;
@@ -192,10 +202,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public void update() {
         if (this.gameState.getGameState() == GameState.ACTIVE_GAME) {
-            //update the hitlist
+            //update the hitlists
             if (this.hitList.size() > 10) {
                 this.hitList.remove(0);
             }
+            this.hitsThisFrame.clear();
             //update the characters
             this.player.updateCharacter(this);
             for (NPC npc : npcList) {
@@ -203,6 +214,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             }
             //update the levelstate
             updateLevelFrameCount();
+            //TODO: Check triggers (if you've defeated the happy family, 
+            //move on to a small cutscene and then city 2 
+            //(the small cutscene could be a black screen that says 
+            //"you deafeated the happy family, and made them move their car :D")
+            //Such a small cutscene could also be the "new objective screen after the first cutscene"
+            //potensielt kunne det vert noe tekst i cutscene 1 som sier "tom is a normal kid... 
+            //all he wants to do is take alot of sleeping pills and sleep his life away. 
+            //This is the story of what happens when tom runs out of sleeping pills"
+            //also the gun can be a thing that he picks up yknow. 
         } else if (this.gameState.getGameState() == GameState.CUT_SCENE) {
             this.cutscene.updateFrameCount();
         }
@@ -256,6 +276,15 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             viewableInteractions.add(interaction);
         }
         return viewableInteractions;
+    }
+
+    @Override
+    public ArrayList<ViewableBox> getHitBoxesThisFrame() {
+        ArrayList<ViewableBox> viewableHitsThisFrame = new ArrayList<>();
+        for (HitBox hit : this.hitsThisFrame) {
+            viewableHitsThisFrame.add((ViewableBox) hit);
+        }
+        return viewableHitsThisFrame;
     }
 
     @Override
@@ -390,6 +419,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public void hitCharactersInBox(HitBox hit, boolean actorIsGood, int strength) {
         this.hitList.add(hit);
+        this.hitsThisFrame.add(hit);
         if (this.player.overlapsWith(hit)) {
             if (this.player.takeHit(actorIsGood, strength)) {
                 this.gameState.setGameState(GameState.GAME_OVER);
@@ -416,7 +446,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         } else if (newState == GameState.GAME_OVER) {
             this.levelLoader = new LevelLoader();
             this.levelName = null;
-            this.player = null; //TODO: this line may lead to bugs
+            // this.player = null; //TODO: this line may lead to bugs
             loadScreen("gameover");
         } else if (newState == GameState.PAUSED_GAME) {
             loadScreen("pause");

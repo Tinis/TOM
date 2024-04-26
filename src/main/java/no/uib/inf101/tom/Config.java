@@ -47,6 +47,7 @@ public class Config {
     public static final Color COLLISION_DEBUG_COLOR = new Color(0, 0, 255, 128);
     public static final Color INTERACTION_DEBUG_COLOR = new Color(255, 0, 128, 128);
     public static final Color BUTTON_TEXT_COLOR = Color.WHITE;
+    public static final Color HIT_THIS_FRAME_COLOR = Color.WHITE;
 
     //FONTS
     public static final Font DEBUG_TEXT_FONT = new Font("Monospaced", Font.BOLD, 14);
@@ -56,6 +57,7 @@ public class Config {
     //OTHER
     public static final double BUTTON_WIDTH = 87;
     public static final double BUTTON_HEIGHT = 30;
+    public static final boolean DRAW_HITS_THIS_FRAME = true;
 
     
 //-----CONTROLLER RELATED
@@ -73,7 +75,8 @@ public class Config {
 
 
 //-----MODEL RELATED
-    public static final String START_UP_STATE = "main"; //options: "demo", "main"
+    public static final String START_UP_STATE = "happyapartment1"; 
+    //options: "demo", "main", "city1", "happyapartment1"
 
     //CHARACTER PROPERTIES
     public static final double CHILD_CHARACTER_HEIGHT = 16;
@@ -84,10 +87,11 @@ public class Config {
     public static final double PLAYER_SPEED = 1.4;
     public static final double DASH_SPEED_SCALER = 2;
     public static final Direction STANDARD_DIRECTION = Direction.SOUTH;
-    public static final double STANDARD_PUNCH_REACH = 30;
     public static final double STANDARD_PUNCH_WIDTH = 10;
-    public static final int STANDARD_MAX_HEALTH = 200; 
-    public static final int STANDARD_STRENGTH = 10; //should be 10
+    public static final double STANDARD_PUNCH_REACH = 12;
+    public static final double PLAYER_PUNCH_REACH = 15;
+    public static final int STANDARD_MAX_HEALTH = 100; 
+    public static final int STANDARD_STRENGTH = 15; //should be 10
     public static final int PLAYER_STRENGTH = 10;
 
     public static final int STANDARD_ACTION_STATE_DURATION = 10;
@@ -102,8 +106,8 @@ public class Config {
     public static final double COORDINATE_ALMOSTEQUALS_PRECISION = 0.1;
     public static final int STANDARD_CUTSCENE_STATE_DURATION = 5; //fps: 12 (5 frame updates at 60fps)
     public static final int STANDARD_LEVEL_FRAMES_PER_STATE = 5;
-    public static final boolean DISABLE_CUTSCENES = false; 
+    public static final boolean DISABLE_CUTSCENES = true; 
     //sets cutscene stateAmount to zero (meaning the cutscenes are skipped). And doesn't load them. 
-    public static final boolean DISABLE_SOUNDS = false;
+    public static final boolean DISABLE_SOUNDS = true;
     //TODO: set these values back to normal before turning this in. 
 }

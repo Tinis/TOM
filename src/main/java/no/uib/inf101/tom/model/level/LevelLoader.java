@@ -19,6 +19,8 @@ public class LevelLoader {
         this.levels.put("bedroom1", bedroom1());
         this.levels.put("livingroom1", livingroom1());
         this.levels.put("city1", city1());
+        this.levels.put("hallway1", hallway1());
+        this.levels.put("happyapartment1", happyapartment1());
     }
 
     public Level getLevel(String name) {
@@ -70,7 +72,7 @@ public class LevelLoader {
         Level city1 = new Level("city1", new Coordinate(-350.5, -99.5));
         //add the doors
         city1.putDoor(new Coordinate(-352.7, -128.5), "livingroom1", 2);
-        city1.putDoor(new Coordinate(-96, 285.5), "pharmacistBossfight", 1);
+        city1.putDoor(new Coordinate(-96, 285.5), "hallway1", 1);
         //add the bounds
         city1.putBoundsRectangle(new Coordinate(-400, -400));
         city1.putBlock(new Coordinate(-400, -400));
@@ -89,6 +91,31 @@ public class LevelLoader {
         city1.putBully(new Coordinate(-228, -340));
         city1.putBully(new Coordinate(-228, -310));
         return city1;
+    }
+
+    private Level hallway1() {
+        Level hallway1 = new Level("hallway1", new Coordinate(0, 69));
+        hallway1.putDoor(new Coordinate(0, -69), "happyapartment1", 1);
+        return hallway1;
+    }
+
+    private Level happyapartment1() {
+        Level happyapartment1 = new Level("happyapartment1", new Coordinate(0, 0));
+        //put some bullies
+        happyapartment1.putBully(new Coordinate(-120, -100));
+        happyapartment1.putBully(new Coordinate(120, -100));
+        happyapartment1.putBully(new Coordinate(0, -120));
+        happyapartment1.putBully(new Coordinate(-120, 0));
+        happyapartment1.putBully(new Coordinate(120, 0));
+        //put the parents at the bottom
+        //på -64, 151
+        //og på -90, 130
+        return happyapartment1;
+    }
+
+    private Level city2() {
+        Level city2 = new Level("city2", new Coordinate(0, 0));
+        return city2;
     }
 
     private Level nightclubBossFight() {

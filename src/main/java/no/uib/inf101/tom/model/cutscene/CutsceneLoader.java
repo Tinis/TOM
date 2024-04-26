@@ -12,6 +12,7 @@ public class CutsceneLoader {
         this.cutscenes = new HashMap<>();
         this.model = model;
         this.cutscenes.put("intro", intro());
+        this.cutscenes.put("objective1", objective1());
     }
 
     public Cutscene getCutscene(String name) {
@@ -20,12 +21,22 @@ public class CutsceneLoader {
 
     //CUTSCENES
     private Cutscene intro() {
-        Cutscene intro = new Cutscene("intro", this::loadBedroom1, "luciddream");
+        Cutscene intro = new Cutscene("intro", this::loadObjective1, "luciddream");
         return intro;
+    }
+
+    private Cutscene objective1() {
+        Cutscene objective1 = new Cutscene("objective1", 
+            300, this::loadBedroom1, null);
+        return objective1;
     }
 
     //CONSEQUENCES
     private void loadBedroom1() {
         this.model.loadLevel("bedroom1", 0);
+    }
+
+    private void loadObjective1() {
+        this.model.loadCutscene("objective1");
     }
 }

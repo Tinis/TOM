@@ -64,6 +64,9 @@ public class TomView extends JPanel {
         this.model.getGameState() == GameState.PAUSED_GAME) {
             drawLevel(g2);
             drawCharacters(g2);
+            if (Config.DRAW_HITS_THIS_FRAME) {
+                drawHitsThisFrame(g2);
+            }
         } 
         if (this.model.getGameState() == GameState.GAME_OVER ||
         this.model.getGameState() == GameState.MAIN_MENU ||
@@ -198,6 +201,13 @@ public class TomView extends JPanel {
         String levelName = this.model.getLevelName();
         BufferedImage levelImage = this.imageFinder.findLevel(levelName);
         drawImageAtCoords(g2, levelImage, new Coordinate(0, 0));
+    }
+
+    private void drawHitsThisFrame(Graphics2D g2) {
+        for (ViewableBox box : this.model.getHitBoxesThisFrame()) {
+            g2.setPaint(Config.HIT_THIS_FRAME_COLOR);
+            g2.draw(box.getShape(this.model.getCoordinateConverter()));
+        }
     }
 
 

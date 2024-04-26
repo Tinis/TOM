@@ -8,7 +8,7 @@ public class Player extends Character{
     public Player(Coordinate pos) {
         super(pos, Config.STANDARD_CHARACTER_WIDTH, Config.CHILD_CHARACTER_HEIGHT);
         this.name = "tom";
-        this.reach = Config.STANDARD_PUNCH_REACH * 1.5;
+        this.reach = Config.PLAYER_PUNCH_REACH;
         this.good = true;
         this.strength = Config.PLAYER_STRENGTH;
         this.speed = Config.PLAYER_SPEED;

@@ -13,15 +13,15 @@ public class BasicPunchingAI extends AICommander{
 
     public BasicPunchingAI() {
         this.state = 0;
-        this.stateAmount = 60; //one second worth of states.
+        this.stateAmount = 121; //two seconds worth of states.
     }
 
     
     @Override
     protected ActionCommand getActionCommandForState(CharacterViewableModel model, int state) {
-        if (state == 30) {
+        if (state == 119) {
             return new ActionCommand(new Punch(), model.getPlayerCenter());
-        } else if (state == 1) {
+        } else if (state % 60 == 1) {
             return new ActionCommand(new Walk(), model.getPlayerCenter());
         } else {
             return null;

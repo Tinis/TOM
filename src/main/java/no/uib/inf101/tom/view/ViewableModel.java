@@ -45,9 +45,15 @@ public interface ViewableModel {
 
     /**
      * 
-     * @return a list of all current hitboxes as viewablebox objects. 
+     * @return a list of the past ten hitboxes as viewablebox objects. 
      */
     public ArrayList<ViewableBox> getHitBoxes();
+
+    /**
+     * 
+     * @return a list of all hitboxes this frame as viewablebox objects.
+     */
+    public ArrayList<ViewableBox> getHitBoxesThisFrame();
 
     /**
      * 

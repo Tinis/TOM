@@ -15,6 +15,7 @@ public class NPC extends Character{
         this.ai = ai;
         this.good = isGood;
         this.name = name;
+        this.setCanFire(true);
     }
     
     public NPC(Coordinate pos, AICommander ai, boolean isGood) {

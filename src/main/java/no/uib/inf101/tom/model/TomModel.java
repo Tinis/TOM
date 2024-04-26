@@ -129,6 +129,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
      */
     public void loadLevel(String levelName, int entrance) {
         //prepares to load new level
+        this.projectileList.clear();
         this.activeSounds.clear();
         this.lastLevelLoaded = levelName;
         this.lastEntrance = entrance;

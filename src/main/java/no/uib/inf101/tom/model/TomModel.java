@@ -158,6 +158,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             this.player.setPos(level.getEnteredCoordinate(entrance));
         }
         this.player.setDestination(this.player.getCenter());
+        if (levelName.equals("city2")) {
+            this.player.setCanFire(true);
+        }
         this.npcList = level.getNpcs();
         giveAllCharactersActionAccess();
         //loads buildings

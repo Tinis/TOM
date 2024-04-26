@@ -3,10 +3,8 @@ Priority HIgh:
  - implement the short story
  make two shooting guards,
  meaning:
-      make projectiles (moving hitboxes). 
-      make shooting
-      make a very basic shooting ai that stands still and shoots in one direction. 
-      make the shooting guard art
+      make the shooting guards ()
+      make the shooting guard art (they also throw feathers lol)
       put them at city 2
 make r do shooting.
 make the nightclub bossfight
@@ -28,7 +26,6 @@ Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last d
 Youtube (videoen kan være privat) og legg til en link i README.md.
 
 add to the defeated family cutscene ("oh hey btw press R to rip out a feather and throw it at people")
-shooting doesn't work close range (but i mean thats kinda cool). 
 
 Priority Medium:
  - implement cooldowns (this may fix the weird bug that happens when spamming fire). 

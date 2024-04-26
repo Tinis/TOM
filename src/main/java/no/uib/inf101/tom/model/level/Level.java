@@ -15,6 +15,7 @@ import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.character.ai.BasicPunchingAI;
+import no.uib.inf101.tom.model.character.ai.PlayerShootingAI;
 
 public class Level {
     private String name;
@@ -102,8 +103,13 @@ public class Level {
     }
 
     public void putNightclubGuard(Coordinate pos) {
-        NPC nightclubGuard = new NPC(pos, new BasicPunchingAI(), false, "nightclubGuard");
+        NPC nightclubGuard = new NPC(pos, new BasicPunchingAI(), false, "nightclubguard");
         putNPC(nightclubGuard);
+    }
+
+    public void putNightclubShooter(Coordinate pos) {
+        NPC nightclubShooter = new NPC(pos, new PlayerShootingAI(), false, "nightclubguard");
+        putNPC(nightclubShooter);
     }
 
     public void putNightclubBoss(Coordinate pos) {

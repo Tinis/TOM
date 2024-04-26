@@ -123,6 +123,10 @@ public class LevelLoader {
         city2.putBlock(new Coordinate(-145, 14));
         city2.putBlock(new Coordinate(16, 14));
         city2.putBlock(new Coordinate(272, 14));
+        //put the npcs
+        city2.putNightclubShooter(new Coordinate(185, -140));
+        city2.putNightclubShooter(new Coordinate(205, -160));
+        
         return city2;
     }
 

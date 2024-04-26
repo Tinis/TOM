@@ -60,6 +60,7 @@ public class Projectile extends HitBox{
         //updates the state
         this.currentFrame++;
         if (this.currentFrame >= this.framesPerState) {
+            this.currentFrame = 0;
             //tries to hit characters in the model everytime it changes states. 
             this.model.hitCharactersInBox(this, this.actorIsGood, this.strength);
             this.currentState ++;
@@ -71,4 +72,14 @@ public class Projectile extends HitBox{
         }
         return (this.stateCounter > this.lifeSpanInStates);
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCurrentState() {
+        return this.currentState;
+    }
+
+    
 }

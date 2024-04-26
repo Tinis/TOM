@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.CoordinatePointConverter;
 import no.uib.inf101.tom.model.GameState;
+import no.uib.inf101.tom.model.box.Projectile;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.cutscene.Cutscene;
@@ -42,6 +43,12 @@ public interface ViewableModel {
      * @return the player as a viewableCharacter.
      */
     public ViewableCharacter getPlayer();
+
+    /**
+     * 
+     * @return a list of all current projectiles. 
+     */
+    public ArrayList<Projectile> getProjectiles();
 
     /**
      * 

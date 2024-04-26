@@ -7,6 +7,7 @@ import no.uib.inf101.tom.model.Coordinate;
 import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.HitBox;
+import no.uib.inf101.tom.model.box.Projectile;
 import no.uib.inf101.tom.model.box.ViewableBox;
 import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
@@ -64,6 +65,7 @@ public class TomView extends JPanel {
         this.model.getGameState() == GameState.PAUSED_GAME) {
             drawLevel(g2);
             drawCharacters(g2);
+            drawProjectiles(g2);
             if (Config.DRAW_HITS_THIS_FRAME) {
                 drawHitsThisFrame(g2);
             }
@@ -243,6 +245,18 @@ public class TomView extends JPanel {
         //draw the cutscene image
         BufferedImage cutsceneImage = this.imageFinder.findCutsceneImage(cutscene);
         drawImageAtPoint(g2, cutsceneImage, Config.SCREEN_CENTER);
+    }
+
+/////////////
+//OTHER STUFF
+/////////////
+    private void drawProjectiles(Graphics2D g2) {
+        for (Projectile projectile : this.model.getProjectiles()) {
+            BufferedImage image = imageFinder.findOtherSprite(
+                projectile.getName(), projectile.getCurrentState()+1);
+            Coordinate pos = projectile.getCenter();
+            drawImageAtCoords(g2, image, pos);
+        }
     }
 
 

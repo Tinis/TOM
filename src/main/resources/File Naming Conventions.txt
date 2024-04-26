@@ -25,3 +25,6 @@ name is the name of the cutscene.
 number is to be replaced with whatever number frame this is in the cutscene starts count at 1. 
 
 sounds should just be called whatever they are called but always be .wav files. 
+
+Other sprites such as the projectile should be named like this:
+"name_number" same as cutscene images. 

@@ -110,8 +110,8 @@ public class Config {
     public static final int PROJECTILE_WIDTH = 10;
     public static final int PROJECTILE_HEIGHT = 10;
     public static final double STANDARD_PROJECTILE_SPEED = 2;
-    public static final int PROJECTILE_FRAMES_PER_STATE = 30;
-    public static final int STANDARD_PROJECTILE_LIFESPAN = 32;
+    public static final int PROJECTILE_FRAMES_PER_STATE = 10;
+    public static final int STANDARD_PROJECTILE_LIFESPAN = 16;
     public static final int PROJECTILE_STATE_AMOUNT = 4;
 
 

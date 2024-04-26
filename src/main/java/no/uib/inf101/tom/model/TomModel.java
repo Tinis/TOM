@@ -265,6 +265,10 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
 //Getters
     @Override
+    public ArrayList<Projectile> getProjectiles() {
+        return this.projectileList;
+    }
+    @Override
     public ArrayList<String> getActiveSounds() {
         return this.activeSounds;
     }

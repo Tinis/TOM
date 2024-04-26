@@ -7,6 +7,7 @@ import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.Wall;
 import no.uib.inf101.tom.model.character.NPC;
 import no.uib.inf101.tom.model.character.Player;
+import no.uib.inf101.tom.model.character.ai.NullAI;
 
 public class LevelLoader {
 
@@ -107,9 +108,6 @@ public class LevelLoader {
         happyapartment1.putBully(new Coordinate(0, -120));
         happyapartment1.putBully(new Coordinate(-120, 0));
         happyapartment1.putBully(new Coordinate(120, 0));
-        //put the parents at the bottom
-        //på -64, 151
-        //og på -90, 130
         return happyapartment1;
     }
 

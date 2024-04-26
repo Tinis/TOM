@@ -171,8 +171,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private int findLevelFramesPerState(String levelName) {
         if (levelName.equals("livingroom1")) {
             return 60;
+        } else if (levelName.equals("happyapartment1")) {
+            return 30;
         }
         return Config.STANDARD_LEVEL_FRAMES_PER_STATE;
+
     }
 
     private void giveAllCharactersActionAccess() {

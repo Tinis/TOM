@@ -4,6 +4,12 @@ Priority HIgh:
  - make some art and add some music (just kinda demo music rly)
  - make a pistol shooter boss fight that dashes around you :D (nightclub owner) 
  - (he shoots a lot and has to reload)
+ shooting ai kan gå skyte gå skyte (stoppe i et hjørne på gulvet) repeat til neste hjørne
+ he kan go outside the map and shoot from there for a little 
+ somehow (but how will i change the bounding box?). 
+
+ - legg til tekst i 
+ - make it so that the interactions are animated. 
  
  - lag ein liten video av spelet for innleveringen. 
 Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 

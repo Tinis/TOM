@@ -114,6 +114,8 @@ public class LevelLoader {
 
     private Level city2() {
         Level city2 = new Level("city2", new Coordinate(-78, 315));
+        //add door
+        city2.putCutscene(new Coordinate(-32, -131), "nightclubenter");
         //add the bounds
         city2.putBoundsRectangle(new Coordinate(-400, -400));
         city2.putBlock(new Coordinate(-400, -400));
@@ -124,7 +126,6 @@ public class LevelLoader {
         city2.putBlock(new Coordinate(-145, 14));
         city2.putBlock(new Coordinate(16, 14));
         city2.putBlock(new Coordinate(272, 14));
-        //-20, 290 => 20, 290
         city2.putWall(new Wall(new Coordinate(-20, 290), new Coordinate(20, 290)));
         city2.putWall(new Wall(new Coordinate(-20, -130), new Coordinate(20, -130)));
         //put the npcs

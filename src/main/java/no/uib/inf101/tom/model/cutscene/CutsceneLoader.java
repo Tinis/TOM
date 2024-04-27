@@ -14,6 +14,7 @@ public class CutsceneLoader {
         this.cutscenes.put("intro", intro());
         this.cutscenes.put("objective1", objective1());
         this.cutscenes.put("objective2", objective2());
+        this.cutscenes.put("nightclubenter", nightclubenter());
     }
 
     public Cutscene getCutscene(String name) {
@@ -39,6 +40,11 @@ public class CutsceneLoader {
         return objective2;
     }
 
+    private Cutscene nightclubenter() {
+        Cutscene nightclubenter = new Cutscene("nightclubenter", this::loadNightClub1, "nightclubenter");
+        return nightclubenter;
+    }
+
     //CONSEQUENCES
     private void loadBedroom1() {
         this.model.loadLevel("bedroom1", 0);
@@ -50,5 +56,9 @@ public class CutsceneLoader {
 
     private void loadCity2() {
         this.model.loadLevel("city2", 1);
+    }
+
+    private void loadNightClub1() {
+        this.model.loadLevel("nightclub1", 1);
     }
 }

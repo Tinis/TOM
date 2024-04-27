@@ -244,7 +244,7 @@ public class TomView extends JPanel {
         Cutscene cutscene = this.model.getCutscene();
         //draw the cutscene image
         BufferedImage cutsceneImage = this.imageFinder.findCutsceneImage(cutscene);
-        drawImageAtPoint(g2, cutsceneImage, Config.SCREEN_CENTER);
+        drawScaledImageAtPoint(g2, cutsceneImage, Config.SCREEN_CENTER, cutscene.getScaling());
     }
 
 /////////////
@@ -280,6 +280,15 @@ public class TomView extends JPanel {
     private void drawImageAtPoint(Graphics2D g2, BufferedImage image, Point2D point) {
         if (image != null) {
             Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
+        } else {
+            Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
+        }
+    }
+
+    private void drawScaledImageAtPoint(Graphics2D g2, BufferedImage image, Point2D point, double scaling) {
+        double trueScaling = Config.SCALING * scaling;
+        if (image != null) {
+            Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), trueScaling);
         } else {
             Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
         }

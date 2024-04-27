@@ -19,6 +19,9 @@ public class Cutscene {
     private int currentState;
     private int stateAmount; 
 
+    private double scaling;
+    private boolean zoomout;
+
     private CutsceneConsequence consequence;
 
     public Cutscene(String name, int stateDuration, CutsceneConsequence consequence, String songName) {
@@ -30,6 +33,13 @@ public class Cutscene {
         this.stateDuration = stateDuration; //the duration of a state (in frames per state). 
         this.currentState = 0;
         this.stateAmount = 0;
+
+        this.scaling = 1;
+        this.zoomout = false;
+        if (name.equals("nightclubenter")) {
+            this.scaling = 11;
+            this.zoomout = true;
+        }
 
         if (Config.DISABLE_CUTSCENES) {
             //don't change the stateAmount (this will skip the cutscene)
@@ -65,6 +75,10 @@ public class Cutscene {
         return this.songName;
     }
 
+    public double getScaling() {
+        return this.scaling;
+    }
+
     /**
      * updates the frame count of the cutscene. 
      * This does not make the cutscene go on to the next actual cutscene frame. 
@@ -72,6 +86,8 @@ public class Cutscene {
      *  but the cutscene will probably not be 60 times per second. 
      * The cutscene therefore counts frames to know when to change to the next frame 
      * (cutsceneframes are known within the class as states).
+     * 
+     * This method also updates the scaling of the object. 
      */
     public void updateFrameCount() {
         if (this.currentState >= this.stateAmount) {
@@ -81,6 +97,9 @@ public class Cutscene {
         if (this.frameCount >= this.stateDuration) {
             this.currentState ++;
             this.frameCount = 0;
+            if (this.zoomout) {
+                this.scaling = (1 - (double)this.currentState / (double)this.stateAmount) * 10 + 1;
+            }
         }
         this.frameCount ++;
         
@@ -93,6 +112,9 @@ public class Cutscene {
         this.consequence.executeConsequence();
         this.currentState = 0;
         this.frameCount = 0;
+        if (this.zoomout) {
+            this.scaling = 11;
+        }
     }
 
     /**

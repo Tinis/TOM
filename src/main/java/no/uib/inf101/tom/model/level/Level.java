@@ -9,6 +9,7 @@ import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.box.Building;
 import no.uib.inf101.tom.model.box.CollisionBox;
 import no.uib.inf101.tom.model.box.Wall;
+import no.uib.inf101.tom.model.box.interactions.CutsceneClick;
 import no.uib.inf101.tom.model.box.interactions.Door;
 import no.uib.inf101.tom.model.box.interactions.Interaction;
 import no.uib.inf101.tom.model.character.NPC;
@@ -19,6 +20,8 @@ import no.uib.inf101.tom.model.character.ai.PlayerShootingAI;
 
 public class Level {
     private String name;
+    private String songName;
+
     private Player player;
     private ArrayList<NPC> npcList;
     private ArrayList<CollisionBox> buildingList;
@@ -26,8 +29,11 @@ public class Level {
     private HashMap<Integer, Coordinate> enctrances;
     private GameState state;
 
+
     public Level(String name, Player player, Coordinate enctrance1, GameState initialState) {
         this.name = name;
+
+        this.songName = null; //this is changed in another constructor if you give a song as an argument
         this.state = initialState;
         this.player = player;
         this.npcList = new ArrayList<>();
@@ -48,9 +54,19 @@ public class Level {
     public Level(String name, Coordinate entrance1) {
         this(name, new Player(entrance1), entrance1);
     }
+
+    public Level(String name, Coordinate entrance1, String songName) {
+        this(name, entrance1);
+        this.songName = songName;
+    }
+
 /////////
 //GETTERS
 /////////
+    public String getSongName() {
+        return this.songName;
+    }
+
     public ViewableCharacter getPlayer() {
         return this.player;
     }
@@ -177,6 +193,11 @@ public class Level {
     public void putDoor(Coordinate pos, String level, int entrance) {
         Door door = new Door(pos, level, entrance);
         this.interactionList.add(door);
+    }
+
+    public void putCutscene(Coordinate pos, String cutscene) {
+        CutsceneClick cutsceneClick = new CutsceneClick(pos, cutscene);
+        this.interactionList.add(cutsceneClick);
     }
 
     //OTHER

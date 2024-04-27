@@ -155,6 +155,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         //loads the new level
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
+        //loads the song
+        this.activeSounds.add(level.getSongName());
         //loads characters
         if (this.player == null) {
             this.player = new Player(level.getPlayer().getBox().getCenter());

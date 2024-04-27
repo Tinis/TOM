@@ -31,6 +31,9 @@ For eksempel:
 - changing the startup state (will change how the program starts): START_UP_STATE
 
 P.S dette spelet har litt lyd. Spel med lyd på :)
+
 P.P.S Grunnen til at det ikkje er nokon kildehenvisning for musikken og pixelarten er fordi eg har lagd alt av det sjølv. 
+
+P.P.P.S NB! Epilepsi advarsel! Bro, den andre bossfighten sin level ("nightclub1") gir deg definitivt et epilepsi anfall lol. Gamer discretion advised. 
 
 ENJOY!

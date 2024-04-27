@@ -96,6 +96,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         } else if (startUpState == "happyapartment1") {
             System.out.println("loading happyapartment1");
             this.loadLevel("happyapartment1", 1);
+        } else if (startUpState == "nightclub1") {
+            System.out.println("loading nightclub1");
+            this.loadLevel("nightclub1", 1);
         } else if (startUpState == "main") {
             this.gameState.setGameState(GameState.MAIN_MENU);
             this.debugMode = false;

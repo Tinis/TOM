@@ -75,8 +75,8 @@ public class Config {
 
 
 //-----MODEL RELATED
-    public static final String START_UP_STATE = "main"; 
-    //options: "demo", "main", "city1", "happyapartment1"
+    public static final String START_UP_STATE = "nightclub1"; 
+    //options: "demo", "main", "city1", "happyapartment1", "nightclub1"
 
     //CHARACTER PROPERTIES
     public static final double CHILD_CHARACTER_HEIGHT = 16;

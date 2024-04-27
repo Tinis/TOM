@@ -22,6 +22,7 @@ public class LevelLoader {
         this.levels.put("hallway1", hallway1());
         this.levels.put("happyapartment1", happyapartment1());
         this.levels.put("city2", city2());
+        this.levels.put("nightclub1", nightclub1());
     }
 
     public Level getLevel(String name) {
@@ -112,7 +113,7 @@ public class LevelLoader {
     }
 
     private Level city2() {
-        Level city2 = new Level("city2", new Coordinate(0, 0));
+        Level city2 = new Level("city2", new Coordinate(-78, 315));
         //add the bounds
         city2.putBoundsRectangle(new Coordinate(-400, -400));
         city2.putBlock(new Coordinate(-400, -400));
@@ -123,6 +124,9 @@ public class LevelLoader {
         city2.putBlock(new Coordinate(-145, 14));
         city2.putBlock(new Coordinate(16, 14));
         city2.putBlock(new Coordinate(272, 14));
+        //-20, 290 => 20, 290
+        city2.putWall(new Wall(new Coordinate(-20, 290), new Coordinate(20, 290)));
+        city2.putWall(new Wall(new Coordinate(-20, -130), new Coordinate(20, -130)));
         //put the npcs
         city2.putNightclubShooter(new Coordinate(185, -140));
         city2.putNightclubShooter(new Coordinate(205, -160));
@@ -130,11 +134,11 @@ public class LevelLoader {
         return city2;
     }
 
-    private Level nightclubBossFight() {
-        Level nighclubBossFight = new Level("nighclubBossFight", new Coordinate(0, 0));
-        nighclubBossFight.putNightclubBoss(new Coordinate(0, -100));
+    private Level nightclub1() {
+        Level nightclub1 = new Level("nightclub1", new Coordinate(0, 0));
+        // nightclub1.putNightclubBoss(new Coordinate(0, -100));
         //TODO: finish this
-        return null;
+        return nightclub1;
     }
 
     

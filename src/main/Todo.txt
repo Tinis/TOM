@@ -1,14 +1,9 @@
 Todo:
 Priority HIgh:
  - implement the short story
- make two shooting guards,
- meaning:
-      make the shooting guards ()
-      make the shooting guard art (they also throw feathers lol)
-      put them at city 2
-make r do shooting.
 make the nightclub bossfight
 meaning:
+      make the nightclublevel
       make a shooting ai that walks in a pattern and shoots. 
       make the art for idling walking and shooting in all directions. 
       i can make him shoot alot when he walks vertically and stop shooting when he walks horizontally. 
@@ -16,10 +11,12 @@ make a small cutscene to transition to sleeping
 (maybe its blacktext-screen=>sleepingtom=>blacktext-screen=>luciddreamplace=>new boss fight)
 make the last bossfight:
 meaning:
+      make the luciddreamlevel
       make a blob with shitty animation (that teleports around (i.e has very high speed))
       make the last cutscene with hugging the dad (phone notes has more instructions)
 
  - legg til tekst under dei første trappane ("left click to interact with the stairs")
+make shooting do more damage
  
  - lag ein liten video av spelet for innleveringen. 
 Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 
@@ -68,3 +65,6 @@ Priority Low:
 debugging learning:
  - i may have two coordinate point converters at times. 
     meaning that the listener should be the model so that it always changes the actual active one.
+ - sometimes the view may try to draw a projectile that no longer exists 
+ (or at least for whatever reason has the pos-coordinate null, it probably does exist)
+ - sometimes the drawProjectiles method raises a concurrent modification exception (why? we dont know)

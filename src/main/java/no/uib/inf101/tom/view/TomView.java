@@ -122,8 +122,9 @@ public class TomView extends JPanel {
     private void drawDebugText(Graphics2D g2) {
         String gameState = this.model.getGameState().toString();
         String levelName = this.model.getLevelName();
-        String debugString = String.format("state: %s, level: %s", 
-            gameState, levelName);
+        String activeSounds = this.model.getActiveSounds().toString();
+        String debugString = String.format("state: %s, level: %s, sounds : %s", 
+            gameState, levelName, activeSounds);
         Inf101Graphics.drawCenteredString(g2, debugString, this.getWidth()/2, 20);
     }
 

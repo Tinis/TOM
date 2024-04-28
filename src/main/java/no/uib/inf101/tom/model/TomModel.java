@@ -155,8 +155,11 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         //loads the new level
         this.levelName = levelName;
         Level level = this.levelLoader.getLevel(levelName);
+        System.out.println("loading level: " + levelName + ". With song: " + level.getSongName());
         //loads the song
-        this.activeSounds.add(level.getSongName());
+        if (level.getSongName() != null) {
+            this.activeSounds.add(level.getSongName());
+        }
         //loads characters
         if (this.player == null) {
             this.player = new Player(level.getPlayer().getBox().getCenter());
@@ -239,15 +242,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             }
             //update the levelstate
             updateLevelFrameCount();
-            //TODO: Check triggers (if you've defeated the happy family, (i do this after an npc death)
-            //move on to a small cutscene and then city 2 
-            //(the small cutscene could be a black screen that says 
-            //"you deafeated the happy family, and made them move their car :D")
-            //Such a small cutscene could also be the "new objective screen after the first cutscene"
-            //potensielt kunne det vert noe tekst i cutscene 1 som sier "tom is a normal kid... 
-            //all he wants to do is take alot of sleeping pills and sleep his life away. 
-            //This is the story of what happens when tom runs out of sleeping pills"
-            //also the gun can be a thing that he picks up yknow. 
         } else if (this.gameState.getGameState() == GameState.CUT_SCENE) {
             this.cutscene.updateFrameCount();
         }
@@ -448,11 +442,16 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     /**
      * this method checks if there is something that is supposed to be happening after an npc dies.
      */
-    private void checkDeathTriggers() {
+    private void checkDeathTriggers(NPC deadNPC) {
         if (this.levelName.equals("happyapartment1")) {
             if (this.npcList.size() == 0) {
                 this.loadCutscene("objective2");
                 this.player.setCanFire(true);
+            }
+        }
+        if (this.levelName.equals("nightclub1")) {
+            if (deadNPC.getName().equals("nightclubboss")) {
+                this.loadCutscene("objective3");
             }
         }
     }
@@ -477,8 +476,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
                 if (npc.takeHit(actorIsGood, strength)) {
                     //if the npc dies i remove it from the npcList
                     //(this is why i iterate backwards)
+                    checkDeathTriggers(this.npcList.get(i));
                     this.npcList.remove(i);
-                    checkDeathTriggers();
                 }
             }      
         }
@@ -493,7 +492,6 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         } else if (newState == GameState.GAME_OVER) {
             this.levelLoader = new LevelLoader();
             this.levelName = null;
-            // this.player = null; //TODO: this line may lead to bugs
             loadScreen("gameover");
         } else if (newState == GameState.PAUSED_GAME) {
             loadScreen("pause");

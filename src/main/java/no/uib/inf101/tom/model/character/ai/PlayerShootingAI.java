@@ -2,7 +2,6 @@ package no.uib.inf101.tom.model.character.ai;
 
 import no.uib.inf101.tom.model.action.ActionCommand;
 import no.uib.inf101.tom.model.action.Shoot;
-import no.uib.inf101.tom.model.action.Walk;
 import no.uib.inf101.tom.model.character.CharacterViewableModel;
 
 /**
@@ -28,7 +27,7 @@ public class PlayerShootingAI extends AICommander{
 
     @Override
     public String getCommanderName() {
-        return "basic punching ai";
+        return "PlayerShootingAI";
     }
     
 }

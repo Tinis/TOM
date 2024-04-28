@@ -1,12 +1,6 @@
 Todo:
 Priority HIgh:
  - implement the short story
-make the nightclub bossfight
-meaning:
-      make the nightclublevel
-      make a shooting ai that walks in a pattern and shoots. 
-      make the art for idling walking and shooting in all directions. 
-      i can make him shoot alot when he walks vertically and stop shooting when he walks horizontally. 
 make a small cutscene to transition to sleeping 
 (maybe its blacktext-screen=>sleepingtom=>blacktext-screen=>luciddreamplace=>new boss fight)
 make the last bossfight:
@@ -21,6 +15,9 @@ make shooting do more damage
  - lag ein liten video av spelet for innleveringen. 
 Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 
 Youtube (videoen kan være privat) og legg til en link i README.md.
+
+make the feathers actually do damage
+modify the how to play screen to be accurate on abilites. 
 
 add to the defeated family cutscene ("oh hey btw press R to rip out a feather and throw it at people")
 

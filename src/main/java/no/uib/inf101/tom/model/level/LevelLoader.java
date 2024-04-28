@@ -1,5 +1,6 @@
 package no.uib.inf101.tom.model.level;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import no.uib.inf101.tom.model.Coordinate;
@@ -128,6 +129,8 @@ public class LevelLoader {
         city2.putBlock(new Coordinate(272, 14));
         city2.putWall(new Wall(new Coordinate(-20, 290), new Coordinate(20, 290)));
         city2.putWall(new Wall(new Coordinate(-20, -130), new Coordinate(20, -130)));
+        city2.putWall(new Wall(new Coordinate(-113, 300), new Coordinate(-113, 400)));
+        city2.putWall(new Wall(new Coordinate(-70, -114), new Coordinate(-70, 13)));
         //put the npcs
         city2.putNightclubShooter(new Coordinate(185, -140));
         city2.putNightclubShooter(new Coordinate(205, -160));
@@ -136,8 +139,23 @@ public class LevelLoader {
     }
 
     private Level nightclub1() {
-        Level nightclub1 = new Level("nightclub1", new Coordinate(0, 0));
-        // nightclub1.putNightclubBoss(new Coordinate(0, -100));
+        Level nightclub1 = new Level("nightclub1", new Coordinate(0, 0), 
+            "nightclub");
+        //put npcs
+        nightclub1.putNightclubShooter(new Coordinate(-192, -130));
+        nightclub1.putNightclubShooter(new Coordinate(-192, 0));
+        nightclub1.putNightclubShooter(new Coordinate(-192, 130));
+        nightclub1.putNightclubShooter(new Coordinate(192, -130));
+        nightclub1.putNightclubShooter(new Coordinate(192, 0));
+        nightclub1.putNightclubShooter(new Coordinate(192, 130));
+        ArrayList<Coordinate> route = new ArrayList<>();
+        route.add(new Coordinate(112, -80));
+        route.add(new Coordinate(64, 112));
+        route.add(new Coordinate(-135, 31));
+        route.add(new Coordinate(-128, -50));
+        nightclub1.putNightclubBoss(route);
+        //put bounds
+        nightclub1.putBoundsRectangle(new Coordinate(-169, -169));
         //TODO: finish this
         return nightclub1;
     }

@@ -17,6 +17,7 @@ import no.uib.inf101.tom.model.character.Player;
 import no.uib.inf101.tom.model.character.ViewableCharacter;
 import no.uib.inf101.tom.model.character.ai.BasicPunchingAI;
 import no.uib.inf101.tom.model.character.ai.PlayerShootingAI;
+import no.uib.inf101.tom.model.character.ai.ShootingWalkingAI;
 
 public class Level {
     private String name;
@@ -128,8 +129,17 @@ public class Level {
         putNPC(nightclubShooter);
     }
 
-    public void putNightclubBoss(Coordinate pos) {
-        //NPC nightclubBocc = new NPC(pos, new ) //Basic shooting ai
+    /**
+     * puts a nightclub boss onto the level. 
+     * @param route the route that it will walk. 
+     * The last position in the list is where the npc will start.
+     */
+    public void putNightclubBoss(ArrayList<Coordinate> route) {
+        Coordinate start = route.get(route.size() - 1);
+        ShootingWalkingAI ai = new ShootingWalkingAI(route);
+        NPC nightclubBoss = new NPC(start, ai, false, "nightclubboss");
+        ai.giveNpcAccess(nightclubBoss);
+        putNPC(nightclubBoss); 
     }
 
     //COLLISIONBOXES

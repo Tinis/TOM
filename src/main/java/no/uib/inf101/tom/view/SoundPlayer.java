@@ -18,6 +18,7 @@ public class SoundPlayer {
             Sound sound = new Sound(fileNameWithoutType);
             this.sounds.put(fileNameWithoutType, sound);
         }
+        System.out.println("loaded sounds: " + this.sounds.keySet().toString());
     }
 
     /**
@@ -51,7 +52,11 @@ public class SoundPlayer {
      */
     public void playSound(String soundName) {
         this.playingSounds.add(soundName);
+        System.out.println("playing sound: " + soundName);
         this.sounds.get(soundName).play();
+        if (soundName.equals("nightclub")) {
+            this.sounds.get(soundName).loop();
+        }
     }
 
     /**
@@ -68,6 +73,7 @@ public class SoundPlayer {
      */
     public void stopSound(String soundName) {
         this.playingSounds.remove(soundName);
+        System.out.println("stoppping sound: " + soundName);
         this.sounds.get(soundName).stop();
     }
 }

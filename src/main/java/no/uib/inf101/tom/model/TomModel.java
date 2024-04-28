@@ -167,7 +167,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             this.player.setPos(level.getEnteredCoordinate(entrance));
         }
         this.player.setDestination(this.player.getCenter());
-        if (levelName.equals("city2")) {
+        if (levelName.equals("city2") || levelName.equals("dream1")) {
             this.player.setCanFire(true);
         }
         this.npcList = level.getNpcs();
@@ -191,6 +191,8 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
             return 60;
         } else if (levelName.equals("happyapartment1")) {
             return 30;
+        } else if (levelName.equals("dream1")) {
+            return Config.STANDARD_LEVEL_FRAMES_PER_STATE * 3;
         }
         return Config.STANDARD_LEVEL_FRAMES_PER_STATE;
 
@@ -451,6 +453,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
         }
         if (this.levelName.equals("nightclub1")) {
             if (deadNPC.getName().equals("nightclubboss")) {
+                System.out.println("nightclub Boss defeated");
                 this.loadCutscene("objective3");
             }
         }

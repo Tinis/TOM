@@ -70,6 +70,8 @@ public class ScreenLoader {
             this::loadBedroom1, "Chapter 1"));
         chapterselection.putButton(new Button(new Coordinate(0, 0),
             this::loadCity2, "Chapter 2"));
+        chapterselection.putButton(new Button(new Coordinate(0, Config.BUTTON_MARGIN),
+            this::loadDream1, "Chapter 3"));
         chapterselection.putButton(new Button(new Coordinate(-150, 90), 
             this::loadMainMenu, "Back"));
         return chapterselection;
@@ -88,10 +90,6 @@ public class ScreenLoader {
 //BUTTON FUNCTIONS
 //////////////////
     //loading levels and cutscenes
-    private void loadDemoLevel() {
-        this.model.loadLevel("demo", 1);
-    }
-
     private void loadIntro() {
         this.model.loadCutscene("intro");
     }
@@ -102,6 +100,10 @@ public class ScreenLoader {
 
     private void loadCity2() {
         this.model.loadLevel("city2", 1);
+    }
+
+    private void loadDream1() {
+        this.model.loadLevel("dream1", 1);
     }
 
     //loading screens

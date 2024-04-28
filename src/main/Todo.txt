@@ -1,16 +1,16 @@
 Todo:
 Priority HIgh:
  - implement the short story
-make a small cutscene to transition to sleeping 
-(maybe its blacktext-screen=>sleepingtom=>blacktext-screen=>luciddreamplace=>new boss fight)
 make the last bossfight:
 meaning:
-      make the luciddreamlevel
-      make a blob with shitty animation (that teleports around (i.e has very high speed))
-      make the last cutscene with hugging the dad (phone notes has more instructions)
+      make a dad with shitty animation (that teleports around (i.e has very high speed))
+make the last cutscene with hugging the dad (phone notes has more instructions)
+
+BALANCE THE GAME
 
  - legg til tekst under dei første trappane ("left click to interact with the stairs")
 make shooting do more damage
+
  
  - lag ein liten video av spelet for innleveringen. 
 Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 

@@ -24,6 +24,7 @@ public class LevelLoader {
         this.levels.put("happyapartment1", happyapartment1());
         this.levels.put("city2", city2());
         this.levels.put("nightclub1", nightclub1());
+        this.levels.put("dream1", dream1());
     }
 
     public Level getLevel(String name) {
@@ -156,8 +157,14 @@ public class LevelLoader {
         nightclub1.putNightclubBoss(route);
         //put bounds
         nightclub1.putBoundsRectangle(new Coordinate(-169, -169));
-        //TODO: finish this
         return nightclub1;
+    }
+
+    private Level dream1() {
+        Level dream1 = new Level("dream1", new Coordinate(0, 0), "nightclubdream");
+        //bounds
+        dream1.putBoundsRectangle(new Coordinate(-169, -169));
+        return dream1;
     }
 
     

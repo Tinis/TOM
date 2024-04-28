@@ -447,6 +447,7 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private void checkDeathTriggers(NPC deadNPC) {
         if (this.levelName.equals("happyapartment1")) {
             if (this.npcList.size() == 0) {
+                System.out.println("loading objective2");
                 this.loadCutscene("objective2");
                 this.player.setCanFire(true);
             }
@@ -479,8 +480,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
                 if (npc.takeHit(actorIsGood, strength)) {
                     //if the npc dies i remove it from the npcList
                     //(this is why i iterate backwards)
-                    checkDeathTriggers(this.npcList.get(i));
+                    NPC deadNpc = this.npcList.get(i);
                     this.npcList.remove(i);
+                    checkDeathTriggers(deadNpc);
                 }
             }      
         }

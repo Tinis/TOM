@@ -142,6 +142,14 @@ public class Level {
         putNPC(nightclubBoss); 
     }
 
+    public void putDad(ArrayList<Coordinate> route) {
+        Coordinate start = route.get(route.size() - 1);
+        ShootingWalkingAI ai = new ShootingWalkingAI(route);
+        NPC dad = new NPC(start, ai, false, "dad");
+        ai.giveNpcAccess(dad);
+        putNPC(dad); 
+    }
+
     //COLLISIONBOXES
     public void putBuilding(Building building) {
         this.buildingList.add(building);

@@ -164,6 +164,28 @@ public class LevelLoader {
         Level dream1 = new Level("dream1", new Coordinate(0, 0), "nightclubdream");
         //bounds
         dream1.putBoundsRectangle(new Coordinate(-169, -169));
+        //npcs
+        //on the sides
+        dream1.putNightclubShooter(new Coordinate(-192, -130));
+        dream1.putNightclubShooter(new Coordinate(-192, 0));
+        dream1.putNightclubShooter(new Coordinate(-192, 130));
+        dream1.putNightclubShooter(new Coordinate(192, -130));
+        dream1.putNightclubShooter(new Coordinate(192, 0));
+        dream1.putNightclubShooter(new Coordinate(192, 130));
+        //on the top and bottom
+        dream1.putNightclubShooter(new Coordinate(-130, -192));
+        dream1.putNightclubShooter(new Coordinate(0, -192));
+        dream1.putNightclubShooter(new Coordinate(130, -192));
+        dream1.putNightclubShooter(new Coordinate(-130, 192));
+        dream1.putNightclubShooter(new Coordinate(0, 192));
+        dream1.putNightclubShooter(new Coordinate(130, 192));
+        //boss (dad)
+        ArrayList<Coordinate> route = new ArrayList<>();
+        route.add(new Coordinate(-128, -50));
+        route.add(new Coordinate(-135, 31));
+        route.add(new Coordinate(64, 112));
+        route.add(new Coordinate(112, -80));
+        dream1.putDad(route);
         return dream1;
     }
 

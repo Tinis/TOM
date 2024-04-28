@@ -54,7 +54,7 @@ public class SoundPlayer {
         this.playingSounds.add(soundName);
         System.out.println("playing sound: " + soundName);
         this.sounds.get(soundName).play();
-        if (soundName.equals("nightclub")) {
+        if (soundName.equals("nightclub") || soundName.equals("nightclubdream")) {
             this.sounds.get(soundName).loop();
         }
     }

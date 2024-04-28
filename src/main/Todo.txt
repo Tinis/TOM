@@ -3,10 +3,8 @@ Priority HIgh:
  - implement the short story
 make the last bossfight:
 meaning:
-      make a dad with shitty animation (that teleports around (i.e has very high speed))
-make the last cutscene with hugging the dad (phone notes has more instructions)
+make the last cutscene with hugging the dad (phone notes has more instructions) (also have credits duh)
 
-BALANCE THE GAME
 
  - legg til tekst under dei første trappane ("left click to interact with the stairs")
 make shooting do more damage
@@ -17,6 +15,10 @@ Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last d
 Youtube (videoen kan være privat) og legg til en link i README.md.
 
 make the feathers actually do damage
+BALANCE THE GAME
+- maybe add some ifs in the constructor of npcs like 
+"if name is dad or nightclubboss set health to a lot and speed to a lot"
+
 modify the how to play screen to be accurate on abilites. 
 
 add to the defeated family cutscene ("oh hey btw press R to rip out a feather and throw it at people")

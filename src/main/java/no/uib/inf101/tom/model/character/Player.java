@@ -12,6 +12,8 @@ public class Player extends Character{
         this.good = true;
         this.strength = Config.PLAYER_STRENGTH;
         this.speed = Config.PLAYER_SPEED;
+        this.maxHealth = Config.PLAYER_MAX_HEALTH;
+        this.health = Config.PLAYER_MAX_HEALTH;
     }
 
     @Override

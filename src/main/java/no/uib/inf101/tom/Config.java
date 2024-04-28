@@ -92,6 +92,7 @@ public class Config {
     public static final int STANDARD_MAX_HEALTH = 1000; 
     public static final int STANDARD_STRENGTH = 180; 
     public static final int PLAYER_STRENGTH = 100;
+    public static final int PLAYER_MAX_HEALTH = 1500;
     public static final int STANDARD_PROJECTILE_STRENGTH = 16; 
     //it hits several times when its on top of someone. Meaning that every hit hits 15x harder 
     //and is currently spammable so the low strength of 16 makes sense. 

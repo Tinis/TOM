@@ -16,6 +16,14 @@ public class NPC extends Character{
         this.good = isGood;
         this.name = name;
         this.setCanFire(true);
+        if (this.name.equals("nightclubboss")) {
+            this.maxHealth *= 3;
+            this.health *= 3;
+        }
+        if (this.name.equals("dad")) {
+            this.maxHealth *= 3;
+            this.health *= 3;
+        }
     }
     
     public NPC(Coordinate pos, AICommander ai, boolean isGood) {

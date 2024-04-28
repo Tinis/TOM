@@ -1,7 +1,6 @@
 package no.uib.inf101.tom.gameloop;
 
 import no.uib.inf101.tom.Config;
-import no.uib.inf101.tom.model.TomModel;
 import no.uib.inf101.tom.view.TomView;
 
 public class GameLoop implements PausableGameLoop, Runnable{

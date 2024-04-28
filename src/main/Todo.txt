@@ -1,44 +1,15 @@
 Todo:
 Priority HIgh:
- - implement the short story
-make the last bossfight:
-meaning:
-make the last cutscene with hugging the dad (phone notes has more instructions) (also have credits duh)
-
-
- - legg til tekst under dei første trappane ("left click to interact with the stairs")
-make shooting do more damage
-
- 
- - lag ein liten video av spelet for innleveringen. 
-Bonuspoeng: Dere får 1 poeng for å inkludere en video av applikasjonen. Last den opp på f.eks. 
-Youtube (videoen kan være privat) og legg til en link i README.md.
-
-make the feathers actually do damage
-BALANCE THE GAME
-- maybe add some ifs in the constructor of npcs like 
-"if name is dad or nightclubboss set health to a lot and speed to a lot"
-
-modify the how to play screen to be accurate on abilites. 
-
-add to the defeated family cutscene ("oh hey btw press R to rip out a feather and throw it at people")
 
 Priority Medium:
  - implement cooldowns (this may fix the weird bug that happens when spamming fire). 
  - make awake theme play when waking up (meaning shorten the lucid dream file in audacity)
- - make a text show up on screen with the next objective
- - (make an ability where you can pull a feather out of the pillow and throw it on people 
- - (exactly like shooting))
- - fix dashing so that the new destination is set before the moving happens. 
- Also its completely broken and the speed gets fucked. 
- if you dash whilst standing still, you lose speed. 
- - make targetable property actually work. 
+ - make targetable property actually work and make blocking. 
  - make a red vignett when you have low health. 
  - make a dying cutscene. 
  - make the health regenerate
  - make characters blink when they get hit. 
  - make some interactions get highlighted when hovered.
- - make it so that i can make the entire world a sprite. 
  this can be done in the view because it doesn't change based on anything.
  (make a computerscreen in the room that has a screwy screen)
  - make some sort of cutScene ai that makes the characters do a cutScene.

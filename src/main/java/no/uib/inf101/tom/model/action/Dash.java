@@ -4,6 +4,8 @@ import no.uib.inf101.tom.Config;
 
 public class Dash extends Action{
 
+    private double actualSpeed;
+
     public Dash() {
         super();
         this.actionName = "dash";
@@ -20,6 +22,12 @@ public class Dash extends Action{
     }
 
     @Override
+    public void setActingCharacter(ActionableCharacter character) {
+        this.actingCharacter = character;
+        this.actualSpeed = this.actingCharacter.getSpeed();
+    }
+
+    @Override
     protected void doAbility() {
         this.actingCharacter.scaleSpeed(Config.DASH_SPEED_SCALER);
         this.actingCharacter.setDestination(this.pointer);
@@ -27,7 +35,7 @@ public class Dash extends Action{
 
     @Override
     public void stop() {
-        this.actingCharacter.scaleSpeed(1 / Config.DASH_SPEED_SCALER);
+        this.actingCharacter.setSpeed(this.actualSpeed);
         this.actingCharacter.overrideAction(new Idle());
     }
 

@@ -1,6 +1,5 @@
 package no.uib.inf101.tom.model.character;
 
-import java.util.ArrayList;
 
 import no.uib.inf101.tom.Config;
 import no.uib.inf101.tom.model.ActionableModel;
@@ -54,9 +53,9 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
         this.speed = Config.STANDARD_SPEED;
         this.facing = Config.STANDARD_DIRECTION;
         this.reach = Config.STANDARD_PUNCH_REACH;
-        this.canFire = false;
+        this.canFire = true; //should maybe be false until after the first bossfight
         //and these properties
-        this.targetable = false;
+        this.targetable = true;
         this.good = true;
         this.currentAction = new Idle();
         this.movement = new PlaneVector(0,0);
@@ -84,6 +83,16 @@ public abstract class Character extends CharacterBox implements ViewableCharacte
 
     public void setFacing(Direction direction) {
         this.facing = direction;
+    }
+
+    @Override
+    public void setSpeed(double newSpeed) {
+        this.speed = newSpeed;
+    }
+
+    @Override
+    public double getSpeed() {
+        return this.speed;
     }
 
     @Override

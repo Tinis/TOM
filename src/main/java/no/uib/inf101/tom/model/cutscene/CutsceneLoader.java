@@ -2,6 +2,7 @@ package no.uib.inf101.tom.model.cutscene;
 
 import java.util.HashMap;
 
+import no.uib.inf101.tom.model.GameState;
 import no.uib.inf101.tom.model.TomModel;
 
 /**
@@ -21,6 +22,9 @@ public class CutsceneLoader {
         this.cutscenes.put("objective3", objective3());
         this.cutscenes.put("tominbed", tominbed());
         this.cutscenes.put("objective4", objective4());
+        this.cutscenes.put("daddeath", daddeath());
+        this.cutscenes.put("blackscreen", blackscreen());
+        this.cutscenes.put("hug", hug());
     }
 
     public Cutscene getCutscene(String name) {
@@ -70,6 +74,25 @@ public class CutsceneLoader {
         return objective4;
     }
 
+    private Cutscene daddeath() {
+        Cutscene daddeath = new Cutscene("daddeath", this::loadBlackScreen);
+        //add a zoom to this scene?
+        return daddeath;
+    }
+
+    private Cutscene blackscreen() {
+        Cutscene blackscreen = new Cutscene("blackscreen", 
+            300, this::loadHug, null);
+        return blackscreen;
+    }
+
+    private Cutscene hug() {
+        Cutscene hug = new Cutscene("hug", 
+            1200, this::loadMainMenu, "hug");
+        return hug;
+    }
+
+
     //CONSEQUENCES
     private void loadBedroom1() {
         this.model.loadLevel("bedroom1", 0);
@@ -97,5 +120,17 @@ public class CutsceneLoader {
 
     private void loadDream1() {
         this.model.loadLevel("dream1", 1);
+    }
+
+    private void loadBlackScreen() {
+        this.model.loadCutscene("blackscreen");
+    }
+
+    private void loadHug() {
+        this.model.loadCutscene("hug");
+    }
+
+    private void loadMainMenu() {
+        this.model.setGameState(GameState.MAIN_MENU);
     }
 }

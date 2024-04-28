@@ -11,7 +11,7 @@ public class Punch extends Action{
 
         this.actionStateDuration = Config.STANDARD_ACTION_STATE_DURATION;
         this.actionStateAmount = 2;
-        this.abilityState = 1; //TODO: maybe set to 3;
+        this.abilityState = 1; 
 
         this.looping = false;
         this.overridable = false;

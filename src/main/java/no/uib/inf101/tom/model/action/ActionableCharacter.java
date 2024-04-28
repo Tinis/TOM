@@ -56,4 +56,16 @@ public interface ActionableCharacter {
      * @return the reach of the character.
      */
     public double getReach();
+
+    /**
+     * 
+     * @return the speed of the character.
+     */
+    public double getSpeed();
+
+    /**
+     * 
+     * @param speed the speed to set. 
+     */
+    public void setSpeed(double newSpeed);
 }

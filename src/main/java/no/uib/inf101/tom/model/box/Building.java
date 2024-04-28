@@ -1,7 +1,6 @@
 package no.uib.inf101.tom.model.box;
 
 import no.uib.inf101.tom.model.Coordinate;
-import no.uib.inf101.tom.model.PlaneVector;
 
 /**
  * A building. Does not need to contain drawing info. 

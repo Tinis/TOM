@@ -282,7 +282,7 @@ public class TomView extends JPanel {
         if (image != null) {
             Inf101Graphics.drawCenteredImage(g2, image, point.getX(), point.getY(), Config.SCALING);
         } else {
-            Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
+            // Inf101Graphics.drawCenteredString(g2, "Image not found", point.getX(), point.getY());
         }
     }
 

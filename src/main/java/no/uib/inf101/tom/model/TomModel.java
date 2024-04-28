@@ -447,15 +447,18 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     private void checkDeathTriggers(NPC deadNPC) {
         if (this.levelName.equals("happyapartment1")) {
             if (this.npcList.size() == 0) {
-                System.out.println("loading objective2");
                 this.loadCutscene("objective2");
                 this.player.setCanFire(true);
             }
         }
         if (this.levelName.equals("nightclub1")) {
             if (deadNPC.getName().equals("nightclubboss")) {
-                System.out.println("nightclub Boss defeated");
                 this.loadCutscene("objective3");
+            }
+        }
+        if (this.levelName.equals("dream1")) {
+            if (deadNPC.getName().equals("dad")) {
+                this.loadCutscene("daddeath");
             }
         }
     }

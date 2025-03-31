@@ -1,5 +1,7 @@
 ## TOM
-Helu :)
+Dette er eit prosjekt eg gjorde i objekt-orientert programmering på UiB. Oppgåva var å lage kva som helst spel med i alle fall litt kompleksitet. prosjektet blei utført på tre veker. 
+
+
 
 TOM er ein vanleg gut. Alt han vil gjere er å ta masse sovepiller og sove bort livet sitt. 
 Men han er ikkje bare Tom, han er også tom for sovepiller. ÅNEI! I dette spelet, speler du som Tom. 

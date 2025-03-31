@@ -408,6 +408,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
     @Override
     public void walk(Point2D point) {
         Coordinate clickedCoordinate = this.coordinateConverter.coordinateFromPoint(point);
+        if (this.player == null) {
+            return;
+        }
         player.sendActionCommand(new ActionCommand(new Walk(), clickedCoordinate));
     }
 
@@ -429,6 +432,9 @@ public class TomModel implements ViewableModel, ControllableModel, Updatable, Ac
 
     @Override
     public void sendAction(Action action) {
+        if (this.player == null) {
+            return;
+        }
         player.sendActionCommand(new ActionCommand(action, this.mousePos));
     }
 

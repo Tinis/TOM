@@ -1,4 +1,4 @@
-# TOM
+## TOM
 Helu :)
 
 TOM er ein vanleg gut. Alt han vil gjere er å ta masse sovepiller og sove bort livet sitt. 

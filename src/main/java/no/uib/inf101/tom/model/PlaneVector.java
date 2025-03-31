@@ -2,7 +2,6 @@ package no.uib.inf101.tom.model;
 
 import java.lang.Math;
 
-
 /**
  * A 2D-Vector represented by an x-field and a y-field (both are doubles). 
  * Can get and set its length. Can not change its direction. 
